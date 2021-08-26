@@ -7,24 +7,31 @@ package hr.edunova.edunova01;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
+
+// Kontinuirana domaća zadaća:
+// Za kreirane programe u dosadašnjoj nastavi (ciklična matrica, ljubavni kalkulator,...)
+//kreirati vizualno sučelje u Swing-u dok je kod copy paste
 
 /**
  *
- * @author jalep
+ * @author dell
  */
 public class Prozor extends javax.swing.JFrame {
 
+    // Visual guide to Layout: https://docs.oracle.com/javase/tutorial/uiswing/layout/visual.html
     /**
      * Creates new form Prozor
      */
     public Prozor() {
-        // poziv metode initComponents mora se izvesti prvi
+        // poziv metode initCOmponents mora se izvesti prvi
         initComponents();
-        
-        // ovdje mi radimo sto nas je volja
+
+        //ovdje mi radimo što nas je volja
         osnovnePostavke();
-        
+
     }
 
     /**
@@ -43,12 +50,15 @@ public class Prozor extends javax.swing.JFrame {
         txtPrezime = new javax.swing.JTextField();
         btnUnesi = new javax.swing.JButton();
         btnPostavi = new javax.swing.JButton();
+        jToolBar1 = new javax.swing.JToolBar();
+        lblSat = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Hello");
@@ -78,11 +88,6 @@ public class Prozor extends javax.swing.JFrame {
 
         jLabel2.setText("Prezime");
 
-        txtPrezime.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPrezimeActionPerformed(evt);
-            }
-        });
         txtPrezime.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtPrezimeKeyPressed(evt);
@@ -103,6 +108,11 @@ public class Prozor extends javax.swing.JFrame {
             }
         });
 
+        jToolBar1.setRollover(true);
+
+        lblSat.setText("jLabel3dfdfdfdf");
+        jToolBar1.add(lblSat);
+
         jMenu1.setText("File");
 
         jMenuItem1.setText("Izlaz");
@@ -113,26 +123,25 @@ public class Prozor extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem1);
 
-        jMenu3.setText("Podozbprmol");
+        jMenu3.setText("Podizbornik");
 
         jMenuItem2.setText("Opcija 1");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
         jMenu3.add(jMenuItem2);
 
         jMenu1.add(jMenu3);
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Pomoc");
-        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+        jMenu2.setText("Pomoć");
+
+        jMenuItem3.setText("O nama");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu2ActionPerformed(evt);
+                jMenuItem3ActionPerformed(evt);
             }
         });
+        jMenu2.add(jMenuItem3);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -144,27 +153,27 @@ public class Prozor extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(141, 141, 141)
+                        .addComponent(btnHello, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(txtIme, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtIme, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2)
-                            .addComponent(txtPrezime, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtPrezime, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(btnUnesi)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPostavi)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 178, Short.MAX_VALUE)
-                .addComponent(btnHello)
-                .addGap(149, 149, 149))
+                        .addGap(69, 69, 69)
+                        .addComponent(btnUnesi, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnPostavi, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(261, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(62, 62, 62)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtIme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -172,13 +181,14 @@ public class Prozor extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtPrezime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnUnesi)
                     .addComponent(btnPostavi))
                 .addGap(18, 18, 18)
                 .addComponent(btnHello)
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addGap(144, 144, 144)
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -187,7 +197,7 @@ public class Prozor extends javax.swing.JFrame {
 
     private void btnHelloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHelloActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(rootPane, "Hello");
+        JOptionPane.showMessageDialog(null, "Hello");
     }//GEN-LAST:event_btnHelloActionPerformed
 
     private void btnHelloMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHelloMouseEntered
@@ -195,12 +205,8 @@ public class Prozor extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHelloMouseEntered
 
     private void btnHelloMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHelloMouseExited
-        btnHello.setBackground(new Color(240,240,240));
+        btnHello.setBackground(new Color(240, 240, 240));
     }//GEN-LAST:event_btnHelloMouseExited
-
-    private void txtPrezimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrezimeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPrezimeActionPerformed
 
     private void btnUnesiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUnesiActionPerformed
         JOptionPane.showMessageDialog(getRootPane(), txtIme.getText() + " " + txtPrezime.getText());
@@ -213,9 +219,8 @@ public class Prozor extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPostaviActionPerformed
 
     private void txtImeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtImeKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             txtIme.setText(srediIme(txtIme.getText()));
-            
             txtPrezime.requestFocus();
         }
     }//GEN-LAST:event_txtImeKeyPressed
@@ -223,40 +228,42 @@ public class Prozor extends javax.swing.JFrame {
     private void txtPrezimeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrezimeKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             btnUnesiActionPerformed(null);
-        
-    }
+        }
     }//GEN-LAST:event_txtPrezimeKeyPressed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         dispose();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         new ONama().setVisible(true);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
-
-    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
-        
-    }//GEN-LAST:event_jMenu2ActionPerformed
-
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
     private String srediIme(String s) {
-        try{
-            s  = s.trim();
+        try {
+            s = s.trim();
             return s.substring(0, 1).toUpperCase() + s.substring(1).toLowerCase();
-        }catch(Exception e){
-              return s;
-            }
+        } catch (Exception e) {
+            return s;
+        }
+
     }
-    
+
     private void osnovnePostavke() {
         setTitle("Moja aplikacija");
+        
+        // https://docs.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+        
+        SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss");
+        
+        lblSat.setText(df.format(new Date()));
+        //Potrebno implementirrati višenitnost (Multithreading) kako bi sat radio  a i 
+        // program radio kako treba
         
     }
 
     /**
      * @param args the command line arguments
      */
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHello;
@@ -270,6 +277,9 @@ public class Prozor extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JLabel lblSat;
     private javax.swing.JTextField txtIme;
     private javax.swing.JTextField txtPrezime;
     // End of variables declaration//GEN-END:variables

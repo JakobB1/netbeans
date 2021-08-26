@@ -19,16 +19,13 @@
             </MenuItem>
             <Menu class="javax.swing.JMenu" name="jMenu3">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Podozbprmol"/>
+                <Property name="text" type="java.lang.String" value="Podizbornik"/>
               </Properties>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Opcija 1"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem2ActionPerformed"/>
-                  </Events>
                 </MenuItem>
               </SubComponents>
             </Menu>
@@ -36,11 +33,18 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Pomoc"/>
+            <Property name="text" type="java.lang.String" value="Pomo&#x107;"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenu2ActionPerformed"/>
-          </Events>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="O nama"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem3ActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
         </Menu>
       </SubComponents>
     </Menu>
@@ -72,34 +76,34 @@
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="141" max="-2" attributes="0"/>
+                      <Component id="btnHello" min="-2" pref="92" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtIme" min="-2" pref="103" max="-2" attributes="0"/>
+                          <Component id="txtIme" min="-2" pref="118" max="-2" attributes="0"/>
                           <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtPrezime" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
+                          <Component id="txtPrezime" alignment="0" min="-2" pref="118" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                      <Component id="btnUnesi" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnPostavi" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
+                      <Component id="btnUnesi" min="-2" pref="73" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btnPostavi" min="-2" pref="92" max="-2" attributes="0"/>
                   </Group>
+                  <Component id="jToolBar1" alignment="0" min="-2" pref="155" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="0" pref="178" max="32767" attributes="0"/>
-              <Component id="btnHello" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="149" max="-2" attributes="0"/>
+              <EmptySpace pref="261" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="txtIme" min="-2" max="-2" attributes="0"/>
@@ -107,14 +111,15 @@
               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="txtPrezime" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnUnesi" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnPostavi" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnHello" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="97" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="144" max="-2" attributes="0"/>
+              <Component id="jToolBar1" min="-2" pref="25" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -147,7 +152,6 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtPrezime">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPrezimeActionPerformed"/>
         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtPrezimeKeyPressed"/>
       </Events>
     </Component>
@@ -167,5 +171,19 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPostaviActionPerformed"/>
       </Events>
     </Component>
+    <Container class="javax.swing.JToolBar" name="jToolBar1">
+      <Properties>
+        <Property name="rollover" type="boolean" value="true"/>
+      </Properties>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="lblSat">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="jLabel3dfdfdfdf"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
   </SubComponents>
 </Form>

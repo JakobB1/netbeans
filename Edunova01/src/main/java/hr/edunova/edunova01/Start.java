@@ -7,13 +7,13 @@ package hr.edunova.edunova01;
 
 /**
  *
- * @author jalep
+ * @author dell
  */
 public class Start {
     
     public static void main(String[] args) {
         System.out.println("Hello");
-        new  Prozor().setVisible(true);
+        new Prozor().setVisible(true);
     }
     
 }
