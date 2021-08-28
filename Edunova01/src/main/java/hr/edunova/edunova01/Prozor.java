@@ -6,6 +6,7 @@
 package hr.edunova.edunova01;
 
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -62,6 +63,12 @@ public class Prozor extends javax.swing.JFrame {
         });
 
         jLabel1.setText("Ime");
+
+        txtIme.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtImeKeyPressed(evt);
+            }
+        });
 
         jLabel2.setText("Prezime");
 
@@ -147,6 +154,25 @@ public class Prozor extends javax.swing.JFrame {
         txtPrezime.setText("Zimska");
     }//GEN-LAST:event_btnPostaviActionPerformed
 
+    private void txtImeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtImeKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            
+                txtIme.setText(srediIme(txtIme.getText()));
+                
+                txtPrezime.requestFocus();
+            }
+    }//GEN-LAST:event_txtImeKeyPressed
+
+    private String srediIme(String s) {
+       try{
+           s = s.trim();
+           return s.substring(0, 1).toUpperCase() + s.substring(1).toLowerCase();
+       }catch(Exception e){
+           return s;
+       }
+           
+    }
+    
     private void osnovnePostavke() {
         setTitle("Moja aplikacija");
         
