@@ -52,6 +52,8 @@ public class Prozor extends javax.swing.JFrame {
 
     private void osnovnePostavke() {
         setTitle("Moja aplikacija");
+        
+        // https://docs.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
     }
 
     /**
