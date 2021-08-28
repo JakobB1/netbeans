@@ -44,6 +44,9 @@ public class Prozor extends javax.swing.JFrame {
         txtPrezime = new javax.swing.JTextField();
         btnUnesi = new javax.swing.JButton();
         btnPostavi = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,6 +75,12 @@ public class Prozor extends javax.swing.JFrame {
 
         jLabel2.setText("Prezime");
 
+        txtPrezime.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPrezimeKeyPressed(evt);
+            }
+        });
+
         btnUnesi.setText("Unesi");
         btnUnesi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,6 +94,14 @@ public class Prozor extends javax.swing.JFrame {
                 btnPostaviActionPerformed(evt);
             }
         });
+
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -124,7 +141,7 @@ public class Prozor extends javax.swing.JFrame {
                     .addComponent(btnPostavi))
                 .addGap(20, 20, 20)
                 .addComponent(btnHello)
-                .addContainerGap(175, Short.MAX_VALUE))
+                .addContainerGap(154, Short.MAX_VALUE))
         );
 
         pack();
@@ -155,13 +172,19 @@ public class Prozor extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPostaviActionPerformed
 
     private void txtImeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtImeKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER) {
+        if(evt.getKeyCode()== KeyEvent.VK_ENTER) {
             
                 txtIme.setText(srediIme(txtIme.getText()));
                 
                 txtPrezime.requestFocus();
             }
     }//GEN-LAST:event_txtImeKeyPressed
+
+    private void txtPrezimeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrezimeKeyPressed
+        if(evt.getKeyCode()== KeyEvent.VK_ENTER) {
+            btnUnesiActionPerformed(null);
+        }
+    }//GEN-LAST:event_txtPrezimeKeyPressed
 
     private String srediIme(String s) {
        try{
@@ -190,6 +213,9 @@ public class Prozor extends javax.swing.JFrame {
     private javax.swing.JButton btnUnesi;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JTextField txtIme;
     private javax.swing.JTextField txtPrezime;
     // End of variables declaration//GEN-END:variables
