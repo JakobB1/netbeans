@@ -37,6 +37,11 @@ public class Prozor extends javax.swing.JFrame {
     private void initComponents() {
 
         btnHello = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        txtIme = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        txtPrezime = new javax.swing.JTextField();
+        btnUnesi = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,21 +60,52 @@ public class Prozor extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Ime");
+
+        jLabel2.setText("Prezime");
+
+        btnUnesi.setText("Unesi");
+        btnUnesi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUnesiActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(156, 156, 156)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(182, Short.MAX_VALUE)
                 .addComponent(btnHello)
-                .addContainerGap(171, Short.MAX_VALUE))
+                .addGap(145, 145, 145))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnUnesi)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel1)
+                        .addComponent(jLabel2)
+                        .addComponent(txtPrezime, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                        .addComponent(txtIme)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(165, 165, 165)
+                .addGap(50, 50, 50)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtIme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtPrezime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnUnesi)
+                .addGap(20, 20, 20)
                 .addComponent(btnHello)
-                .addContainerGap(212, Short.MAX_VALUE))
+                .addContainerGap(175, Short.MAX_VALUE))
         );
 
         pack();
@@ -86,7 +122,13 @@ public class Prozor extends javax.swing.JFrame {
 
     private void btnHelloMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHelloMouseExited
         btnHello.setBackground(new Color(240,240,240));
+        btnHello.setForeground(Color.WHITE);
+        btnHello.setForeground(Color.BLACK);
     }//GEN-LAST:event_btnHelloMouseExited
+
+    private void btnUnesiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUnesiActionPerformed
+        JOptionPane.showMessageDialog(getRootPane(), txtIme.getText() + " " + txtPrezime.getText());
+    }//GEN-LAST:event_btnUnesiActionPerformed
 
     private void osnovnePostavke() {
         setTitle("Moja aplikacija");
@@ -101,5 +143,10 @@ public class Prozor extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHello;
+    private javax.swing.JButton btnUnesi;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JTextField txtIme;
+    private javax.swing.JTextField txtPrezime;
     // End of variables declaration//GEN-END:variables
 }
