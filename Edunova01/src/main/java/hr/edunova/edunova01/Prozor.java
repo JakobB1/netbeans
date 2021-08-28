@@ -15,7 +15,12 @@ public class Prozor extends javax.swing.JFrame {
      * Creates new form Prozor
      */
     public Prozor() {
+        // poziv metode initComponents mora se izvesti prvi
         initComponents();
+        
+        // ovdje mi radimo sto nas je volja
+        osnovnePostavke();
+        
         
     }
 
@@ -38,11 +43,16 @@ public class Prozor extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void osnovnePostavke() {
+        setTitle("Moja aplikacija");
+    }
 
     /**
      * @param args the command line arguments
