@@ -5,6 +5,7 @@
  */
 package hr.edunova.edunova01;
 
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -40,6 +41,14 @@ public class Prozor extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnHello.setText("Pozdravi");
+        btnHello.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnHelloMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnHelloMouseExited(evt);
+            }
+        });
         btnHello.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHelloActionPerformed(evt);
@@ -70,6 +79,14 @@ public class Prozor extends javax.swing.JFrame {
     private void btnHelloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHelloActionPerformed
         JOptionPane.showMessageDialog(null, "Hello");
     }//GEN-LAST:event_btnHelloActionPerformed
+
+    private void btnHelloMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHelloMouseEntered
+        btnHello.setBackground(Color.BLUE);
+    }//GEN-LAST:event_btnHelloMouseEntered
+
+    private void btnHelloMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHelloMouseExited
+        btnHello.setBackground(new Color(240,240,240));
+    }//GEN-LAST:event_btnHelloMouseExited
 
     private void osnovnePostavke() {
         setTitle("Moja aplikacija");
