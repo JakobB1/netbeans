@@ -42,6 +42,7 @@ public class Prozor extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtPrezime = new javax.swing.JTextField();
         btnUnesi = new javax.swing.JButton();
+        btnPostavi = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,6 +72,13 @@ public class Prozor extends javax.swing.JFrame {
             }
         });
 
+        btnPostavi.setText("Postavi");
+        btnPostavi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPostaviActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -81,13 +89,15 @@ public class Prozor extends javax.swing.JFrame {
                 .addGap(145, 145, 145))
             .addGroup(layout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnUnesi)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel1)
-                        .addComponent(jLabel2)
-                        .addComponent(txtPrezime, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                        .addComponent(txtIme)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnUnesi)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnPostavi, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(txtPrezime, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                    .addComponent(txtIme))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -102,7 +112,9 @@ public class Prozor extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtPrezime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnUnesi)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnUnesi)
+                    .addComponent(btnPostavi))
                 .addGap(20, 20, 20)
                 .addComponent(btnHello)
                 .addContainerGap(175, Short.MAX_VALUE))
@@ -130,6 +142,11 @@ public class Prozor extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(getRootPane(), txtIme.getText() + " " + txtPrezime.getText());
     }//GEN-LAST:event_btnUnesiActionPerformed
 
+    private void btnPostaviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPostaviActionPerformed
+        txtIme.setText("Marija");
+        txtPrezime.setText("Zimska");
+    }//GEN-LAST:event_btnPostaviActionPerformed
+
     private void osnovnePostavke() {
         setTitle("Moja aplikacija");
         
@@ -143,6 +160,7 @@ public class Prozor extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHello;
+    private javax.swing.JButton btnPostavi;
     private javax.swing.JButton btnUnesi;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
