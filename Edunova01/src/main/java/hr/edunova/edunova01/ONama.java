@@ -30,7 +30,7 @@ public class ONama extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("O nama");
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hr/edunova/edunova01/no-image.jpg"))); // NOI18N
