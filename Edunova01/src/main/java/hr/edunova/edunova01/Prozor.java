@@ -11,6 +11,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
+// Kontinuirana domaca zadaca:
+// Za kreirane programu u dosadasnjoj nastavi (ciklicna matrica, ljubavni kalk..)
+// Kreirati vizualno sucelje u Swingu dok je kod copy paste
 /**
  *
  * @author jalep
@@ -105,7 +108,7 @@ public class Prozor extends javax.swing.JFrame {
 
         jToolBar1.setRollover(true);
 
-        lblSat.setMaximumSize(new java.awt.Dimension(20, 20));
+        lblSat.setText("labellabellabel");
         jToolBar1.add(lblSat);
 
         jMenu1.setText("File");
@@ -252,7 +255,10 @@ public class Prozor extends javax.swing.JFrame {
         // https://docs.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
         
         SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss");
+        
         lblSat.setText(df.format(new Date()));
+        //Potrebno implementirati visenitnosti (Multithreading) kako bi sat radio a i 
+        // program radio kako treba
         
     }
 

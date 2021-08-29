@@ -178,9 +178,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="lblSat">
           <Properties>
-            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[20, 20]"/>
-            </Property>
+            <Property name="text" type="java.lang.String" value="labellabellabel"/>
           </Properties>
         </Component>
       </SubComponents>
