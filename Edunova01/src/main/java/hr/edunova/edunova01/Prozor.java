@@ -44,6 +44,8 @@ public class Prozor extends javax.swing.JFrame {
         txtPrezime = new javax.swing.JTextField();
         btnUnesi = new javax.swing.JButton();
         btnPostavi = new javax.swing.JButton();
+        jToolBar1 = new javax.swing.JToolBar();
+        lblSat = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -99,6 +101,11 @@ public class Prozor extends javax.swing.JFrame {
             }
         });
 
+        jToolBar1.setRollover(true);
+
+        lblSat.setMaximumSize(new java.awt.Dimension(20, 20));
+        jToolBar1.add(lblSat);
+
         jMenu1.setText("File");
 
         jMenuItem1.setText("Izlaz");
@@ -152,6 +159,9 @@ public class Prozor extends javax.swing.JFrame {
                     .addComponent(txtPrezime, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
                     .addComponent(txtIme))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,7 +180,8 @@ public class Prozor extends javax.swing.JFrame {
                     .addComponent(btnPostavi))
                 .addGap(20, 20, 20)
                 .addComponent(btnHello)
-                .addContainerGap(154, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -257,6 +268,8 @@ public class Prozor extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JLabel lblSat;
     private javax.swing.JTextField txtIme;
     private javax.swing.JTextField txtPrezime;
     // End of variables declaration//GEN-END:variables
