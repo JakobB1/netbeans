@@ -7,6 +7,8 @@ package hr.edunova.edunova01;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -248,6 +250,10 @@ public class Prozor extends javax.swing.JFrame {
         setTitle("Moja aplikacija");
         
         // https://docs.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+        
+        SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss");
+        lblSat.setText(df.format(new Date()));
+        
     }
 
     /**
