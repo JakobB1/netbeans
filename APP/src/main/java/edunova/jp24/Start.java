@@ -5,10 +5,16 @@
  */
 package edunova.jp24;
 
+import edunova.jp24.util.HibernateUtil;
+
 /**
  *
  * @author dell
  */
 public class Start {
+    
+    public static void main(String[] args) {
+        HibernateUtil.getSession();
+    }
     
 }

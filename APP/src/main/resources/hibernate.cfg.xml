@@ -43,7 +43,7 @@
 
 
         <!-- Ovdje navodimo mapirane klase -->
-        <mapping class="paket.Klasa" /> 
+       <!-- <mapping class="paket.Klasa" />  -->
        
     </session-factory>
 </hibernate-configuration>
