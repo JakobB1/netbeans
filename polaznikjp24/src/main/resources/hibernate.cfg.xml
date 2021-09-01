@@ -47,6 +47,10 @@
         <mapping class= "edunova.jp24.vjezbanjemapiranje.osnovno.Olovka" />     
         <mapping class= "edunova.jp24.vjezbanjemapiranje.osnovno.prilagodeno.Mobitel" />
         <mapping class= "edunova.jp24.vjezbanjemapiranje.osnovno.prilagodeno.Ucionica" />
+        <mapping class= "edunova.jp24.vjezbanjemapiranje.nasljedivanje.Automobil" />
+        <mapping class= "edunova.jp24.vjezbanjemapiranje.nasljedivanje.Bicikl" />
+        
+        <mapping class= "edunova.jp24.vjezbanjemapiranje.zadatak01.Osoba" />
        <!-- <mapping class="paket.Klasa" />  -->
        
     </session-factory>

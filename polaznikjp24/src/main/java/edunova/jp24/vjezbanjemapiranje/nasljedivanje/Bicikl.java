@@ -16,7 +16,7 @@ import javax.persistence.Entity;
 @Entity(name = "bike")
 public class Bicikl extends Vozilo{
     
-    @Column(length = 11, columnDefinition = "char")
+    @Column(columnDefinition = "char(11)")
     private String vozacOiB;
 
     public String getVozacOiB() {
