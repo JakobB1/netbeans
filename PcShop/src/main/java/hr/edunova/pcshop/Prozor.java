@@ -6,6 +6,7 @@
 package hr.edunova.pcshop;
 
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -40,6 +41,16 @@ public class Prozor extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtPassword = new javax.swing.JTextField();
         btnUnesi = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jKorisnik = new javax.swing.JMenuItem();
+        jDjelatnik = new javax.swing.JMenuItem();
+        jRacun = new javax.swing.JMenuItem();
+        jProizvod = new javax.swing.JMenuItem();
+        jPomoc = new javax.swing.JMenu();
+        jMenuItem6 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PcShopApp");
@@ -61,7 +72,19 @@ public class Prozor extends javax.swing.JFrame {
 
         jLabel1.setText("Username");
 
+        txtUser.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtUserKeyPressed(evt);
+            }
+        });
+
         jLabel2.setText("Password");
+
+        txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPasswordKeyPressed(evt);
+            }
+        });
 
         btnUnesi.setText("Unesi");
         btnUnesi.addActionListener(new java.awt.event.ActionListener() {
@@ -69,6 +92,53 @@ public class Prozor extends javax.swing.JFrame {
                 btnUnesiActionPerformed(evt);
             }
         });
+
+        jMenu1.setText("File");
+
+        jMenuItem1.setText("Izlaz");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Izbornik");
+
+        jKorisnik.setText("Korisnici");
+        jKorisnik.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jKorisnikActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jKorisnik);
+
+        jDjelatnik.setText("Djelatnici");
+        jMenu2.add(jDjelatnik);
+
+        jRacun.setText("Racuni");
+        jMenu2.add(jRacun);
+
+        jProizvod.setText("Proizvodi");
+        jMenu2.add(jProizvod);
+
+        jMenuBar1.add(jMenu2);
+
+        jPomoc.setText("Pomoc");
+
+        jMenuItem6.setText("O nama");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jPomoc.add(jMenuItem6);
+
+        jMenuBar1.add(jPomoc);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -100,7 +170,7 @@ public class Prozor extends javax.swing.JFrame {
                 .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnUnesi)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
                 .addComponent(btnHello))
         );
 
@@ -124,6 +194,46 @@ public class Prozor extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(getRootPane(), txtUser.getText() + " " + txtPassword.getText());
     }//GEN-LAST:event_btnUnesiActionPerformed
 
+    private void txtUserKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserKeyPressed
+        if(evt.getKeyCode()== KeyEvent.VK_ENTER) {
+            
+                txtUser.setText(srediUser(txtUser.getText()));
+                
+                txtPassword.requestFocus();
+            }
+   
+    }//GEN-LAST:event_txtUserKeyPressed
+
+    private void txtPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER) {
+             
+            
+            btnUnesiActionPerformed(null);
+            }
+    }//GEN-LAST:event_txtPasswordKeyPressed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        new ONama().setVisible(true);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jKorisnikActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jKorisnikActionPerformed
+        new Korisnici().setVisible(true);
+    }//GEN-LAST:event_jKorisnikActionPerformed
+
+    private String srediUser(String s) {
+       try{
+           s = s.trim();
+           return s.substring(0, 1).toUpperCase() + s.substring(1).toLowerCase();
+       }catch(Exception e){
+           return s;
+       }
+           
+    }
+    
     private void osnovnePostavke() {
         setTitle("PcShopApp");
     }
@@ -136,8 +246,18 @@ public class Prozor extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHello;
     private javax.swing.JButton btnUnesi;
+    private javax.swing.JMenuItem jDjelatnik;
+    private javax.swing.JMenuItem jKorisnik;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenu jPomoc;
+    private javax.swing.JMenuItem jProizvod;
+    private javax.swing.JMenuItem jRacun;
     private javax.swing.JTextField txtPassword;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
