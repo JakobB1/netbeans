@@ -3,17 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edunova.jp24.vjezbanjemapiranje.vezavisenapramajedan;
+package edunova.jp24.vjezbanjemapiranje.vezavisenapremavise;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-
 /**
  *
  * @author jalep
  */
 @Entity
-public class Grad {
+public class Oznaka {
     
     @Id
     private Long id;
@@ -35,6 +34,5 @@ public class Grad {
     public void setNaziv(String naziv) {
         this.naziv = naziv;
     }
-    
     
 }
