@@ -5,6 +5,9 @@
  */
 package hr.edunova.pcshop;
 
+import java.awt.Color;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author jalep
@@ -15,7 +18,11 @@ public class Prozor extends javax.swing.JFrame {
      * Creates new form Prozor
      */
     public Prozor() {
+        
         initComponents();
+        
+        osnovnePostavke();
+        
     }
 
     /**
@@ -27,21 +34,99 @@ public class Prozor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnHello = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        txtUser = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JTextField();
+        btnUnesi = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("PcShopApp");
+
+        btnHello.setText("Pozdravi");
+        btnHello.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnHelloMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnHelloMouseExited(evt);
+            }
+        });
+        btnHello.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHelloActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Username");
+
+        jLabel2.setText("Password");
+
+        btnUnesi.setText("Unesi");
+        btnUnesi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUnesiActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnHello))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnUnesi)
+                    .addComponent(jLabel2)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(258, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnUnesi)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
+                .addComponent(btnHello))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnHelloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHelloActionPerformed
+        JOptionPane.showMessageDialog(null, "Hello");
+    }//GEN-LAST:event_btnHelloActionPerformed
+
+    private void btnHelloMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHelloMouseEntered
+        btnHello.setBackground(Color.BLUE);
+    }//GEN-LAST:event_btnHelloMouseEntered
+
+    private void btnHelloMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHelloMouseExited
+        btnHello.setBackground(new Color(240,240,240));
+    }//GEN-LAST:event_btnHelloMouseExited
+
+    private void btnUnesiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUnesiActionPerformed
+        JOptionPane.showMessageDialog(getRootPane(), txtUser.getText() + " " + txtPassword.getText());
+    }//GEN-LAST:event_btnUnesiActionPerformed
+
+    private void osnovnePostavke() {
+        setTitle("PcShopApp");
+    }
 
     /**
      * @param args the command line arguments
@@ -49,5 +134,11 @@ public class Prozor extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnHello;
+    private javax.swing.JButton btnUnesi;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JTextField txtPassword;
+    private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
 }
