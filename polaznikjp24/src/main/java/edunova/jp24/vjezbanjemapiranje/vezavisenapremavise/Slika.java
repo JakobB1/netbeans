@@ -5,6 +5,7 @@
  */
 package edunova.jp24.vjezbanjemapiranje.vezavisenapremavise;
 
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 

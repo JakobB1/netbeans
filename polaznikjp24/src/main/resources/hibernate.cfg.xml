@@ -57,6 +57,9 @@
         
         <mapping class= "dunova.jp24.vjezbanjemapiranje.Racun" />
         <mapping class= "dunova.jp24.vjezbanjemapiranje.Korisnik" />
+        
+        <mapping class= "edunova.jp24.vjezbanjemapiranje.vezavisenapremavise.Slika" />
+        <mapping class= "edunova.jp24.vjezbanjemapiranje.vezavisenapremavise.Oznaka" /> 
        <!-- <mapping class="paket.Klasa" />  -->
        
     </session-factory>
