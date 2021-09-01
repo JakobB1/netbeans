@@ -5,6 +5,7 @@
  */
 package edunova.jp24.edunova.jp24.vjezbanjemapiranje.osnovno;
 
+import java.math.BigDecimal;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -19,6 +20,8 @@ public class Olovka {
     private int sifra;
     private String naziv;
     private String oznaka;
+    private BigDecimal cijena;
+    private String materijal;
     
     // opisite olovku s 5 svojstava, mapirajte na bazu i izvedite program
     // u bazi mora biti tablica Olovka
