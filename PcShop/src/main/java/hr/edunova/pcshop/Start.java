@@ -11,6 +11,7 @@ package hr.edunova.pcshop;
  */
 public class Start {
     public static void main(String[] args) {
-        System.out.println("PcShop");
+        System.out.println("PcShopApp");
+        new Prozor().setVisible(true);
     }
 }
