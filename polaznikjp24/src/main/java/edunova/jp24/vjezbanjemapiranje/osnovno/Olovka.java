@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edunova.jp24.edunova.jp24.vjezbanjemapiranje.osnovno;
+package edunova.jp24.vjezbanjemapiranje.osnovno;
 
 import java.math.BigDecimal;
 import javax.persistence.Entity;
