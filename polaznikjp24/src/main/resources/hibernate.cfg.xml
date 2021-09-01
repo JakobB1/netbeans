@@ -43,6 +43,7 @@
 
 
         <!-- Ovdje navodimo mapirane klase -->
+        <mapping class= "edunova.jp24.edunova.jp24.vjezbanjemapiranje.osnovno.Racunalo" />
        <!-- <mapping class="paket.Klasa" />  -->
        
     </session-factory>
