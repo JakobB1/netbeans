@@ -22,7 +22,10 @@ public class Mobitel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long sifra;
     
-    @Column(name = "name_mobile")
+    @Column(
+            name = "name_mobile", 
+            columnDefinition = "text")
+    
     private String naziv;
 
     public Long getSifra() {
