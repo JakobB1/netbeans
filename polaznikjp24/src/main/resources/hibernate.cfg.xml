@@ -50,13 +50,8 @@
         <mapping class= "edunova.jp24.vjezbanjemapiranje.nasljedivanje.Automobil" />
         <mapping class= "edunova.jp24.vjezbanjemapiranje.nasljedivanje.Bicikl" />
         
-        <mapping class= "edunova.jp24.vjezbanjemapiranje.zadatak01.Osoba" />
-        
         <mapping class= "edunova.jp24.vjezbanjemapiranje.vezavisenapramajedan.Grad" />
         <mapping class= "edunova.jp24.vjezbanjemapiranje.vezavisenapramajedan.Igrac" />
-        
-        <mapping class= "dunova.jp24.vjezbanjemapiranje.Racun" />
-        <mapping class= "dunova.jp24.vjezbanjemapiranje.Korisnik" />
         
         <mapping class= "edunova.jp24.vjezbanjemapiranje.vezavisenapremavise.Slika" />
         <mapping class= "edunova.jp24.vjezbanjemapiranje.vezavisenapremavise.Oznaka" /> 
