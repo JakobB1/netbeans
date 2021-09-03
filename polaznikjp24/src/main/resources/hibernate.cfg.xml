@@ -52,9 +52,7 @@
         
         <mapping class= "edunova.jp24.vjezbanjemapiranje.vezavisenapramajedan.Grad" />
         <mapping class= "edunova.jp24.vjezbanjemapiranje.vezavisenapramajedan.Igrac" />
-        
-        <mapping class= "edunova.jp24.vjezbanjemapiranje.vezavisenapremavise.Slika" />
-        <mapping class= "edunova.jp24.vjezbanjemapiranje.vezavisenapremavise.Oznaka" /> 
+         
        <!-- <mapping class="paket.Klasa" />  -->
        
     </session-factory>
