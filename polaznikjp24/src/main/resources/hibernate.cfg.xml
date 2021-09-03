@@ -44,9 +44,11 @@
 
         <!-- Ovdje navodimo mapirane klase -->
         <mapping class= "edunova.jp24.vjezbanjemapiranje.osnovno.Racunalo" />
-        <mapping class= "edunova.jp24.vjezbanjemapiranje.osnovno.Olovka" />     
+        <mapping class= "edunova.jp24.vjezbanjemapiranje.osnovno.Olovka" />  
+           
         <mapping class= "edunova.jp24.vjezbanjemapiranje.osnovno.prilagodeno.Mobitel" />
         <mapping class= "edunova.jp24.vjezbanjemapiranje.osnovno.prilagodeno.Ucionica" />
+        
         <mapping class= "edunova.jp24.vjezbanjemapiranje.nasljedivanje.Automobil" />
         <mapping class= "edunova.jp24.vjezbanjemapiranje.nasljedivanje.Bicikl" />
         
