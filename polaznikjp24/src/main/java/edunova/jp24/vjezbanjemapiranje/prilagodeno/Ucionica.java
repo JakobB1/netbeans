@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edunova.jp24.vjezbanjemapiranje.osnovno.prilagodeno;
+package edunova.jp24.vjezbanjemapiranje.prilagodeno;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
