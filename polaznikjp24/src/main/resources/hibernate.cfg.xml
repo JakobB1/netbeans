@@ -49,6 +49,7 @@
         <mapping class= "edunova.jp24.vjezbanjemapiranje.prilagodeno.Mobitel" />
         <mapping class= "edunova.jp24.vjezbanjemapiranje.prilagodeno.Ucionica" />
         
+        <mapping class= "edunova.jp24.vjezbanjemapiranje.nasljedivanje.Vozilo" />
         <mapping class= "edunova.jp24.vjezbanjemapiranje.nasljedivanje.Automobil" />
         <mapping class= "edunova.jp24.vjezbanjemapiranje.nasljedivanje.Bicikl" />
         
