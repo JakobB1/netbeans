@@ -60,6 +60,7 @@
          
         <mapping class= "edunova.jp24.model.Polaznik" />
         <mapping class= "edunova.jp24.model.Predavac" />
+        <mapping class= "edunova.jp24.model.Smjer" />
        <!-- <mapping class="paket.Klasa" />  -->
        
     </session-factory>
