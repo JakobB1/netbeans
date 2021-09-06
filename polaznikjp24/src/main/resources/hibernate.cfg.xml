@@ -58,6 +58,8 @@
         <mapping class= "edunova.jp24.vjezbanjemapiranje.vezavisenapramavise.Slika" />
         <mapping class= "edunova.jp24.vjezbanjemapiranje.vezavisenapramavise.Oznaka" />
          
+        <mapping class= "edunova.jp24.model.Polaznik" />
+        <mapping class= "edunova.jp24.model.Predavac" />
        <!-- <mapping class="paket.Klasa" />  -->
        
     </session-factory>
