@@ -9,6 +9,8 @@ import com.github.javafaker.Faker;
 import edunova.jp24.model.Polaznik;
 import edunova.jp24.model.Predavac;
 import edunova.jp24.model.Smjer;
+import java.util.ArrayList;
+import java.util.List;
 import org.hibernate.Session;
 
 /**
@@ -36,6 +38,8 @@ public class HibernateSessionPocetniInsert {
         s.save(predavac);
         
         
+        List<Polaznik> polaznici = new ArrayList<>();
+        
         
         Polaznik polaznik;
         for (int i = 0; i < 1300; i++) {
@@ -43,6 +47,9 @@ public class HibernateSessionPocetniInsert {
             polaznik.setIme(faker.name().firstName());
             polaznik.setPrezime(faker.name().lastName());
             s.save(polaznik);
+            
+            if(i%100==0)
+                polaznici.add(polaznik);
         }
         
         
