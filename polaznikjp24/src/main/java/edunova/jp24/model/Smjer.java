@@ -51,5 +51,9 @@ public class Smjer extends Entitet{
     public void setCertifikat(Boolean certifikat) {
         this.certifikat = certifikat;
     }
+
+    public void getNaziv(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

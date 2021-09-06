@@ -20,11 +20,16 @@ public class HibernateSessionPocetniInsert {
         // prije rada s hibernate zapoceti transakciju
         s.beginTransaction();
         
-
+        /*
         Smjer java = new Smjer();
         java.setNaziv("Java programiranje");
-        s.save(java);
+        s.save(java);*/
         
+        for(int i = 1; i<=100; i++) {
+            Smjer smjer = new Smjer();
+            smjer.getNaziv("Smjer" + i);
+            s.save(smjer);
+        }
         
         
                 
