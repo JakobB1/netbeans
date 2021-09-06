@@ -24,6 +24,9 @@ public class HibernateSessionPocetniInsert {
         Smjer java = new Smjer();
         java.setNaziv("Java programiranje");
         s.save(java);
+        
+        
+        
                 
         // commit ide na kraju        
         s.getTransaction().commit();
