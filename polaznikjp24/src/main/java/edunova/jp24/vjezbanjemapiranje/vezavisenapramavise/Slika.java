@@ -8,6 +8,7 @@ package edunova.jp24.vjezbanjemapiranje.vezavisenapramavise;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 /**
  *
@@ -21,5 +22,32 @@ public class Slika {
     
     private String naziv;
     
+    @ManyToMany
     private List<Oznaka> oznake;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNaziv() {
+        return naziv;
+    }
+
+    public void setNaziv(String naziv) {
+        this.naziv = naziv;
+    }
+
+    public List<Oznaka> getOznake() {
+        return oznake;
+    }
+
+    public void setOznake(List<Oznaka> oznake) {
+        this.oznake = oznake;
+    }
+    
+    
 }
