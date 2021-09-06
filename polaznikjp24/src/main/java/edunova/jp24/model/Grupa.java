@@ -16,7 +16,7 @@ import javax.persistence.ManyToOne;
  * @author jalep
  */
 @Entity
-public class Grupa {
+public class Grupa extends Entitet{ // nisam sure
     
     private String naziv;
     @ManyToOne
