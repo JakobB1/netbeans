@@ -25,6 +25,7 @@ public class HibernateSessionPocetniInsert {
         java.setNaziv("Java programiranje");
         s.save(java);*/
         
+        
         for(int i = 1; i<=100; i++) {
             Smjer smjer = new Smjer();
             smjer.getNaziv("Smjer" + i);
