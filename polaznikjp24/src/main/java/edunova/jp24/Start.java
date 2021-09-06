@@ -5,8 +5,8 @@
  */
 package edunova.jp24;
 
-import edunova.jp24.util.HibernateUtil;
-import org.hibernate.Session;
+import edunova.jp24.util.HibernateSessionPocetniInsert;
+
 
 /**
  *
@@ -15,6 +15,6 @@ import org.hibernate.Session;
 public class Start {
     
     public static void main(String[] args) {
-        HibernateUtil.getSession();
+        HibernateSessionPocetniInsert.odradiPosao();
     }
 }
