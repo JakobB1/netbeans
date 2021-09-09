@@ -30,3 +30,7 @@ public abstract class Entitet {
         this.id = id;
     }
 }
+
+// DZ 
+// U posebnom projektu kreirati model klasa koji su mapirani s pomocu Hibernate na
+// nacin da implementacija ERA dijagrama bude istovjetna onom u edunovajp24 bazi.
