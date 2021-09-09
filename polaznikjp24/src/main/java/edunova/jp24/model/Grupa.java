@@ -19,8 +19,10 @@ import javax.persistence.ManyToOne;
 public class Grupa extends Entitet{ 
     
     private String naziv;
+    
     @ManyToOne
     private Smjer smjer;
+    
     @ManyToOne
     private Predavac predavac;
     
