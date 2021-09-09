@@ -5,6 +5,7 @@
  */
 package edunova.jp24.util;
 
+import edunova.jp24.model.Smjer;
 import org.hibernate.Session;
 
 
@@ -17,6 +18,9 @@ public class HibernateSessionPocetniInsert {
         // prije rada s hibernate zapoceti transakciju
         s.beginTransaction();
         
+        Smjer java = new Smjer();
+        java.setNaziv("Java programiranje");
+        s.save(java);
         
         
         
