@@ -15,6 +15,6 @@ import edunova.jp24.util.HibernateSessionPocetniInsert;
 public class Start {
     
     public static void main(String[] args) {
-        HibernateSessionPocetniInsert.odradiPosao();
+        
     }
 }
