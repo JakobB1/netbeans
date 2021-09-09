@@ -40,7 +40,7 @@ public class HibernateSessionPocetniInsert {
         
         List<Polaznik> polaznici = new ArrayList<>();
         
-        
+        /*
         Polaznik polaznik;
         for (int i = 0; i < 1300; i++) {
             polaznik = new Polaznik();
@@ -53,7 +53,7 @@ public class HibernateSessionPocetniInsert {
         }
         
         
-        /*
+        
         for(int i = 1; i<=100; i++) {
             Smjer smjer = new Smjer();
             smjer.getNaziv("Smjer" + i);
