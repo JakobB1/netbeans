@@ -27,7 +27,7 @@ public class HibernateSessionPocetniInsert {
         
         
         
-        s.beginTransaction();
+        /*s.beginTransaction();
         
         for(int i=1;i<=100;i++) {
             Smjer smjer = new Smjer();
@@ -36,5 +36,7 @@ public class HibernateSessionPocetniInsert {
         }
         
         s.getTransaction().commit();
+        */
+        
     }
 }    
