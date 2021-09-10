@@ -29,9 +29,26 @@ public class IzlistanjeObjekataIzBaze {
         // Obracas se klasi a ne tablici u bazi
         polaznici = s.createQuery("from Polaznik").list();
         
-        for(Polaznik p : polaznici) {
-            System.out.println(p.getIme() + " " + p.getPrezime());
-        }
+        //for(Polaznik p : polaznici) {
+        //    System.out.println(p.getIme() + " " + p.getPrezime());
+        //}
+        
+        // 5. nacin interacije podataka
+        // https://www.baeldung.com/foreach-java
+        polaznici.forEach(p->
+        {System.out.println(p.getIme() + " " + p.getPrezime());
+        });
+        
+        // ucitati ce polaznika s id 23
+        Polaznik p = s.load(Polaznik.class, 23);
+        
+        p.setEmail("pero@edunova.hr");
+       
+        s.beginTransaction();
+        s.save(p);
+        s.getTransaction().commit();
+        
+        
         
     }
     
