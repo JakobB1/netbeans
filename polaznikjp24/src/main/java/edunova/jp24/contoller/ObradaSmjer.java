@@ -27,7 +27,7 @@ public class ObradaSmjer extends Obrada<Smjer>{
 
     @Override
     protected void kontrolaUpdate() throws EdunovaException{
-        
+        kontrolaNaziv();
     }
 
     @Override
@@ -35,9 +35,14 @@ public class ObradaSmjer extends Obrada<Smjer>{
         
     }
 
-    private void kontrolaNaziv() {
+    private void kontrolaNaziv() throws EdunovaException {
+        
         if(entitet.getNaziv()==null || entitet.getNaziv().trim().length()==0){
             throw new EdunovaException("Naziv obavezno");
+        }
+        
+        if(entitet.getNaziv().length()>50){
+            throw new EdunovaException("Naziv ne moze biti duzi od 50 znakova");
         }
     }
     

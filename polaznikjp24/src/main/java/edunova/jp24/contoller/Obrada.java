@@ -51,5 +51,13 @@ public abstract class Obrada<T> {
         session.save(entitet);
         session.getTransaction().commit();
     }
+
+    public T getEntitet() {
+        return entitet;
+    }
+
+    public void setEntitet(T entitet) {
+        this.entitet = entitet;
+    }
     
 }

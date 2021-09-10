@@ -7,6 +7,7 @@ package edunova.jp24;
 
 import edunova.jp24.util.HibernateSessionPocetniInsert;
 import edunova.jp24.util.IzlistanjeObjekataIzBaze;
+import edunova.jp24.util.RadSKontrolerima;
 
 
 
@@ -19,6 +20,7 @@ public class Start {
     
     public static void main(String[] args) {
         //HibernateSessionPocetniInsert.odradiPosao();
-        IzlistanjeObjekataIzBaze.radSControllerKlasom();
+        //IzlistanjeObjekataIzBaze.radSControllerKlasom();
+        RadSKontrolerima.kreirajSmjer();
     }
 }
