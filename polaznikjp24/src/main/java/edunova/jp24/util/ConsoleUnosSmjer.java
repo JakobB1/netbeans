@@ -22,9 +22,9 @@ public class ConsoleUnosSmjer {
        Scanner ulaz = new Scanner(System.in);
        ObradaSmjer os = new ObradaSmjer();
        Smjer s = new Smjer();
-       
+       os.setEntitet(s);
         while (true) {            
-            System.out.print("Unesi naziv smjera");
+            System.out.println("Unesi naziv smjera: ");
             s.setNaziv(ulaz.nextLine());
            try {
                os.create();

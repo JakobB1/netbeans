@@ -23,6 +23,7 @@ public class ObradaSmjer extends Obrada<Smjer>{
     @Override
     protected void kontrolaCreate() throws EdunovaException{
         kontrolaNaziv();
+        kontrolaCertifikat();
     }
 
     @Override
@@ -43,6 +44,12 @@ public class ObradaSmjer extends Obrada<Smjer>{
         
         if(entitet.getNaziv().length()>50){
             throw new EdunovaException("Naziv ne moze biti duzi od 50 znakova");
+        }
+    }
+
+    private void kontrolaCertifikat() throws EdunovaException{
+        if(entitet.getCertifikat()==null){
+            throw new EdunovaException("Indikacija certificiranosti smjera obavezna");
         }
     }
     
