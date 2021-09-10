@@ -40,12 +40,15 @@ public class IzlistanjeObjekataIzBaze {
         });
         
         // ucitati ce polaznika s id 23
-        Polaznik p = s.load(Polaznik.class, 23);
+        Polaznik p = s.load(Polaznik.class, (long)23);
         
         p.setEmail("pero@edunova.hr");
        
         s.beginTransaction();
-        s.save(p);
+        //s.save(p);
+        
+        s.delete(p);
+        
         s.getTransaction().commit();
         
         
