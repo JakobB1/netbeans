@@ -6,9 +6,12 @@
 package edunova.jp24.util;
 
 import com.github.javafaker.Faker;
+import edunova.jp24.model.Grupa;
 import edunova.jp24.model.Polaznik;
 import edunova.jp24.model.Predavac;
 import edunova.jp24.model.Smjer;
+import java.util.ArrayList;
+import java.util.List;
 import org.hibernate.Session;
 
 
@@ -31,16 +34,30 @@ public class HibernateSessionPocetniInsert {
         predavac.setIme(faker.name().firstName());
         predavac.setPrezime(faker.name().lastName());
         
+        s.save(predavac);
+        
+        List<Polaznik> polaznici = new ArrayList<>();
+        
         Polaznik polaznik;
         for(int i=0;i<1300;i++) {
             polaznik = new Polaznik();
             polaznik.setIme(faker.name().firstName());
             polaznik.setPrezime(faker.name().lastName());
+            polaznik.setOib(EdunovaUtil.getOIB());
             s.save(polaznik);
+            //if(i%100==0) {
+            if(i<27){
+                polaznici.add(polaznik);
+            }
+            //}
         }
         
-        s.save(predavac);
+        Grupa grupa = new Grupa();
+        grupa.setNaziv("JP24");
+        grupa.setPredavac(predavac);
+        grupa.setPolaznici(polaznici);
         
+        s.save(grupa);
                 
         // commit ide na kraju
         s.getTransaction().commit();
