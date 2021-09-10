@@ -6,6 +6,7 @@
 package edunova.jp24.util;
 
 import com.github.javafaker.Faker;
+import edunova.jp24.model.Polaznik;
 import edunova.jp24.model.Predavac;
 import edunova.jp24.model.Smjer;
 import org.hibernate.Session;
@@ -29,6 +30,14 @@ public class HibernateSessionPocetniInsert {
         Predavac predavac = new Predavac();
         predavac.setIme(faker.name().firstName());
         predavac.setPrezime(faker.name().lastName());
+        
+        Polaznik polaznik;
+        for(int i=0;i<1300;i++) {
+            polaznik = new Polaznik();
+            polaznik.setIme(faker.name().firstName());
+            polaznik.setPrezime(faker.name().lastName());
+            s.save(polaznik);
+        }
         
         s.save(predavac);
         
