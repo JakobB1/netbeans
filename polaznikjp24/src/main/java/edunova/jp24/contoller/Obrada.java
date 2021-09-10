@@ -6,6 +6,7 @@
 package edunova.jp24.contoller;
 
 import edunova.jp24.util.HibernateUtil;
+import java.util.List;
 import org.hibernate.Session;
 
 /**
@@ -16,6 +17,8 @@ public abstract class Obrada<T> {
     
     protected Session session;
     protected T entitet;
+    
+    public abstract List<T> read();
 
     public Obrada() {
         this.session = HibernateUtil.getSession();
@@ -28,6 +31,12 @@ public abstract class Obrada<T> {
     public T update() {
         save();
         return entitet;
+    }
+    
+    public void delete() {
+        session.beginTransaction();
+        session.delete(entitet);
+        session.getTransaction().commit();
     }
     
     private void save() {
