@@ -27,7 +27,7 @@ public class IzlistanjeObjekataIzBaze {
         
         // konkretno Smjer u ovom primjeru mora biti veliko slovo S
         // Obracas se klasi a ne tablici u bazi
-        polaznici = s.createQuery("from Smjer").list();
+        polaznici = s.createQuery("from Polaznik").list();
         
         for(Polaznik p : polaznici) {
             System.out.println(p.getIme() + " " + p.getPrezime());
