@@ -19,6 +19,6 @@ public class Start {
     
     public static void main(String[] args) {
         //HibernateSessionPocetniInsert.odradiPosao();
-        IzlistanjeObjekataIzBaze.odradiPosao();
+        IzlistanjeObjekataIzBaze.radSControllerKlasom();
     }
 }
