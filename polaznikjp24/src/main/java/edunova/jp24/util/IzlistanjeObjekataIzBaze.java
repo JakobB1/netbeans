@@ -25,7 +25,7 @@ public class IzlistanjeObjekataIzBaze {
         
         List<Polaznik> polaznici;
         
-        // konkretno Smjer u ovom primjeru mora biti veliko slovo S
+        // konkretno Polaznik u ovom primjeru mora biti veliko slovo P
         // Obracas se klasi a ne tablici u bazi
         polaznici = s.createQuery("from Polaznik").list();
         
