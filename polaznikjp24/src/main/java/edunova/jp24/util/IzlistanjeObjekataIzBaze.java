@@ -45,9 +45,9 @@ public class IzlistanjeObjekataIzBaze {
         p.setEmail("pero@edunova.hr");
        
         s.beginTransaction();
-        //s.save(p);
+        s.save(p);
         
-        s.delete(p);
+        
         
         s.getTransaction().commit();
         
