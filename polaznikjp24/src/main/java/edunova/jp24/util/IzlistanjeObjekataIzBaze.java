@@ -43,11 +43,11 @@ public class IzlistanjeObjekataIzBaze {
         Polaznik p = s.load(Polaznik.class, (long)23);
         
         p.setEmail("pero@edunova.hr");
-       
+        
         s.beginTransaction();
         s.save(p);
         
-        
+        //s.delete(p);
         
         s.getTransaction().commit();
         
