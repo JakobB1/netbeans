@@ -29,7 +29,9 @@ public class IzlistanjeObjekataIzBaze {
         // Obracas se klasi a ne tablici u bazi
         polaznici = s.createQuery("from Smjer").list();
         
-        
+        for(Polaznik p : polaznici) {
+            System.out.println(p.getIme() + " " + p.getPrezime());
+        }
         
     }
     
