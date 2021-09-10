@@ -5,6 +5,8 @@
  */
 package edunova.jp24.util;
 
+import com.github.javafaker.Faker;
+import edunova.jp24.model.Predavac;
 import edunova.jp24.model.Smjer;
 import org.hibernate.Session;
 
@@ -22,6 +24,15 @@ public class HibernateSessionPocetniInsert {
         java.setNaziv("Java programiranje");
         s.save(java);
         
+        
+        Faker faker = new Faker();
+        Predavac predavac = new Predavac();
+        predavac.setIme(faker.name().firstName());
+        predavac.setPrezime(faker.name().lastName());
+        
+        s.save(predavac);
+        
+                
         // commit ide na kraju
         s.getTransaction().commit();
         
