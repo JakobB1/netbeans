@@ -45,11 +45,22 @@ public class ObradaSmjer extends Obrada<Smjer>{
         if(entitet.getNaziv().length()>50){
             throw new EdunovaException("Naziv ne moze biti duzi od 50 znakova");
         }
+        
+        // Naziv u sebi ne smije sadrzavati brojeve
     }
 
     private void kontrolaCertifikat() throws EdunovaException{
         if(entitet.getCertifikat()==null){
             throw new EdunovaException("Indikacija certificiranosti smjera obavezna");
+        }
+    }
+    
+    private void kontrolaImaLiBroj() throws EdunovaException{
+        
+        for(char c : entitet.getNaziv().toCharArray()){
+            if(Character.isDigit(c)){
+                throw new EdunovaException("Naziv ne smije zadrzavati broj");
+            }
         }
     }
     
