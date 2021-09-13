@@ -7,7 +7,9 @@ package edunova.jp24.contoller;
 
 import edunova.jp24.model.Smjer;
 import edunova.jp24.util.EdunovaException;
+import java.math.BigInteger;
 import java.util.List;
+import javax.persistence.Query;
 
 /**
  *
@@ -47,15 +49,23 @@ public class ObradaSmjer extends Obrada<Smjer>{
         }        
         // Naziv u sebi ne smije sadrzavati brojeve
 
+        /*
         List<Smjer> sviSmjerovi = read();
         for(Smjer s: sviSmjerovi){
             if(s.getNaziv().equals(entitet.getNaziv())){
                 throw new EdunovaException("Naziv vec postoji");
             }
         }
-                
-                
+        */
+
+        /*Query q = session.createNamedQuery("select count(*) from smjer where naziv =:nazivParametar );
+        q.setParameter("nazivParametar", entitet.getNaziv());
         
+        BigInteger ukupno = (BigInteger)q.setSingleResult();
+                
+        if(ukupno.compareTo(BigInteger.ZERO).0){
+            throw new EdunovaException("Naziv vec postoji");
+        }*/
     }
 
     private void kontrolaCertifikat() throws EdunovaException{

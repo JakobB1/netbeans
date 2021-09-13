@@ -19,7 +19,7 @@ public class RadSKontrolerima {
     public static void kreirajSmjer(){
         ObradaSmjer os = new ObradaSmjer();
         Smjer s = new Smjer();
-        s.setNaziv("Novi smjer sksačdkčlkdčlaksdčlskdlsčjklasfjalkdjsadjkladlksjd");
+        s.setNaziv("Novi smjer");
         os.setEntitet(s);
         
         try {
