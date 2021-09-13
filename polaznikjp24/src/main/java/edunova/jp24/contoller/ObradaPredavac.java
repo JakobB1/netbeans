@@ -14,7 +14,7 @@ import java.util.List;
  *
  * @author jalep
  */
-public class ObradaPredavac extends Obrada<Predavac>{
+public class ObradaPredavac extends ObradaOsoba<Predavac>{
 
     @Override
     public List<Predavac> read() {
@@ -23,7 +23,7 @@ public class ObradaPredavac extends Obrada<Predavac>{
 
     @Override
     protected void kontrolaCreate() throws EdunovaException {
-        
+        super.kontrolaCreate();
     }
 
     @Override

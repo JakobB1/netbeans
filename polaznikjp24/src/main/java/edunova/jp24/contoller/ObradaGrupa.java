@@ -5,7 +5,7 @@
  */
 package edunova.jp24.contoller;
 
-import edunova.jp24.model.Polaznik;
+import edunova.jp24.model.Grupa;
 import edunova.jp24.util.EdunovaException;
 import java.util.List;
 
@@ -13,11 +13,11 @@ import java.util.List;
  *
  * @author jalep
  */
-public class ObradaPolaznik extends Obrada<Polaznik>{
+public class ObradaGrupa extends Obrada<Grupa>{
 
     @Override
-    public List<Polaznik> read() {
-        return session.createQuery("from Polaznik").list();
+    public List<Grupa> read() {
+        return session.createQuery("from Grupa").list();
     }
 
     @Override
