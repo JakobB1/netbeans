@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hr.edunova.pcshopmvc.vjezbanjemapiranje.vezavisenapremajedan;
+package hr.edunova.pcshopmvc.vjezbanjemapiranje.zadVNJ;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -13,12 +13,12 @@ import javax.persistence.Id;
  * @author jalep
  */
 @Entity
-public class Grad {
+public class PredavacZad {
     
     @Id
     private Long id;
     
-    private String naziv;
+    private int osoba;
 
     public Long getId() {
         return id;
@@ -28,14 +28,13 @@ public class Grad {
         this.id = id;
     }
 
-    public String getNaziv() {
-        return naziv;
+    public int getOsoba() {
+        return osoba;
     }
 
-    public void setNaziv(String naziv) {
-        this.naziv = naziv;
+    public void setOsoba(int osoba) {
+        this.osoba = osoba;
     }
-    
     
     
 }
