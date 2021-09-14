@@ -6,6 +6,7 @@
 package hr.edunova.pcshopmvc.vjezbanjemapiranje.vezavisenapremajedan;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 /**
@@ -15,7 +16,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Igrac {
     
-    @javax.persistence.Id
+    @Id
     private Long id;
     
     private String ime;
