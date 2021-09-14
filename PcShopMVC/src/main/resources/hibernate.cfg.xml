@@ -49,5 +49,8 @@
         <mapping class="hr.edunova.pcshopmvc.vjezbanjemapiranje.prilagodeno.Mobitel" />
         <mapping class="hr.edunova.pcshopmvc.vjezbanjemapiranje.prilagodeno.Ucionica" />
         
+        <mapping class="hr.edunova.pcshopmvc.vjezbanjemapiranje.nasljedivanje.Automobil" />
+        <mapping class="hr.edunova.pcshopmvc.vjezbanjemapiranje.nasljedivanje.Bicikl" />
+        
     </session-factory>
 </hibernate-configuration>
