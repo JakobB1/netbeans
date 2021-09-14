@@ -58,5 +58,8 @@
         <mapping class="hr.edunova.pcshopmvc.vjezbanjemapiranje.zadVNJ.PredavacZad" />
         <mapping class="hr.edunova.pcshopmvc.vjezbanjemapiranje.zadVNJ.GrupaZad" />
         
+        <mapping class="hr.edunova.pcshopmvc.vjezbanjemapiranje.vezavisenapremavise.Slika" />
+        <mapping class="hr.edunova.pcshopmvc.vjezbanjemapiranje.vezavisenapremavise.Oznaka" />
+        
     </session-factory>
 </hibernate-configuration>
