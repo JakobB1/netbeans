@@ -26,6 +26,9 @@ public class Ucionica {
             columnDefinition = "text")
     private int polaznici;
     
+    
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "teacher")
     private int predavaci;
 
     public int getSifra() {
