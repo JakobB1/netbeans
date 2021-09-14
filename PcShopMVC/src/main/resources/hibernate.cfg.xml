@@ -42,7 +42,12 @@
         <property name="hibernate.dbcp.maxWaitMillis">-1</property>
         
         
-
+        <mapping class="hr.edunova.pcshopmvc.model.Pcshop" />
+        <mapping class="hr.edunova.pcshopmvc.model.Djelatnik" />
+        <mapping class="hr.edunova.pcshopmvc.model.Korisnik" />
+        <mapping class="hr.edunova.pcshopmvc.model.Racun" />
+        <mapping class="hr.edunova.pcshopmvc.model.Proizvod" />
+        <mapping class="hr.edunova.pcshopmvc.model.Stavka" />
 
         <!-- Ovdje navodimo mapirane klase 
         Ucenje mapiranja
