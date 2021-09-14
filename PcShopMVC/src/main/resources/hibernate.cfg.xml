@@ -52,5 +52,8 @@
         <mapping class="hr.edunova.pcshopmvc.vjezbanjemapiranje.nasljedivanje.Automobil" />
         <mapping class="hr.edunova.pcshopmvc.vjezbanjemapiranje.nasljedivanje.Bicikl" />
         
+        <mapping class="hr.edunova.pcshopmvc.vjezbanjemapiranje.vezavisenapremajedan.Grad" />
+        <mapping class="hr.edunova.pcshopmvc.vjezbanjemapiranje.vezavisenapremajedan.Igrac" />
+        
     </session-factory>
 </hibernate-configuration>
