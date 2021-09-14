@@ -55,5 +55,8 @@
         <mapping class="hr.edunova.pcshopmvc.vjezbanjemapiranje.vezavisenapremajedan.Grad" />
         <mapping class="hr.edunova.pcshopmvc.vjezbanjemapiranje.vezavisenapremajedan.Igrac" />
         
+        <mapping class="hr.edunova.pcshopmvc.vjezbanjemapiranje.zadVNJ.PredavacZad" />
+        <mapping class="hr.edunova.pcshopmvc.vjezbanjemapiranje.zadVNJ.GrupaZad" />
+        
     </session-factory>
 </hibernate-configuration>
