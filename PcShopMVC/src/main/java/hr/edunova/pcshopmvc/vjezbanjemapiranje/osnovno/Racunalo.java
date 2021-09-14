@@ -6,13 +6,17 @@
 package hr.edunova.pcshopmvc.vjezbanjemapiranje.osnovno;
 
 import java.math.BigDecimal;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  *
  * @author jalep
  */
+@Entity
 public class Racunalo {
     
+    @Id
     private int sifra;
     private String naziv;
     private BigDecimal cijena;
