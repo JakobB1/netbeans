@@ -5,6 +5,7 @@
  */
 package hr.edunova.pcshopmvc.vjezbanjemapiranje.prilagodeno;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,7 +22,9 @@ public class Mobitel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long sifra;
     
-    
+    @Column(
+            name = "name_mobile", 
+            columnDefinition = "text")
     private String naziv;
 
     public Long getSifra() {

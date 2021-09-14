@@ -46,5 +46,7 @@
         <mapping class="hr.edunova.pcshopmvc.vjezbanjemapiranje.osnovno.Racunalo" />
         <mapping class="hr.edunova.pcshopmvc.vjezbanjemapiranje.osnovno.Olovka" />
         
+        <mapping class="hr.edunova.pcshopmvc.vjezbanjemapiranje.prilagodeno.Mobitel" />
+        
     </session-factory>
 </hibernate-configuration>
