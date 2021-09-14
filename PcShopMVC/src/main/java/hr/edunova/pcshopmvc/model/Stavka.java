@@ -13,10 +13,35 @@ import javax.persistence.Entity;
  * @author jalep
  */
 @Entity
-public class Stavka {
+public class Stavka extends Entitet{
     
     private int proizvod;
     private int racun;
     private BigDecimal kolicina;
+
+    public int getProizvod() {
+        return proizvod;
+    }
+
+    public void setProizvod(int proizvod) {
+        this.proizvod = proizvod;
+    }
+
+    public int getRacun() {
+        return racun;
+    }
+
+    public void setRacun(int racun) {
+        this.racun = racun;
+    }
+
+    public BigDecimal getKolicina() {
+        return kolicina;
+    }
+
+    public void setKolicina(BigDecimal kolicina) {
+        this.kolicina = kolicina;
+    }
+ 
     
 }
