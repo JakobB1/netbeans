@@ -22,16 +22,25 @@ public class ObradaPolaznik extends Obrada<Polaznik>{
 
     @Override
     protected void kontrolaCreate() throws EdunovaException {
-        
+        //super.kontrolaCreate();
+        //kontrolaBrojUgovora();
     }
 
     @Override
     protected void kontrolaUpdate() throws EdunovaException {
-        
+    
     }
 
     @Override
     protected void kontrolaDelete() throws EdunovaException {
+   
+    }
+
+    private void kontrolaBrojUgovora()throws EdunovaException {
+        
+           if(entitet.getBrojUgovora()==null || !entitet.getBrojUgovora().contains("/")){
+               throw new EdunovaException("Broj ugovora mora imati znak /");
+           }
         
     }
     
