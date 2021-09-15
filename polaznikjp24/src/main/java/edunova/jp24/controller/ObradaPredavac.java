@@ -8,6 +8,7 @@ package edunova.jp24.controller;
 import edunova.jp24.model.Predavac;
 import edunova.jp24.util.EdunovaException;
 import java.util.List;
+import org.apache.commons.validator.routines.IBANValidator;
 
 /**
  *
@@ -23,17 +24,25 @@ public class ObradaPredavac extends ObradaOsoba<Predavac>{
     @Override
     protected void kontrolaCreate() throws EdunovaException {
         super.kontrolaCreate(); // s time odradiš sve kontrole create vezane za osobu
-        
+        kontrolaIban();
     }
 
     @Override
     protected void kontrolaUpdate() throws EdunovaException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
     }
 
     @Override
     protected void kontrolaDelete() throws EdunovaException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+    }
+
+    private void kontrolaIban() throws EdunovaException {
+        IBANValidator ibanValidator = new IBANValidator();
+        ibanValidator.setValidator("HR", 21, "HR");
+        if(!ibanValidator.isValid(entitet.getIban())){
+            throw new EdunovaException("IBAN nije valjan");
+        }   
     }
     
 }
