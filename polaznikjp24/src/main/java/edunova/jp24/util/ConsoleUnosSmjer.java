@@ -5,7 +5,7 @@
  */
 package edunova.jp24.util;
 
-import edunova.jp24.contoller.ObradaSmjer;
+import edunova.jp24.controller.ObradaSmjer;
 import edunova.jp24.model.Smjer;
 import java.util.Scanner;
 import java.util.logging.Level;

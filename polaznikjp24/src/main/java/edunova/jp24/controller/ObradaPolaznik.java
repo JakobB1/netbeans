@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edunova.jp24.contoller;
+package edunova.jp24.controller;
 
-import edunova.jp24.model.Grupa;
+import edunova.jp24.model.Polaznik;
 import edunova.jp24.util.EdunovaException;
 import java.util.List;
 
@@ -13,11 +13,11 @@ import java.util.List;
  *
  * @author jalep
  */
-public class ObradaGrupa extends Obrada<Grupa>{
+public class ObradaPolaznik extends Obrada<Polaznik>{
 
     @Override
-    public List<Grupa> read() {
-        return session.createQuery("from Grupa").list();
+    public List<Polaznik> read() {
+        return session.createQuery("from Polaznik").list();
     }
 
     @Override

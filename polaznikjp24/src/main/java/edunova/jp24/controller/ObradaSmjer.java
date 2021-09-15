@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edunova.jp24.contoller;
+package edunova.jp24.controller;
 
 import edunova.jp24.model.Smjer;
 import edunova.jp24.util.EdunovaException;
