@@ -45,7 +45,7 @@ public class ObradaSmjer extends Obrada<Smjer>{
        }
         
         if(entitet.getNaziv().length()>50){
-            throw new EdunovaException("Naziv ne može biti duži od 50 znakova");
+            throw new EdunovaException("Naziv ne moze biti duzi od 50 znakova");
         }
         
         /*
@@ -64,7 +64,7 @@ public class ObradaSmjer extends Obrada<Smjer>{
         BigInteger ukupno = (BigInteger)q.getSingleResult();
      
         if(ukupno.compareTo(BigInteger.ZERO)>0){
-             throw new EdunovaException("Naziv već postoji");
+             throw new EdunovaException("Naziv vec postoji");
         }
         
     }
