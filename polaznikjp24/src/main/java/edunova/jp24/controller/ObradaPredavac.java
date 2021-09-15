@@ -22,7 +22,8 @@ public class ObradaPredavac extends ObradaOsoba<Predavac>{
 
     @Override
     protected void kontrolaCreate() throws EdunovaException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        super.kontrolaCreate(); // s time odradiš sve kontrole create vezane za osobu
+        
     }
 
     @Override
