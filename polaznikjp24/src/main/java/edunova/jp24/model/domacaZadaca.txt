@@ -1,0 +1,2 @@
+U posebnom projektu kreirati model klasa koji su mapirani s pomocu Hibernate na 
+nacin da im implementacija ERA dijagram bude  istovjetna onom u edunovajp24 bazi.
