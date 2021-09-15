@@ -17,7 +17,7 @@ public class ObradaPredavac extends Obrada<Predavac>{
 
     @Override
     public List<Predavac> read() {
-        return session.createQuery("from Polaznik").list();
+        return session.createQuery("from Predavac").list();
     }
 
     @Override
