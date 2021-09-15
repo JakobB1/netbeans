@@ -14,14 +14,14 @@ import javax.persistence.Entity;
 @Entity
 public class Predavac extends Osoba{
     
-    private String ziroRacun;
+    private String iban;
 
-    public String getZiroRacun() {
-        return ziroRacun;
+    public String getIban() {
+        return iban;
     }
 
-    public void setZiroRacun(String ziroRacun) {
-        this.ziroRacun = ziroRacun;
+    public void setIban(String iban) {
+        this.iban = iban;
     }
     
     
