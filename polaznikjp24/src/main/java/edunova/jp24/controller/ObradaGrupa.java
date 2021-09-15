@@ -5,7 +5,7 @@
  */
 package edunova.jp24.controller;
 
-import edunova.jp24.model.Polaznik;
+import edunova.jp24.model.Grupa;
 import edunova.jp24.util.EdunovaException;
 import java.util.List;
 
@@ -13,35 +13,29 @@ import java.util.List;
  *
  * @author jalep
  */
-public class ObradaPolaznik extends ObradaOsoba<Polaznik>{
+public class ObradaGrupa extends Obrada<Grupa>{
 
     @Override
-    public List<Polaznik> read() {
-        return session.createQuery("from Polaznik").list();
+    public List<Grupa> read() {
+        return session.createQuery("from Grupa").list();
     }
 
     @Override
     protected void kontrolaCreate() throws EdunovaException {
-        super.kontrolaCreate();
-        kontrolaBrojUgovora();
+        
     }
 
     @Override
     protected void kontrolaUpdate() throws EdunovaException {
-    
+        
     }
 
     @Override
     protected void kontrolaDelete() throws EdunovaException {
-   
-    }
-
-    private void kontrolaBrojUgovora()throws EdunovaException {
-        
-           if(entitet.getBrojUgovora()==null || !entitet.getBrojUgovora().contains("/")){
-               throw new EdunovaException("Broj ugovora mora imati znak /");
-           }
         
     }
+    
+    
+    
     
 }
