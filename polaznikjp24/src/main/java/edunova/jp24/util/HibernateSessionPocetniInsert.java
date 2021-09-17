@@ -7,6 +7,7 @@ package edunova.jp24.util;
 
 import com.github.javafaker.Faker;
 import edunova.jp24.model.Grupa;
+import edunova.jp24.model.Operater;
 import edunova.jp24.model.Polaznik;
 import edunova.jp24.model.Predavac;
 import edunova.jp24.model.Smjer;
@@ -23,6 +24,12 @@ public class HibernateSessionPocetniInsert {
         
         // prije rada s hibernate zapoceti transakciju
         s.beginTransaction();
+        
+        Operater o = new Operater();
+        o.setIme("Edunova");
+        o.setPrezime("Operater");
+        o.setEmail("operater@edunova.hr");
+        o.setLozinka("Mojalozinka123.");
         
         Smjer java = new Smjer();
         java.setNaziv("Java programiranje");
