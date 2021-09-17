@@ -7,6 +7,7 @@ package edunova.jp24.controller;
 
 import edunova.jp24.model.Smjer;
 import edunova.jp24.util.EdunovaException;
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.List;
 import javax.persistence.Query;
@@ -25,6 +26,7 @@ public class ObradaSmjer extends Obrada<Smjer>{
     @Override
     protected void kontrolaCreate() throws EdunovaException {
         kontrolaNaziv();
+        kontrolaCijena();
         kontrolaCertifikat();
     }
 
@@ -72,6 +74,12 @@ public class ObradaSmjer extends Obrada<Smjer>{
     private void kontrolaCertifikat() throws EdunovaException{
       if(entitet.getCertifikat()==null){
           throw new EdunovaException("Indikacija certificiranosti smjera obavezna");
+      }  
+    }
+
+    private void kontrolaCijena() throws EdunovaException{
+        if(entitet.getCijena()==null || entitet.getCijena().compareTo(BigDecimal.ZERO)<=0){
+          throw new EdunovaException("Cijena obavezno veća od nula");
       }  
     }
     
