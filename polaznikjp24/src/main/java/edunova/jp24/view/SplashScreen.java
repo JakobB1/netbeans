@@ -29,7 +29,8 @@ public class SplashScreen extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setType(java.awt.Window.Type.POPUP);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edunovaLogo.jpg"))); // NOI18N
 
@@ -51,6 +52,7 @@ public class SplashScreen extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     
