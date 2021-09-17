@@ -46,6 +46,7 @@
         <mapping class= "edunova.jp24.model.Predavac" />
         <mapping class= "edunova.jp24.model.Smjer" />
         <mapping class= "edunova.jp24.model.Grupa" />
+        <mapping class= "edunova.jp24.model.Operater" />
         
         <!-- Ovdje navodimo mapirane klase
         Ucenje mapiranja
