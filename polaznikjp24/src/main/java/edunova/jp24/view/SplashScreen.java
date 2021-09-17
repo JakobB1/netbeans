@@ -5,6 +5,10 @@
  */
 package edunova.jp24.view;
 
+import edunova.jp24.util.HibernateUtil;
+import javax.swing.JOptionPane;
+import org.hibernate.Session;
+
 /**
  *
  * @author jalep
@@ -16,8 +20,10 @@ public class SplashScreen extends javax.swing.JFrame {
      */
     public SplashScreen() {
         initComponents();
-    }
-
+        
+        load();
+        
+    }    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,7 +36,7 @@ public class SplashScreen extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setType(java.awt.Window.Type.POPUP);
+        setUndecorated(true);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edunovaLogo.jpg"))); // NOI18N
 
@@ -60,4 +66,14 @@ public class SplashScreen extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
+
+    private void load() {
+        Session s = HibernateUtil.getSession();
+        if(s.getMetamodel().getEntities().size()>0){
+            new Autorizacija().setVisible(true);
+            dispose();
+        }else
+            JOptionPane.showMessageDialog(getRootPane(), "Problem s bazom podataka");
+    }
 }
+
