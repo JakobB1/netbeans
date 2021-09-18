@@ -30,10 +30,12 @@ public class HibernateSessionPocetniInsert {
         o.setIme("Edunova");
         o.setPrezime("Operater");
         o.setEmail("operater@edunova.hr");
-        o.setLozinka("Mojalozinka123.");
+        o.setLozinka(BCrypt.hashpw("o", BCrypt.gensalt()));
         
+        s.save(o);
+
         Smjer java = new Smjer();
-        java.setNaziv(BCrypt.hashpw("o", BCrypt.gensalt()));
+        java.setNaziv("Java programiranje");
         s.save(java);
         
         
