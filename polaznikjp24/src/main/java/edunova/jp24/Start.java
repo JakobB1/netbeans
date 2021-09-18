@@ -5,6 +5,7 @@
  */
 package edunova.jp24;
 
+import edunova.jp24.util.HibernateSessionPocetniInsert;
 import edunova.jp24.view.SplashScreen;
 
 
@@ -16,7 +17,7 @@ import edunova.jp24.view.SplashScreen;
 public class Start {
     
     public static void main(String[] args) {
-        new SplashScreen().setVisible(true);
-        
+        //new SplashScreen().setVisible(true);
+        HibernateSessionPocetniInsert.odradiPosao();
     }
 }

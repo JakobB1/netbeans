@@ -14,6 +14,7 @@ import edunova.jp24.model.Smjer;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
+import org.mindrot.jbcrypt.BCrypt;
 
 
 
@@ -32,7 +33,7 @@ public class HibernateSessionPocetniInsert {
         o.setLozinka("Mojalozinka123.");
         
         Smjer java = new Smjer();
-        java.setNaziv("Java programiranje");
+        java.setNaziv(BCrypt.hashpw("o", BCrypt.gensalt()));
         s.save(java);
         
         
