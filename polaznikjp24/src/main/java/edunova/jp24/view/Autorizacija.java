@@ -101,7 +101,7 @@ public class Autorizacija extends javax.swing.JFrame {
         
         String lozinka = String.valueOf(pswLozinka.getPassword());
         if(lozinka.trim().length()==0){
-           JOptionPane.showMessageDialog(getRootPane(), "Email obavezno");
+           JOptionPane.showMessageDialog(getRootPane(), "Lozinka obavezno");
             return; 
         }
         
