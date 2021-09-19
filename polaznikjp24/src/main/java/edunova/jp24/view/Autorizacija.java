@@ -112,6 +112,9 @@ public class Autorizacija extends javax.swing.JFrame {
             return;    
         }
         // ovdje smo autorizirani
+        new Izbornik().setVisible(true);
+        dispose();
+        
     }//GEN-LAST:event_btnLoginActionPerformed
 
     
