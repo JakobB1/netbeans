@@ -5,17 +5,22 @@
  */
 package edunova.jp24.view;
 
+import edunova.jp24.controller.ObradaOperater;
+
 /**
  *
  * @author jalep
  */
 public class Autorizacija extends javax.swing.JFrame {
+    
+    private ObradaOperater obradaOperater;
 
     /**
      * Creates new form Autorizacija
      */
     public Autorizacija() {
         initComponents();
+        obradaOperater = new ObradaOperater();
     }
 
     /**
@@ -40,9 +45,12 @@ public class Autorizacija extends javax.swing.JFrame {
 
         jLabel2.setText("Lozinka");
 
-        pswLozinka.setText("jPasswordField1");
-
         btnLogin.setText("Login");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -81,6 +89,10 @@ public class Autorizacija extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     
 
