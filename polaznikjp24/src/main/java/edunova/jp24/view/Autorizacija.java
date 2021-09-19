@@ -6,6 +6,7 @@
 package edunova.jp24.view;
 
 import edunova.jp24.controller.ObradaOperater;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -91,7 +92,16 @@ public class Autorizacija extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        if(txtEmail.getText().trim().length()==0){
+            JOptionPane.showMessageDialog(getRootPane(), "Email obavezno");
+            return;
+        }
         
+        String lozinka = String.valueOf(pswLozinka.getPassword());
+        if(lozinka.trim().length()==0){
+           JOptionPane.showMessageDialog(getRootPane(), "Email obavezno");
+            return; 
+        }
     }//GEN-LAST:event_btnLoginActionPerformed
 
     
