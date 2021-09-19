@@ -8,6 +8,7 @@ package edunova.jp24.controller;
 import edunova.jp24.model.Operater;
 import edunova.jp24.util.EdunovaException;
 import java.util.List;
+import javax.persistence.NoResultException;
 import org.mindrot.jbcrypt.BCrypt;
 
 /**
@@ -20,13 +21,18 @@ public class ObradaOperater extends ObradaOsoba<Operater>{
     public List<Operater> read() {
         return session.createQuery("from Operater").list();
     }
-
+    
     public Operater autoriziraj(String email, String lozinka){
-        
-        Operater oper = (Operater)session.createQuery("from Operater o where o.email=:email")
+        Operater oper=null;
+        try{
+            oper = (Operater)session.createQuery("from Operater o where o.email=:email")
                 .setParameter("email", email).getSingleResult();
+        }catch(NoResultException e){
+            return null;
+        }
+     
         
-        if(oper == null){
+        if(oper==null){
             return null;
         }
         
@@ -35,12 +41,14 @@ public class ObradaOperater extends ObradaOsoba<Operater>{
 
     @Override
     protected void kontrolaUpdate() throws EdunovaException {
-        
+    
     }
 
     @Override
     protected void kontrolaDelete() throws EdunovaException {
-        
+  
     }
+
+   
     
 }
