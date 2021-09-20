@@ -6,6 +6,7 @@
 package hr.edunova.pcshopmvc.contoller;
 
 import hr.edunova.pcshopmvc.util.HibernateUtil;
+import java.util.List;
 import org.hibernate.Session;
 
 /**
@@ -17,15 +18,31 @@ public abstract class Obrada<T> {
     protected Session session;
     protected T entitet;
     
+    public abstract List<T> read();
+    
     public Obrada(){
         this.session = HibernateUtil.getSession();
         
     }
     
     public T create(){
+        save();
+        return entitet;
+    }
+    public T update(){
+        save();
+        return entitet;
+    }
+    
+    public void delete(){
         session.beginTransaction();
         session.save(entitet);
         session.getTransaction().commit();
-        return entitet;
+    }
+    
+    private void save(){
+        session.beginTransaction();
+        session.save(entitet);
+        session.getTransaction().commit();
     }
 }
