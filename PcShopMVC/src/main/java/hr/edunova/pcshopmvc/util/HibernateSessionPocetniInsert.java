@@ -5,6 +5,9 @@
  */
 package hr.edunova.pcshopmvc.util;
 
+import hr.edunova.pcshopmvc.model.Pcshop;
+import org.hibernate.Session;
+
 /**
  *
  * @author jalep
@@ -12,7 +15,24 @@ package hr.edunova.pcshopmvc.util;
 public class HibernateSessionPocetniInsert {
     
     public static void odradiPosao(){
+        Session s = HibernateUtil.getSession();
+        
+        s.beginTransaction();
+        
+        Pcshop shop = new Pcshop();
+        shop.setNaziv("Links");
+        s.save(shop);
+        
+        /*for(int i=1;i<100;i++){
+            Pcshop pcshop = new Pcshop();
+            pcshop.setNaziv("Pcshop" + i);
+            s.save(pcshop);
+        }
+        */
+        
+        s.getTransaction().commit();
         
     }
-    
 }
+    
+

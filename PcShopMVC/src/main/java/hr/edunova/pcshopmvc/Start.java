@@ -5,8 +5,9 @@
  */
 package hr.edunova.pcshopmvc;
 
-import hr.edunova.pcshopmvc.util.HibernateUtil;
-import org.hibernate.Session;
+import hr.edunova.pcshopmvc.util.HibernateSessionPocetniInsert;
+
+
 
 /**
  *
@@ -14,17 +15,6 @@ import org.hibernate.Session;
  */
 public class Start {
     public static void main(String[] args) {
-        //HibernateUtil.getSession();
-        Session s = HibernateUtil.getSession();
-        
-        s.beginTransaction();
-        
-        
-        
-        
-        
-        
-        s.getTransaction().commit();
-        
+        HibernateSessionPocetniInsert.odradiPosao();
     }
 }
