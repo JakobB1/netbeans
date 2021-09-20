@@ -34,6 +34,17 @@ public class HibernateSessionPocetniInsert {
         */
         
         /*
+        Faker faker = new Faker();
+        Korisnik korisnik;
+        for(int i=0;i<1300;i++){
+            korisnik = new Korisnik();
+            korisnik.setIme(faker.name().firstName());
+        korisnik.setPrezime(faker.name().lastName());
+        s.save(korisnik);
+        }
+        */
+        
+        /*
         for(int i=1;i<100;i++){
             Pcshop pcshop = new Pcshop();
             pcshop.setNaziv("Pcshop" + i);
