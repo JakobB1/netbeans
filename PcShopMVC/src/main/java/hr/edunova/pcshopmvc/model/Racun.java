@@ -7,6 +7,7 @@ package hr.edunova.pcshopmvc.model;
 
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -17,8 +18,12 @@ public class Racun extends Entitet{
     
     private Date datumpocetka;
     private int brojRacuna;
-    private int korisnik;
-    private int djelatnik;
+    
+    @ManyToOne
+    private Korisnik korisnik;
+    
+    @ManyToOne
+    private Djelatnik djelatnik;
 
     public Date getDatumpocetka() {
         return datumpocetka;
@@ -36,22 +41,21 @@ public class Racun extends Entitet{
         this.brojRacuna = brojRacuna;
     }
 
-    public int getKorisnik() {
+    public Korisnik getKorisnik() {
         return korisnik;
     }
 
-    public void setKorisnik(int korisnik) {
+    public void setKorisnik(Korisnik korisnik) {
         this.korisnik = korisnik;
     }
 
-    public int getDjelatnik() {
+    public Djelatnik getDjelatnik() {
         return djelatnik;
     }
 
-    public void setDjelatnik(int djelatnik) {
+    public void setDjelatnik(Djelatnik djelatnik) {
         this.djelatnik = djelatnik;
     }
-    
-    
+
     
 }

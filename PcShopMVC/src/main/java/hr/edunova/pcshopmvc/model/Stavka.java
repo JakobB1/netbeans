@@ -7,31 +7,37 @@ package hr.edunova.pcshopmvc.model;
 
 import java.math.BigDecimal;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.MappedSuperclass;
 
 /**
  *
  * @author jalep
  */
 @Entity
-public class Stavka extends Entitet{
+public abstract class Stavka extends Entitet{
     
-    private int proizvod;
-    private int racun;
+    @ManyToOne
+    private Proizvod proizvod;
+    
+    @ManyToOne
+    private Racun racun;
+    
     private BigDecimal kolicina;
 
-    public int getProizvod() {
+    public Proizvod getProizvod() {
         return proizvod;
     }
 
-    public void setProizvod(int proizvod) {
+    public void setProizvod(Proizvod proizvod) {
         this.proizvod = proizvod;
     }
 
-    public int getRacun() {
+    public Racun getRacun() {
         return racun;
     }
 
-    public void setRacun(int racun) {
+    public void setRacun(Racun racun) {
         this.racun = racun;
     }
 
@@ -42,6 +48,6 @@ public class Stavka extends Entitet{
     public void setKolicina(BigDecimal kolicina) {
         this.kolicina = kolicina;
     }
- 
+
     
 }

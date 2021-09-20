@@ -6,6 +6,7 @@
 package hr.edunova.pcshopmvc.model;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -17,7 +18,9 @@ public class Djelatnik extends Entitet{
     
     private String ime;
     private String prezime;
-    private int pcshop;
+    
+    @ManyToOne
+    private Pcshop pcshop;
 
     public String getIme() {
         return ime;
@@ -35,13 +38,12 @@ public class Djelatnik extends Entitet{
         this.prezime = prezime;
     }
 
-    public int getPcshop() {
+    public Pcshop getPcshop() {
         return pcshop;
     }
 
-    public void setPcshop(int pcshop) {
+    public void setPcshop(Pcshop pcshop) {
         this.pcshop = pcshop;
     }
-    
-    
+
 }
