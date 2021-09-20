@@ -12,6 +12,7 @@ import edunova.jp24.model.Polaznik;
 import edunova.jp24.model.Predavac;
 import edunova.jp24.model.Smjer;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import org.hibernate.Session;
 import org.mindrot.jbcrypt.BCrypt;
@@ -66,6 +67,7 @@ public class HibernateSessionPocetniInsert {
         grupa.setNaziv("JP24");
         grupa.setSmjer(java);
         grupa.setPredavac(predavac);
+        grupa.setDatumPocetka(new Date());
         grupa.setPolaznici(polaznici);
         
         s.save(grupa);
