@@ -19,6 +19,9 @@ public abstract class Obrada<T> {
     protected T entitet;
     
     public abstract List<T> read();
+    protected abstract void kontrolaCreate();
+    protected abstract void kontrolaUpdate();
+    protected abstract void kontrolaDelete();
     
     public Obrada(){
         this.session = HibernateUtil.getSession();
@@ -26,15 +29,18 @@ public abstract class Obrada<T> {
     }
     
     public T create(){
+        kontrolaCreate();
         save();
         return entitet;
     }
     public T update(){
+        kontrolaUpdate();
         save();
         return entitet;
     }
     
     public void delete(){
+        kontrolaDelete();
         session.beginTransaction();
         session.save(entitet);
         session.getTransaction().commit();
