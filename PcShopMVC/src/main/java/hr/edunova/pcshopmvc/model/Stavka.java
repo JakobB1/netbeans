@@ -15,7 +15,7 @@ import javax.persistence.MappedSuperclass;
  * @author jalep
  */
 @Entity
-public abstract class Stavka extends Entitet{
+public class Stavka extends Entitet{
     
     @ManyToOne
     private Proizvod proizvod;

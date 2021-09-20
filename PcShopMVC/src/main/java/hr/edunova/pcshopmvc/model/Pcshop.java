@@ -5,6 +5,7 @@
  */
 package hr.edunova.pcshopmvc.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
 /**
@@ -16,7 +17,9 @@ public class Pcshop extends Entitet{
     
     private String naziv;
     private int vlasnik;
-    private Long oib;
+    
+    @Column(columnDefinition = "char(11)")
+    private String oib;
 
     public String getNaziv() {
         return naziv;
@@ -34,13 +37,14 @@ public class Pcshop extends Entitet{
         this.vlasnik = vlasnik;
     }
 
-    public Long getOib() {
+    public String getOib() {
         return oib;
     }
 
-    public void setOib(Long oib) {
+    public void setOib(String oib) {
         this.oib = oib;
     }
+
     
     
 }
