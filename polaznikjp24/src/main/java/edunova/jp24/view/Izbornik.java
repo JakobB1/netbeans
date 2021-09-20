@@ -5,6 +5,8 @@
  */
 package edunova.jp24.view;
 
+import edunova.jp24.util.Aplikacija;
+
 /**
  *
  * @author jalep
@@ -16,6 +18,11 @@ public class Izbornik extends javax.swing.JFrame {
      */
     public Izbornik() {
         initComponents();
+        postavke();
+    }
+    
+    private void postavke(){
+        setTitle(Aplikacija.getNaslov());
     }
 
     /**

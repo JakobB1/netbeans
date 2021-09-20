@@ -45,6 +45,8 @@ public class Autorizacija extends javax.swing.JFrame {
 
         jLabel1.setText("Email");
 
+        txtEmail.setText("operater@edunova.hr");
+
         jLabel2.setText("Lozinka");
 
         btnLogin.setText("Login");
