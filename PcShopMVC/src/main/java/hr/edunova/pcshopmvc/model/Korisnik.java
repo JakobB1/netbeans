@@ -16,6 +16,7 @@ public class Korisnik extends Entitet{
     
     private String ime;
     private String prezime;
+    private String email;
 
     public String getIme() {
         return ime;
@@ -32,6 +33,14 @@ public class Korisnik extends Entitet{
     public void setPrezime(String prezime) {
         this.prezime = prezime;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
     
-     
+    
 }
