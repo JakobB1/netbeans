@@ -35,7 +35,7 @@ public class IzlistanjeObjekataIzBaze {
         // 5. nacin interacije podataka
         // https://www.baeldung.com/foreach-java
         korisnici.forEach(p->
-        {System.out.println(p.getIme() + " " + p.getPrezime());
+        {System.out.println(p.getIme()+ " " + p.getPrezime());
         });
         
         // ucitati ce polaznika s id 23
@@ -55,8 +55,8 @@ public class IzlistanjeObjekataIzBaze {
     }
     
     public static void radSControllerKlasom(){
-        new ObradaPcshop().read().forEach(s->{
-            System.out.println(s.getNaziv());
+        new ObradaPcshop().read().forEach(p->{
+            System.out.println(p.getNaziv());
         });
         
     }
