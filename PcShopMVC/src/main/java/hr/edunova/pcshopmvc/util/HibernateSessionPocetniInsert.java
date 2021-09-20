@@ -5,6 +5,8 @@
  */
 package hr.edunova.pcshopmvc.util;
 
+import com.github.javafaker.Faker;
+import hr.edunova.pcshopmvc.model.Korisnik;
 import hr.edunova.pcshopmvc.model.Pcshop;
 import org.hibernate.Session;
 
@@ -23,7 +25,16 @@ public class HibernateSessionPocetniInsert {
         shop.setNaziv("Links");
         s.save(shop);
         
-        /*for(int i=1;i<100;i++){
+        /*
+        Faker faker = new Faker();
+        Korisnik korisnik = new Korisnik();
+        korisnik.setIme(faker.name().firstName());
+        korisnik.setPrezime(faker.name().lastName());
+        s.save(korisnik);
+        */
+        
+        /*
+        for(int i=1;i<100;i++){
             Pcshop pcshop = new Pcshop();
             pcshop.setNaziv("Pcshop" + i);
             s.save(pcshop);
