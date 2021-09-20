@@ -13,7 +13,7 @@ import edunova.jp24.model.Operater;
  */
 public class Aplikacija {
     
-    public static final String NASLOV_APP="Edunova APP Izbornik: Edunova Operater";
+    public static final String NASLOV_APP="Edunova APP";
     
     public static Operater operater;
     

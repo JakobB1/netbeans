@@ -8,6 +8,7 @@ package edunova.jp24.view;
 import edunova.jp24.controller.ObradaSmjer;
 import edunova.jp24.model.Smjer;
 import edunova.jp24.util.Aplikacija;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -16,19 +17,29 @@ import edunova.jp24.util.Aplikacija;
 public class ProzorSmjer extends javax.swing.JFrame {
 
     private ObradaSmjer obradaSmjer;
+
     /**
-     * Creates new form SmjerProzor
+     * Creates new form ProzorSmjer
      */
     public ProzorSmjer() {
         initComponents();
         obradaSmjer = new ObradaSmjer();
         postavke();
+        ucitajSmjerove();
     }
     
-    private void postavke() {
+    private void postavke(){
         setTitle(Aplikacija.getNaslov("Smjerovi"));
     }
-
+    
+    private void ucitajSmjerove(){
+        DefaultListModel<Smjer> m = new DefaultListModel<>();
+        
+        obradaSmjer.read().forEach(s->{m.addElement(s);});
+        
+        lstSmjerovi.setModel(m);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -51,8 +62,8 @@ public class ProzorSmjer extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(283, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(250, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -71,4 +82,6 @@ public class ProzorSmjer extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList<Smjer> lstSmjerovi;
     // End of variables declaration//GEN-END:variables
+
+    
 }
