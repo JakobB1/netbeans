@@ -64,6 +64,7 @@ public class HibernateSessionPocetniInsert {
         
         Grupa grupa = new Grupa();
         grupa.setNaziv("JP24");
+        grupa.setSmjer(java);
         grupa.setPredavac(predavac);
         grupa.setPolaznici(polaznici);
         
