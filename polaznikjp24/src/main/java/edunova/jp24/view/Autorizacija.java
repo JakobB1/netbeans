@@ -7,6 +7,7 @@ package edunova.jp24.view;
 
 import edunova.jp24.controller.ObradaOperater;
 import edunova.jp24.model.Operater;
+import edunova.jp24.util.Aplikacija;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,6 +24,11 @@ public class Autorizacija extends javax.swing.JFrame {
     public Autorizacija() {
         initComponents();
         obradaOperater = new ObradaOperater();
+        postavke();
+    }
+    
+     private void postavke(){
+        setTitle(Aplikacija.NASLOV_APP + " Autorizacija");
     }
 
     /**
