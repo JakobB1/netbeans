@@ -119,7 +119,9 @@ public class Autorizacija extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(getRootPane(), "Neispravna kombinacija email i lozinka");
             return;    
         }
-        // ovdje smo autorizirani
+        
+        //ovdje smo autorizirani
+        Aplikacija.operater=oper;
         new Izbornik().setVisible(true);
         dispose();
         
