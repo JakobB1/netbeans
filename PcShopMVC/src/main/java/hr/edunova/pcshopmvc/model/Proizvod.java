@@ -19,6 +19,7 @@ public class Proizvod extends Entitet{
     private String naziv;
     private BigDecimal cijena;
     private Date garancija;
+    private Boolean certifikat;
 
     public String getNaziv() {
         return naziv;
@@ -43,6 +44,14 @@ public class Proizvod extends Entitet{
     public void setGarancija(Date garancija) {
         this.garancija = garancija;
     }
-    
+
+    public Boolean getCertifikat() {
+        return certifikat;
+    }
+
+    public void setCertifikat(Boolean certifikat) {
+        this.certifikat = certifikat;
+    }
+
     
 }

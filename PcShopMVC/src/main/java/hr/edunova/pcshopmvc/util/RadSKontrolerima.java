@@ -17,13 +17,13 @@ import java.util.logging.Logger;
 public class RadSKontrolerima {
     
     public static void kreirajPcshop(){
-        ObradaPcshop os = new ObradaPcshop();
+        ObradaPcshop op = new ObradaPcshop();
         Pcshop p = new Pcshop();
         p.setNaziv("Novi pcshop");
-        os.setEntitet(p);
+        op.setEntitet(p);
         
         try {
-            os.create();
+            op.create();
         } catch (EdunovaException ex) {
             System.out.println(ex.getPoruka());
         }

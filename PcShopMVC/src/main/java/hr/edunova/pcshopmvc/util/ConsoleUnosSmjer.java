@@ -19,15 +19,15 @@ public class ConsoleUnosSmjer {
     
     public static void main(String[] args) {
         Scanner ulaz = new Scanner(System.in);
-        ObradaPcshop os = new ObradaPcshop();
+        ObradaPcshop op = new ObradaPcshop();
         Pcshop p = new Pcshop();
-        os.setEntitet(p);
+        op.setEntitet(p);
         
         while(true){
-            System.out.println("Unesi naziv smjer: ");
+            System.out.println("Unesi naziv pcshopa: ");
             p.setNaziv(ulaz.nextLine());
             try {
-                os.create();
+                op.create();
                 break;
             } catch (EdunovaException ex) {
                 System.out.println(ex.getPoruka()); 
