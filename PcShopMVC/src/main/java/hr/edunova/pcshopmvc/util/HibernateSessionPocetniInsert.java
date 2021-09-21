@@ -10,6 +10,7 @@ import hr.edunova.pcshopmvc.model.Korisnik;
 import hr.edunova.pcshopmvc.model.Operater;
 import hr.edunova.pcshopmvc.model.Pcshop;
 import org.hibernate.Session;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
@@ -24,8 +25,10 @@ public class HibernateSessionPocetniInsert {
         
         Operater o = new Operater();
         o.setIme("Edunova");
+        o.setPrezime("Operater");
         o.setEmail("operater@edunova.hr");
-        o.setLozinka("Mojalozinka123.");
+        o.setLozinka(BCrypt.hashpw("o", BCrypt.gensalt()));
+        s.save(o);
         
         Pcshop shop = new Pcshop();
         shop.setNaziv("Links");
@@ -40,14 +43,14 @@ public class HibernateSessionPocetniInsert {
         s.save(korisnik);
         */
         
-        
+        /*
         Pcshop pcshop;
         for(int i=0;i<1300;i++){
             pcshop = new Pcshop();
             pcshop.setOib(EdunovaUtil.getOIB());
             s.save(pcshop);
         }
-          
+        */
         
         
         Faker faker = new Faker();
