@@ -21,15 +21,27 @@ public class SplashScreen extends javax.swing.JFrame {
     public SplashScreen() {
         initComponents();
         
-        Session s = HibernateUtil.getSession();
+        Ucitanje ucitanje = new Ucitanje();
+        ucitanje.start();
+        
+    }    
+    
+    private class Ucitanje extends Thread{
+
+        @Override
+        public void run() {
+           Session s = HibernateUtil.getSession();
         if(s.getMetamodel().getEntities().size()>0){
             new Autorizacija().setVisible(true);
             dispose();
         }else{
             JOptionPane.showMessageDialog(getRootPane(), "Problem s bazom podataka");
-;        }
+         }
+     
+        }
+        
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -106,4 +118,6 @@ public class SplashScreen extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
+
+    
 }
