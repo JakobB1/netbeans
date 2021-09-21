@@ -9,6 +9,7 @@ import hr.edunova.pcshopmvc.util.HibernateSessionPocetniInsert;
 import hr.edunova.pcshopmvc.util.HibernateUtil;
 import hr.edunova.pcshopmvc.util.IzlistanjeObjekataIzBaze;
 import hr.edunova.pcshopmvc.util.RadSKontrolerima;
+import hr.edunova.pcshopmvc.view.SplashScreen;
 
 
 
@@ -21,6 +22,7 @@ public class Start {
         //HibernateSessionPocetniInsert.odradiPosao();
         //IzlistanjeObjekataIzBaze.radSControllerKlasom();
         //RadSKontrolerima.kreirajPcshop();
-        HibernateUtil.getSession();
+        //HibernateUtil.getSession();
+        new SplashScreen().setVisible(true);
     }
 }
