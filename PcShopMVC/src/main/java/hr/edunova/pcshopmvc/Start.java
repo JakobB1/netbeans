@@ -19,10 +19,10 @@ import hr.edunova.pcshopmvc.view.SplashScreen;
  */
 public class Start {
     public static void main(String[] args) {
-        HibernateSessionPocetniInsert.odradiPosao();
+        //HibernateSessionPocetniInsert.odradiPosao();
         //IzlistanjeObjekataIzBaze.radSControllerKlasom();
         //RadSKontrolerima.kreirajPcshop();
         //HibernateUtil.getSession();
-        //new SplashScreen().setVisible(true);
+        new SplashScreen().setVisible(true);
     }
 }
