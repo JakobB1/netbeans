@@ -12,7 +12,7 @@ import javax.persistence.Entity;
  * @author jalep
  */
 @Entity
-public class Operater extends Entitet{
+public class Operater extends Korisnik{
     
     private String lozinka;
 

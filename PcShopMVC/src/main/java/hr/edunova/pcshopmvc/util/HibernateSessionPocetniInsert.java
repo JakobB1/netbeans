@@ -7,6 +7,7 @@ package hr.edunova.pcshopmvc.util;
 
 import com.github.javafaker.Faker;
 import hr.edunova.pcshopmvc.model.Korisnik;
+import hr.edunova.pcshopmvc.model.Operater;
 import hr.edunova.pcshopmvc.model.Pcshop;
 import org.hibernate.Session;
 
@@ -21,6 +22,10 @@ public class HibernateSessionPocetniInsert {
         
         s.beginTransaction();
         
+        Operater o = new Operater();
+        o.setIme("Edunova");
+        o.setEmail("operater@edunova.hr");
+        o.setLozinka("Mojalozinka123.");
         
         Pcshop shop = new Pcshop();
         shop.setNaziv("Links");
