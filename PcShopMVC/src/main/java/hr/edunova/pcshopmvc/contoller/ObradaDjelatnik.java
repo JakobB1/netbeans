@@ -16,54 +16,23 @@ import java.util.List;
 public class ObradaDjelatnik extends Obrada<Djelatnik>{
 
     @Override
-    protected void kontrolaCreate() throws EdunovaException {
-        kontrolaOIB();
-    }
-
-    private void kontrolaOIB() throws EdunovaException {
-        if(!oibValjan(entitet.getOib())){
-             throw new EdunovaException("OIB nije ispravan");
-        }
-    }
-
-    private boolean oibValjan(String oib) {
-        if (oib.length() != 11)
-            return false;
-
-        try {
-            Long.parseLong(oib);
-        } catch (NumberFormatException e) {
-            return false;
-        }
-
-        int a = 10;
-        for (int i = 0; i < 10; i++) {
-            a = a + Integer.parseInt(oib.substring(i, i+1));
-            a = a % 10;
-            if (a == 0)
-                a = 10;
-            a *= 2;
-            a = a % 11;
-        }
-        int kontrolni = 11 - a;
-        if (kontrolni == 10)
-            kontrolni = 0;
-
-        return kontrolni == Integer.parseInt(oib.substring(10));
-    }  
-
-    @Override
     public List<Djelatnik> read() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
+    protected void kontrolaCreate() throws EdunovaException {
+        
+    }
+
+    @Override
     protected void kontrolaUpdate() throws EdunovaException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     protected void kontrolaDelete() throws EdunovaException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
+
 }

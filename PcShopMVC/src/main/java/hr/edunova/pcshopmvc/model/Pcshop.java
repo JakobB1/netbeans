@@ -53,7 +53,7 @@ public class Pcshop extends Entitet{
     public void setCertifikat(Boolean certifikat) {
         this.certifikat = certifikat;
     }
-
+    
     
     
 }

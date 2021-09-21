@@ -6,6 +6,7 @@
 package hr.edunova.pcshopmvc;
 
 import hr.edunova.pcshopmvc.util.HibernateSessionPocetniInsert;
+import hr.edunova.pcshopmvc.util.HibernateUtil;
 import hr.edunova.pcshopmvc.util.IzlistanjeObjekataIzBaze;
 import hr.edunova.pcshopmvc.util.RadSKontrolerima;
 
@@ -19,6 +20,7 @@ public class Start {
     public static void main(String[] args) {
         //HibernateSessionPocetniInsert.odradiPosao();
         //IzlistanjeObjekataIzBaze.radSControllerKlasom();
-        RadSKontrolerima.kreirajPcshop();
+        //RadSKontrolerima.kreirajPcshop();
+        HibernateUtil.getSession();
     }
 }
