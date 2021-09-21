@@ -21,11 +21,11 @@ public class HibernateSessionPocetniInsert {
         
         s.beginTransaction();
         
-        /*
+        
         Pcshop shop = new Pcshop();
         shop.setNaziv("Links");
         s.save(shop);
-        */
+        
         
         /*
         Faker faker = new Faker();
@@ -35,16 +35,16 @@ public class HibernateSessionPocetniInsert {
         s.save(korisnik);
         */
         
-        /*
+        
         Pcshop pcshop;
         for(int i=0;i<1300;i++){
             pcshop = new Pcshop();
             pcshop.setOib(EdunovaUtil.getOIB());
             s.save(pcshop);
         }
-        */    
+          
         
-        /*
+        
         Faker faker = new Faker();
         Korisnik korisnik;
         for(int i=0;i<1300;i++){
@@ -53,7 +53,7 @@ public class HibernateSessionPocetniInsert {
         korisnik.setPrezime(faker.name().lastName());
         s.save(korisnik);
         }
-        */
+        
         
         /*
         for(int i=1;i<100;i++){

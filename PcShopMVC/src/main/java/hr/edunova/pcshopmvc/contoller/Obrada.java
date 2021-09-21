@@ -26,7 +26,6 @@ public abstract class Obrada<T> {
     
     public Obrada(){
         this.session = HibernateUtil.getSession();
-        
     }
     
     public T create()throws EdunovaException{
