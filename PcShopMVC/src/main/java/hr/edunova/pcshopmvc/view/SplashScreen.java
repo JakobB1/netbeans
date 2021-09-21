@@ -5,6 +5,10 @@
  */
 package hr.edunova.pcshopmvc.view;
 
+import hr.edunova.pcshopmvc.util.HibernateUtil;
+import javax.swing.JOptionPane;
+import org.hibernate.Session;
+
 /**
  *
  * @author jalep
@@ -16,6 +20,13 @@ public class SplashScreen extends javax.swing.JFrame {
      */
     public SplashScreen() {
         initComponents();
+        
+        Session s = HibernateUtil.getSession();
+        if(s.getMetamodel().getEntities().size()>0){
+            new Autorizacija().setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(getRootPane(), "Problem s bazom podataka");
+;        }
     }
 
     /**
@@ -29,7 +40,9 @@ public class SplashScreen extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
+        setType(java.awt.Window.Type.POPUP);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edunovaLogo.jpg"))); // NOI18N
 
