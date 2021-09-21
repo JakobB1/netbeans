@@ -19,6 +19,7 @@ public class RadSKontrolerima {
     public static void kreirajPcshop(){
         ObradaPcshop os = new ObradaPcshop();
         Pcshop p = new Pcshop();
+        p.setNaziv("Novi pcshop");
         os.setEntitet(p);
         
         try {
