@@ -18,6 +18,7 @@ public class Djelatnik extends Entitet{
     
     private String ime;
     private String prezime;
+    private String oib;
     
     @ManyToOne
     private Pcshop pcshop;
@@ -46,4 +47,12 @@ public class Djelatnik extends Entitet{
         this.pcshop = pcshop;
     }
 
+    public String getOib() {
+        return oib;
+    }
+
+    public void setOib(String oib) {
+        this.oib = oib;
+    }
+    
 }
