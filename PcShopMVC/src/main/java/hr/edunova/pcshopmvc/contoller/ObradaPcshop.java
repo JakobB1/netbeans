@@ -44,6 +44,24 @@ public class ObradaPcshop extends Obrada<Pcshop>{
         if(entitet.getNaziv().length()>50){
             throw new EdunovaException("Naziv ne moze biti duzi od 50 znakova");
         }
+        /*
+        List<Pcshop> sviPcshopovi = read();
+        for(Pcshop p: sviPcshopovi){
+            if(p.getNaziv().equals(entitet.getNaziv())){
+                throw new EdunovaException("Naziv vec postoji");
+            }
+        }
+        */
         
-   } 
+        
+        int ukupno;
+        ukupno = session.createNativeQuery(
+                "select count(*) from pcshop where naziv=:nazivParametar")        
+                .setParameter("nazivParametar", entitet.getNaziv()).getFirstResult();
+        
+        if(ukupno>0){
+            throw new EdunovaException("Naziv vec postoji");
+        }
+   }
+    
 }

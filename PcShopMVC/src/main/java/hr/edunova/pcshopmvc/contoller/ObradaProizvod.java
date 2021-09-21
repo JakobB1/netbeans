@@ -5,10 +5,34 @@
  */
 package hr.edunova.pcshopmvc.contoller;
 
+import hr.edunova.pcshopmvc.model.Proizvod;
+import hr.edunova.pcshopmvc.util.EdunovaException;
+import java.util.List;
+
 /**
  *
  * @author jalep
  */
-public class ObradaProizvod {
+public class ObradaProizvod extends Obrada<Proizvod>{
+
+    @Override
+    public List<Proizvod> read() {
+        return session.createQuery("from Proizvod").list();
+    }
+
+    @Override
+    protected void kontrolaCreate() throws EdunovaException {
+        
+    }
+
+    @Override
+    protected void kontrolaUpdate() throws EdunovaException {
+        
+    }
+
+    @Override
+    protected void kontrolaDelete() throws EdunovaException {
+        
+    }
     
 }
