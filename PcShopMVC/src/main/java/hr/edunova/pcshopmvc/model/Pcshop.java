@@ -17,6 +17,7 @@ public class Pcshop extends Entitet{
     
     private String naziv;
     private int vlasnik;
+    private Boolean certifikat;
     
     @Column(columnDefinition = "char(11)")
     private String oib;
@@ -43,6 +44,14 @@ public class Pcshop extends Entitet{
 
     public void setOib(String oib) {
         this.oib = oib;
+    }
+
+    public Boolean getCertifikat() {
+        return certifikat;
+    }
+
+    public void setCertifikat(Boolean certifikat) {
+        this.certifikat = certifikat;
     }
 
     

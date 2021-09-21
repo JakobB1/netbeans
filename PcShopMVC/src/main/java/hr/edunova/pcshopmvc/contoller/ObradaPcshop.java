@@ -7,7 +7,10 @@ package hr.edunova.pcshopmvc.contoller;
 
 import hr.edunova.pcshopmvc.model.Pcshop;
 import hr.edunova.pcshopmvc.util.EdunovaException;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.List;
+import javax.persistence.Query;
 
 /**
  *
@@ -28,6 +31,7 @@ public class ObradaPcshop extends Obrada<Pcshop>{
     @Override
     protected void kontrolaUpdate() throws EdunovaException{
         kontrolaNaziv();
+        kontrolaCertifikat();
     }
 
     @Override
@@ -52,16 +56,20 @@ public class ObradaPcshop extends Obrada<Pcshop>{
             }
         }
         */
-        
-        
-        int ukupno;
-        ukupno = session.createNativeQuery(
-                "select count(*) from pcshop where naziv=:nazivParametar")        
-                .setParameter("nazivParametar", entitet.getNaziv()).getFirstResult();
-        
-        if(ukupno>0){
-            throw new EdunovaException("Naziv vec postoji");
+        Query q = session.createNativeQuery("select count(*) from pcshop where naziv=:nazivParametar");
+        q.setParameter("nazivParametar", entitet.getNaziv());
+      
+        BigInteger ukupno = (BigInteger)q.getSingleResult();
+     
+        if(ukupno.compareTo(BigInteger.ZERO)>0){
+             throw new EdunovaException("Naziv vec postoji");
         }
-   }
-    
+        
+    }
+
+    private void kontrolaCertifikat() throws EdunovaException{
+      if(entitet.getCertifikat()==null){
+          throw new EdunovaException("Indikacija certificiranosti smjera obavezna");
+      }  
+    }
 }
