@@ -29,18 +29,18 @@ public abstract class Obrada<T> {
         
     }
     
-    public T create(){
+    public T create()throws EdunovaException{
         kontrolaCreate();
         save();
         return entitet;
     }
-    public T update(){
+    public T update()throws EdunovaException{
         kontrolaUpdate();
         save();
         return entitet;
     }
     
-    public void delete(){
+    public void delete()throws EdunovaException{
         kontrolaDelete();
         session.beginTransaction();
         session.save(entitet);

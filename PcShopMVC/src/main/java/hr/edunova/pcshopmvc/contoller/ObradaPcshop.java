@@ -6,6 +6,7 @@
 package hr.edunova.pcshopmvc.contoller;
 
 import hr.edunova.pcshopmvc.model.Pcshop;
+import hr.edunova.pcshopmvc.util.EdunovaException;
 import java.util.List;
 
 /**
@@ -20,17 +21,17 @@ public class ObradaPcshop extends Obrada<Pcshop>{
     }
 
     @Override
-    protected void kontrolaCreate() {
+    protected void kontrolaCreate() throws EdunovaException{
         
     }
 
     @Override
-    protected void kontrolaUpdate() {
+    protected void kontrolaUpdate() throws EdunovaException{
         
     }
 
     @Override
-    protected void kontrolaDelete() {
+    protected void kontrolaDelete() throws EdunovaException{
         
     }
     
