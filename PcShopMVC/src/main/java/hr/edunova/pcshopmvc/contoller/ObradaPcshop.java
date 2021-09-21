@@ -44,5 +44,6 @@ public class ObradaPcshop extends Obrada<Pcshop>{
         if(entitet.getNaziv().length()>50){
             throw new EdunovaException("Naziv ne moze biti duzi od 50 znakova");
         }
+        
    } 
 }
