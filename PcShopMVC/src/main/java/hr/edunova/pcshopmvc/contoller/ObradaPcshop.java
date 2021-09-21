@@ -22,7 +22,7 @@ public class ObradaPcshop extends Obrada<Pcshop>{
 
     @Override
     protected void kontrolaCreate() throws EdunovaException{
-        
+        kontrolaNaziv();
     }
 
     @Override
@@ -33,6 +33,11 @@ public class ObradaPcshop extends Obrada<Pcshop>{
     @Override
     protected void kontrolaDelete() throws EdunovaException{
         
+    }
+
+    private void kontrolaNaziv() throws EdunovaException{
+        if(entitet.getNaziv()==null || entitet.getNaziv().trim().length()==0)
+            throw new EdunovaException("Naziv obavezno");
     }
     
 }
