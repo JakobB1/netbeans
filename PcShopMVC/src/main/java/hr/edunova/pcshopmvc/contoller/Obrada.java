@@ -5,6 +5,7 @@
  */
 package hr.edunova.pcshopmvc.contoller;
 
+import hr.edunova.pcshopmvc.util.EdunovaException;
 import hr.edunova.pcshopmvc.util.HibernateUtil;
 import java.util.List;
 import org.hibernate.Session;
@@ -19,9 +20,9 @@ public abstract class Obrada<T> {
     protected T entitet;
     
     public abstract List<T> read();
-    protected abstract void kontrolaCreate();
-    protected abstract void kontrolaUpdate();
-    protected abstract void kontrolaDelete();
+    protected abstract void kontrolaCreate() throws EdunovaException;
+    protected abstract void kontrolaUpdate() throws EdunovaException;
+    protected abstract void kontrolaDelete() throws EdunovaException;
     
     public Obrada(){
         this.session = HibernateUtil.getSession();
