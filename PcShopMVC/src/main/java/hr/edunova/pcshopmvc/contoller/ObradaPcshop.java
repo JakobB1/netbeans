@@ -56,6 +56,9 @@ public class ObradaPcshop extends Obrada<Pcshop>{
             }
         }
         */
+        
+        
+        
         Query q = session.createNativeQuery("select count(*) from pcshop where naziv=:nazivParametar");
         q.setParameter("nazivParametar", entitet.getNaziv());
       
