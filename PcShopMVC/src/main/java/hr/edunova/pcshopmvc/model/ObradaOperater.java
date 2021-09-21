@@ -8,6 +8,8 @@ package hr.edunova.pcshopmvc.model;
 import hr.edunova.pcshopmvc.contoller.Obrada;
 import hr.edunova.pcshopmvc.util.EdunovaException;
 import java.util.List;
+import javax.persistence.NoResultException;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
@@ -17,7 +19,24 @@ public class ObradaOperater extends Obrada<Operater>{
 
     @Override
     public List<Operater> read() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return session.createQuery("from Operater").list();
+    }
+    
+    public Operater autoriziraj(String email, String lozinka){
+        Operater oper=null;
+        try{
+            oper = (Operater)session.createQuery("from Operater o where o.email=:email")
+                .setParameter("email", email).getSingleResult();
+        }catch(NoResultException e){
+            return null;
+        }
+     
+        
+        if(oper==null){
+            return null;
+        }
+        
+        return BCrypt.checkpw(lozinka, oper.getLozinka()) ? oper : null;
     }
 
     @Override
