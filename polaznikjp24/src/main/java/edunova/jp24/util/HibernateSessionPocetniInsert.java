@@ -48,6 +48,9 @@ public class HibernateSessionPocetniInsert {
         Predavac predavac = new Predavac();
         predavac.setIme(faker.name().firstName());
         predavac.setPrezime(faker.name().lastName());
+        predavac.setEmail("email@mail.hr");
+        predavac.setOib("11111111111");
+        predavac.setIban("HR545454");
         
         s.save(predavac);
         

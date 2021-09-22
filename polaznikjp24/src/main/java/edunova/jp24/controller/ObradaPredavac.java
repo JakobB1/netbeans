@@ -37,12 +37,15 @@ public class ObradaPredavac extends ObradaOsoba<Predavac>{
     
     }
 
+    
     private void kontrolaIban() throws EdunovaException {
+        /*
         IBANValidator ibanValidator = new IBANValidator();
         ibanValidator.setValidator("HR", 21, "HR");
         if(!ibanValidator.isValid(entitet.getIban())){
             throw new EdunovaException("IBAN nije valjan");
-        }   
+        }
+    */
     }
     
 }

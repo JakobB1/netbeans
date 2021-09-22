@@ -6,7 +6,6 @@
 package edunova.jp24.view;
 
 import edunova.jp24.controller.ObradaPredavac;
-import edunova.jp24.controller.ObradaSmjer;
 import edunova.jp24.model.Predavac;
 import edunova.jp24.util.Aplikacija;
 import edunova.jp24.util.EdunovaException;
@@ -176,21 +175,22 @@ public class ProzorPredavac extends javax.swing.JFrame implements ProzorSucelje{
         if(evt.getValueIsAdjusting() || lstEntiteti.getSelectedValue()==null){
             return;
         }
-        ObradaSmjer.setEntitet(lstEntiteti.getSelectedValue());
-        var s = obradaSmjer.getEntitet();
-        txtIme.setText(s.getNaziv());
-        txtTrajanje.setText(String.valueOf(s.getTrajanje()));
-        txtCijena.setText(String.valueOf(s.getCijena()));
-        chbCertifikat.setSelected(s.getCertifikat());
+        obrada.setEntitet(lstEntiteti.getSelectedValue());
+        var e = obrada.getEntitet();
+        txtIme.setText(e.getIme());
+        txtPrezime.setText(e.getPrezime());
+        txtOib.setText(e.getOib());
+        txtEmail.setText(e.getEmail());
+        txtIban.setText(e.getIban());
 
     }//GEN-LAST:event_lstEntitetiValueChanged
 
     private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
-        obradaSmjer.setEntitet(new Smjer());
-        postaviVrijednostiUEntitet();
+        obrada.setEntitet(new Predavac());
+        postaviVrijedostiUEntitet();
 
         try {
-            ObradaSmjer.create();
+            obrada.create();
             ucitaj();
         } catch (EdunovaException ex) {
             JOptionPane.showMessageDialog(getParent(), ex.getPoruka());
@@ -199,18 +199,19 @@ public class ProzorPredavac extends javax.swing.JFrame implements ProzorSucelje{
     }//GEN-LAST:event_btnDodajActionPerformed
 
     private void btnPromjeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromjeniActionPerformed
-        postaviVrijednostiUEntitet();
+        postaviVrijedostiUEntitet();
         try {
-            ObradaSmjer.update();
+            obrada.update();
             ucitaj();
         } catch (EdunovaException ex) {
             JOptionPane.showMessageDialog(getParent(), ex.getPoruka());
         }
+
     }//GEN-LAST:event_btnPromjeniActionPerformed
 
     private void btnObrisiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisiActionPerformed
         try {
-            obradaSmjer.delete();
+            obrada.delete();
             ucitaj();
         } catch (EdunovaException ex) {
             JOptionPane.showMessageDialog(getParent(), ex.getPoruka());
