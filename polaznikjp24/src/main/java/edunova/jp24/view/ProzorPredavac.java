@@ -6,6 +6,7 @@
 package edunova.jp24.view;
 
 import edunova.jp24.controller.ObradaPredavac;
+import edunova.jp24.util.Aplikacija;
 
 /**
  *
@@ -56,7 +57,7 @@ public class ProzorPredavac extends javax.swing.JFrame implements ProzorSucelje{
 
     @Override
     public void postavke() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        setTitle(Aplikacija.getNaslov("Predavaci"));
     }
 
     @Override
