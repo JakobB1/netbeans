@@ -30,14 +30,14 @@ public class ProzorSmjer extends javax.swing.JFrame {
         initComponents();
         obradaSmjer = new ObradaSmjer();
         postavke();
-        ucitajSmjerove();
+        ucitaj();
     }
     
     private void postavke(){
         setTitle(Aplikacija.getNaslov("Smjerovi"));
     }
     
-    private void ucitajSmjerove(){
+    private void ucitaj(){
         DefaultListModel<Smjer> m = new DefaultListModel<>();
         
         obradaSmjer.read().forEach(s->{m.addElement(s);});
@@ -169,7 +169,7 @@ public class ProzorSmjer extends javax.swing.JFrame {
         
         try {
             obradaSmjer.create();
-            ucitajSmjerove();
+            ucitaj();
         } catch (EdunovaException ex) {
             JOptionPane.showMessageDialog(getParent(), ex.getPoruka());
         }
@@ -213,7 +213,7 @@ public class ProzorSmjer extends javax.swing.JFrame {
         postaviVrijednostiUEntitet();
         try {
             obradaSmjer.update();
-            ucitajSmjerove();
+            ucitaj();
         } catch (EdunovaException ex) {
             JOptionPane.showMessageDialog(getParent(), ex.getPoruka());
         }
@@ -222,7 +222,7 @@ public class ProzorSmjer extends javax.swing.JFrame {
     private void btnObrisiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisiActionPerformed
         try {
             obradaSmjer.delete();
-            ucitajSmjerove();
+            ucitaj();
         } catch (EdunovaException ex) {
             JOptionPane.showMessageDialog(getParent(), ex.getPoruka());
         }
