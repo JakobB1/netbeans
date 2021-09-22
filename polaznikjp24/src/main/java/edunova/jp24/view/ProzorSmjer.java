@@ -42,7 +42,7 @@ public class ProzorSmjer extends javax.swing.JFrame implements ProzorSucelje{
         
         obradaSmjer.read().forEach(s->{m.addElement(s);});
         
-        lstSmjerovi.setModel(m);
+        lstEntiteti.setModel(m);
     }
     
     /**
@@ -55,7 +55,7 @@ public class ProzorSmjer extends javax.swing.JFrame implements ProzorSucelje{
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        lstSmjerovi = new javax.swing.JList<>();
+        lstEntiteti = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
         txtNaziv = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -69,12 +69,12 @@ public class ProzorSmjer extends javax.swing.JFrame implements ProzorSucelje{
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        lstSmjerovi.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+        lstEntiteti.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                lstSmjeroviValueChanged(evt);
+                lstEntitetiValueChanged(evt);
             }
         });
-        jScrollPane1.setViewportView(lstSmjerovi);
+        jScrollPane1.setViewportView(lstEntiteti);
 
         jLabel1.setText("Naziv");
 
@@ -194,11 +194,11 @@ public class ProzorSmjer extends javax.swing.JFrame implements ProzorSucelje{
         s.setCertifikat(chbCertifikat.isSelected());
     }
     
-    private void lstSmjeroviValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstSmjeroviValueChanged
-         if(evt.getValueIsAdjusting() || lstSmjerovi.getSelectedValue()==null){
+    private void lstEntitetiValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstEntitetiValueChanged
+         if(evt.getValueIsAdjusting() || lstEntiteti.getSelectedValue()==null){
              return;
          }
-         obradaSmjer.setEntitet(lstSmjerovi.getSelectedValue());
+         obradaSmjer.setEntitet(lstEntiteti.getSelectedValue());
          var s = obradaSmjer.getEntitet();
          txtNaziv.setText(s.getNaziv());
          txtTrajanje.setText(String.valueOf(s.getTrajanje()));
@@ -207,7 +207,7 @@ public class ProzorSmjer extends javax.swing.JFrame implements ProzorSucelje{
          
          
          
-    }//GEN-LAST:event_lstSmjeroviValueChanged
+    }//GEN-LAST:event_lstEntitetiValueChanged
 
     private void btnPromjeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromjeniActionPerformed
         postaviVrijednostiUEntitet();
@@ -238,7 +238,7 @@ public class ProzorSmjer extends javax.swing.JFrame implements ProzorSucelje{
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList<Smjer> lstSmjerovi;
+    private javax.swing.JList<Smjer> lstEntiteti;
     private javax.swing.JTextField txtCijena;
     private javax.swing.JTextField txtNaziv;
     private javax.swing.JTextField txtTrajanje;
