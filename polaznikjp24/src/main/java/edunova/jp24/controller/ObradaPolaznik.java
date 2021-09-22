@@ -15,6 +15,10 @@ import java.util.List;
  */
 public class ObradaPolaznik extends ObradaOsoba<Polaznik>{
 
+    public ObradaPolaznik() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     @Override
     public List<Polaznik> read() {
         return session.createQuery("from Polaznik").list();
