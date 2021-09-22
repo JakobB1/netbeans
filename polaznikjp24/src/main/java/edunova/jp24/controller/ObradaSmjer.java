@@ -5,6 +5,7 @@
  */
 package edunova.jp24.controller;
 
+import edunova.jp24.model.Grupa;
 import edunova.jp24.model.Smjer;
 import edunova.jp24.util.EdunovaException;
 import java.math.BigDecimal;
@@ -37,7 +38,15 @@ public class ObradaSmjer extends Obrada<Smjer>{
 
     @Override
     protected void kontrolaDelete() throws EdunovaException {
-   
+        if(entitet.getGrupe().size()>0){
+            String s = "";
+            for(Grupa g: entitet.getGrupe()){
+                s+=g.getNaziv() + ", ";
+            }
+            s=s.substring(0,s.length()-2);
+            throw new EdunovaException("Ne mozete obrisati smjer jer su na njemu grupe: "
+                                      + s);
+        }
     }
 
     private void kontrolaNaziv() throws EdunovaException {

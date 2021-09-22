@@ -11,6 +11,7 @@ import edunova.jp24.model.Operater;
 import edunova.jp24.model.Polaznik;
 import edunova.jp24.model.Predavac;
 import edunova.jp24.model.Smjer;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -37,6 +38,9 @@ public class HibernateSessionPocetniInsert {
 
         Smjer java = new Smjer();
         java.setNaziv("Java programiranje");
+        java.setTrajanje(130);
+        java.setCertifikat(true);
+        java.setCijena(new BigDecimal(5999.99));
         s.save(java);
         
         
