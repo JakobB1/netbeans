@@ -11,6 +11,8 @@ package edunova.jp24.view;
  */
 public interface ProzorSucelje {
     
-    
+    public void postaviVrijedostiUEntitet();
+    public void postavke();
+    public void ucitaj();
     
 }

@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
  *
  * @author jalep
  */
-public class ProzorSmjer extends javax.swing.JFrame {
+public class ProzorSmjer extends javax.swing.JFrame implements ProzorSucelje{
 
     private ObradaSmjer obradaSmjer;
 
@@ -33,11 +33,11 @@ public class ProzorSmjer extends javax.swing.JFrame {
         ucitaj();
     }
     
-    private void postavke(){
+    public void postavke(){
         setTitle(Aplikacija.getNaslov("Smjerovi"));
     }
     
-    private void ucitaj(){
+    public void ucitaj(){
         DefaultListModel<Smjer> m = new DefaultListModel<>();
         
         obradaSmjer.read().forEach(s->{m.addElement(s);});
@@ -176,7 +176,7 @@ public class ProzorSmjer extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnDodajActionPerformed
 
-    private void postaviVrijednostiUEntitet(){
+    public void postaviVrijednostiUEntitet(){
         var s = obradaSmjer.getEntitet();
         s.setNaziv(txtNaziv.getText());
         try {
@@ -243,6 +243,11 @@ public class ProzorSmjer extends javax.swing.JFrame {
     private javax.swing.JTextField txtNaziv;
     private javax.swing.JTextField txtTrajanje;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void postaviVrijedostiUEntitet() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     
 }
