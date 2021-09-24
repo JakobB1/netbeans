@@ -54,6 +54,7 @@ public class HibernateSessionPocetniInsert {
         
         s.save(predavac);
         
+        
         List<Polaznik> polaznici = new ArrayList<>();
         
         Polaznik polaznik;
@@ -81,19 +82,5 @@ public class HibernateSessionPocetniInsert {
                 
         // commit ide na kraju
         s.getTransaction().commit();
-        
-        
-        
-        /*s.beginTransaction();
-        
-        for(int i=1;i<=100;i++) {
-            Smjer smjer = new Smjer();
-            smjer.setNaziv("Smjer " + i);
-            s.save(smjer);
-        }
-        
-        s.getTransaction().commit();
-        */
-        
     }
 }    
