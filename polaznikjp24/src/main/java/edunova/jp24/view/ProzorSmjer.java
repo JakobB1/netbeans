@@ -45,6 +45,24 @@ public class ProzorSmjer extends javax.swing.JFrame implements ProzorSucelje{
         lstEntiteti.setModel(m);
     }
     
+    public void postaviVrijednostiUEntitet(){
+        var s = obradaSmjer.getEntitet();
+        s.setNaziv(txtNaziv.getText());
+        try {
+            s.setTrajanje(Integer.parseInt(txtTrajanje.getText()));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(getParent(), "Trajanje mora biti cijeli broj");
+            return;
+        }
+        try {
+            s.setCijena(new BigDecimal(txtCijena.getText()));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(getParent(), "Cijena mora biti decimalni broj");
+            return;
+        }
+        s.setCertifikat(chbCertifikat.isSelected());
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -176,24 +194,6 @@ public class ProzorSmjer extends javax.swing.JFrame implements ProzorSucelje{
         
     }//GEN-LAST:event_btnDodajActionPerformed
 
-    public void postaviVrijednostiUEntitet(){
-        var s = obradaSmjer.getEntitet();
-        s.setNaziv(txtNaziv.getText());
-        try {
-            s.setTrajanje(Integer.parseInt(txtTrajanje.getText()));
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(getParent(), "Trajanje mora biti cijeli broj");
-            return;
-        }
-        try {
-            s.setCijena(new BigDecimal(txtCijena.getText()));
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(getParent(), "Cijena mora biti decimalni broj");
-            return;
-        }
-        s.setCertifikat(chbCertifikat.isSelected());
-    }
-    
     private void lstEntitetiValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstEntitetiValueChanged
          if(evt.getValueIsAdjusting() || lstEntiteti.getSelectedValue()==null){
              return;
@@ -204,8 +204,6 @@ public class ProzorSmjer extends javax.swing.JFrame implements ProzorSucelje{
          txtTrajanje.setText(String.valueOf(s.getTrajanje()));
          txtCijena.setText(String.valueOf(s.getCijena()));
          chbCertifikat.setSelected(s.getCertifikat());
-         
-         
          
     }//GEN-LAST:event_lstEntitetiValueChanged
 
