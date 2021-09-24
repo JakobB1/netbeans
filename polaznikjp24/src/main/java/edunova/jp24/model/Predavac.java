@@ -24,4 +24,5 @@ public class Predavac extends Osoba{
         this.iban = iban;
     }
     
-}   
+    
+}

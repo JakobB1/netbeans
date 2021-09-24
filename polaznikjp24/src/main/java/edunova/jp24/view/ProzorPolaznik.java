@@ -231,12 +231,12 @@ public class ProzorPolaznik extends javax.swing.JFrame implements ProzorSucelje{
 
     @Override
     public void postaviVrijedostiUEntitet() {
-        var e = obrada.getEntitet();
-        e.setIme(txtIme.getText());
-        e.setPrezime(txtPrezime.getText());
-        e.setOib(txtOib.getText());
-        e.setEmail(txtEmail.getText());
-        e.setBrojUgovora(txtBrojUgovora.getText());
+        var f = obrada.getEntitet();
+        f.setIme(txtIme.getText());
+        f.setPrezime(txtPrezime.getText());
+        f.setOib(txtOib.getText());
+        f.setEmail(txtEmail.getText());
+        f.setBrojUgovora(txtBrojUgovora.getText());
         // zamislim da na formi ima 48 svojstava
         // rjesenje 1: koristenje JavaBeans
         // rjesenje 2: koristenje Reflection framework-a
