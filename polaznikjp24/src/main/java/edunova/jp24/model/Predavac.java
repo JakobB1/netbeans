@@ -15,7 +15,6 @@ import javax.persistence.Entity;
 public class Predavac extends Osoba{
     
     private String iban;
-    public String getBrojUgovora;
 
     public String getIban() {
         return iban;
@@ -24,14 +23,5 @@ public class Predavac extends Osoba{
     public void setIban(String iban) {
         this.iban = iban;
     }
-
-    public String getGetBrojUgovora() {
-        return getBrojUgovora;
-    }
-
-    public void setGetBrojUgovora(String getBrojUgovora) {
-        this.getBrojUgovora = getBrojUgovora;
-    }
     
-    
-}
+}   

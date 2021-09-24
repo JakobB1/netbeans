@@ -15,14 +15,20 @@ import java.util.List;
  */
 public class ObradaPolaznik extends ObradaOsoba<Polaznik>{
 
-    public ObradaPolaznik() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     @Override
     public List<Polaznik> read() {
         return session.createQuery("from Polaznik").list();
     }
+    
+    public List<Polaznik> read(String uvjet){
+        return session.createQuery("from Polaznik p"
+                + " where concat(p.ime,' ', p.prezime,' ', p.ime,' ', p.oib) "
+                + " like :uvjet order by p.prezime, p.ime")
+                .setParameter("uvjet", "%" + uvjet + "%")
+                .setMaxResults(50)
+                .list();
+    }
+    
 
     @Override
     protected void kontrolaCreate() throws EdunovaException {

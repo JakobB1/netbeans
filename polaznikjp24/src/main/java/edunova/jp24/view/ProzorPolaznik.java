@@ -6,7 +6,6 @@
 package edunova.jp24.view;
 
 import edunova.jp24.controller.ObradaPolaznik;
-import edunova.jp24.controller.ObradaPredavac;
 import edunova.jp24.model.Polaznik;
 import edunova.jp24.model.Predavac;
 import edunova.jp24.util.Aplikacija;
@@ -20,13 +19,13 @@ import javax.swing.JOptionPane;
  */
 public class ProzorPolaznik extends javax.swing.JFrame implements ProzorSucelje{
 
-    private ObradaPredavac obrada;
+    private ObradaPolaznik obrada;
     /**
      * Creates new form ProzorPredavac
      */
     public ProzorPolaznik() {
         initComponents();
-        obrada = new ObradaPredavac();
+        obrada = new ObradaPolaznik();
         postavke();
         ucitaj();
     }
@@ -184,17 +183,17 @@ public class ProzorPolaznik extends javax.swing.JFrame implements ProzorSucelje{
             return;
         }
         obrada.setEntitet(lstEntiteti.getSelectedValue());
-        var e = obrada.getEntitet();
-        txtIme.setText(e.getIme());
-        txtPrezime.setText(e.getPrezime());
-        txtOib.setText(e.getOib());
-        txtEmail.setText(e.getEmail());
-        txtBrojUgovora.setText(e.getBrojUgovora);
+        var f = obrada.getEntitet();
+        txtIme.setText(f.getIme());
+        txtPrezime.setText(f.getPrezime());
+        txtOib.setText(f.getOib());
+        txtEmail.setText(f.getEmail());
+        txtBrojUgovora.setText(f.getBrojUgovora());
 
     }//GEN-LAST:event_lstEntitetiValueChanged
 
     private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
-        obrada.setEntitet(new Predavac());
+        obrada.setEntitet(new Polaznik());
         postaviVrijedostiUEntitet();
 
         try {
@@ -237,7 +236,7 @@ public class ProzorPolaznik extends javax.swing.JFrame implements ProzorSucelje{
         e.setPrezime(txtPrezime.getText());
         e.setOib(txtOib.getText());
         e.setEmail(txtEmail.getText());
-        e.setIban(txtBrojUgovora.getText());
+        e.setBrojUgovora(txtBrojUgovora.getText());
         // zamislim da na formi ima 48 svojstava
         // rjesenje 1: koristenje JavaBeans
         // rjesenje 2: koristenje Reflection framework-a
@@ -250,7 +249,7 @@ public class ProzorPolaznik extends javax.swing.JFrame implements ProzorSucelje{
 
     @Override
     public void ucitaj() {
-        DefaultListModel<Predavac> m = new DefaultListModel<>();
+        DefaultListModel<Polaznik> m = new DefaultListModel<>();
         
         obrada.read().forEach(s->{m.addElement(s);});
         
@@ -269,7 +268,7 @@ public class ProzorPolaznik extends javax.swing.JFrame implements ProzorSucelje{
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList<Predavac> lstEntiteti;
+    private javax.swing.JList<Polaznik> lstEntiteti;
     private javax.swing.JTextField txtBrojUgovora;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtIme;
