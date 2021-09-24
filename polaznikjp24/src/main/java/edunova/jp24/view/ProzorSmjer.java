@@ -21,14 +21,14 @@ import javax.swing.JOptionPane;
  */
 public class ProzorSmjer extends javax.swing.JFrame implements ProzorSucelje{
 
-    private ObradaSmjer obradaSmjer;
+    private ObradaSmjer obrada;
 
     /**
      * Creates new form ProzorSmjer
      */
     public ProzorSmjer() {
         initComponents();
-        obradaSmjer = new ObradaSmjer();
+        obrada = new ObradaSmjer();
         postavke();
         ucitaj();
     }
@@ -40,13 +40,13 @@ public class ProzorSmjer extends javax.swing.JFrame implements ProzorSucelje{
     public void ucitaj(){
         DefaultListModel<Smjer> m = new DefaultListModel<>();
         
-        obradaSmjer.read().forEach(s->{m.addElement(s);});
+        obrada.read().forEach(s->{m.addElement(s);});
         
         lstEntiteti.setModel(m);
     }
     
     public void postaviVrijednostiUEntitet(){
-        var s = obradaSmjer.getEntitet();
+        var s = obrada.getEntitet();
         s.setNaziv(txtNaziv.getText());
         try {
             s.setTrajanje(Integer.parseInt(txtTrajanje.getText()));
@@ -182,11 +182,11 @@ public class ProzorSmjer extends javax.swing.JFrame implements ProzorSucelje{
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
-        obradaSmjer.setEntitet(new Smjer());
+        obrada.setEntitet(new Smjer());
         postaviVrijednostiUEntitet();
         
         try {
-            obradaSmjer.create();
+            obrada.create();
             ucitaj();
         } catch (EdunovaException ex) {
             JOptionPane.showMessageDialog(getParent(), ex.getPoruka());
@@ -198,8 +198,8 @@ public class ProzorSmjer extends javax.swing.JFrame implements ProzorSucelje{
          if(evt.getValueIsAdjusting() || lstEntiteti.getSelectedValue()==null){
              return;
          }
-         obradaSmjer.setEntitet(lstEntiteti.getSelectedValue());
-         var s = obradaSmjer.getEntitet();
+         obrada.setEntitet(lstEntiteti.getSelectedValue());
+         var s = obrada.getEntitet();
          txtNaziv.setText(s.getNaziv());
          txtTrajanje.setText(String.valueOf(s.getTrajanje()));
          txtCijena.setText(String.valueOf(s.getCijena()));
@@ -210,7 +210,7 @@ public class ProzorSmjer extends javax.swing.JFrame implements ProzorSucelje{
     private void btnPromjeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromjeniActionPerformed
         postaviVrijednostiUEntitet();
         try {
-            obradaSmjer.update();
+            obrada.update();
             ucitaj();
         } catch (EdunovaException ex) {
             JOptionPane.showMessageDialog(getParent(), ex.getPoruka());
@@ -219,7 +219,7 @@ public class ProzorSmjer extends javax.swing.JFrame implements ProzorSucelje{
 
     private void btnObrisiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisiActionPerformed
         try {
-            obradaSmjer.delete();
+            obrada.delete();
             ucitaj();
         } catch (EdunovaException ex) {
             JOptionPane.showMessageDialog(getParent(), ex.getPoruka());
