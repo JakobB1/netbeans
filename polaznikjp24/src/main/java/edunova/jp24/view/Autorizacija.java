@@ -55,6 +55,8 @@ public class Autorizacija extends javax.swing.JFrame {
 
         jLabel2.setText("Lozinka");
 
+        pswLozinka.setText("o");
+
         btnLogin.setText("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
