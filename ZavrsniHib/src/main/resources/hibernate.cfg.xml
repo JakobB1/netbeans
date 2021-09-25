@@ -43,11 +43,10 @@
 
         
         
-        <!-- Ovdje navodimo mapirane klase
-        Učenje mapiranja
-        <mapping class="edunova.jp24.vjezbanjemapiranje.osnovno.Racunalo" />  
-        
+        <!-- Ovdje navodimo mapirane klase  
+        <mapping class="hr.edunova.zavrsnihib.model.Racun" />  
+        -->
          
-                  -->
+                   
     </session-factory>
 </hibernate-configuration>
