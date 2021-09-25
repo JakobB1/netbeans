@@ -44,7 +44,8 @@
         
         
         <!-- Ovdje navodimo mapirane klase -->
-        <mapping class="hr.edunova.zavrsnihib.model.Korisnik" />  
+        <mapping class="hr.edunova.zavrsnihib.model.Korisnik" />
+        <mapping class="hr.edunova.zavrsnihib.model.Djelatnik" />  
         
          
                    
