@@ -17,9 +17,6 @@ public abstract class Osoba extends Entitet{
     
     private String ime;
     private String prezime;
-    
-    @Column(columnDefinition = "char(11)")
-    private String oib;
     private String email;
 
     public String getIme() {
@@ -38,14 +35,7 @@ public abstract class Osoba extends Entitet{
         this.prezime = prezime;
     }
 
-    public String getOib() {
-        return oib;
-    }
-
-    public void setOib(String oib) {
-        this.oib = oib;
-    }
-
+    
     public String getEmail() {
         return email;
     }

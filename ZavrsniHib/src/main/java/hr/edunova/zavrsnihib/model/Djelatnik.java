@@ -5,6 +5,7 @@
  */
 package hr.edunova.zavrsnihib.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
 /**
@@ -14,8 +15,9 @@ import javax.persistence.Entity;
 @Entity
 public class Djelatnik extends Osoba{
     
+    @Column(columnDefinition = "char(11)")
     private String oib;
-
+    
     public String getOib() {
         return oib;
     }
