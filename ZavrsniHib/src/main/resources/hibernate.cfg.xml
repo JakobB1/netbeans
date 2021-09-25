@@ -43,9 +43,9 @@
 
         
         
-        <!-- Ovdje navodimo mapirane klase  
-        <mapping class="hr.edunova.zavrsnihib.model.Racun" />  
-        -->
+        <!-- Ovdje navodimo mapirane klase -->
+        <mapping class="hr.edunova.zavrsnihib.model.Korisnik" />  
+        
          
                    
     </session-factory>
