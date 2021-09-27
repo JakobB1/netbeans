@@ -6,6 +6,7 @@
 package hr.edunova.zavrsnihib.controller;
 
 import hr.edunova.zavrsnihib.util.HibernateUtil;
+import java.util.List;
 import org.hibernate.Session;
 
 /**
@@ -17,6 +18,8 @@ public abstract class Obrada<T> {
     protected Session session;
     protected T entitet;
 
+    public abstract List<T> read();
+    
     public Obrada() {
         this.session = HibernateUtil.getSession();
     }
