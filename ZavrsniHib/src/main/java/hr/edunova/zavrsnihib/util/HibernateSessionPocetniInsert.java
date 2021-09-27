@@ -9,6 +9,11 @@ import com.github.javafaker.Faker;
 import hr.edunova.zavrsnihib.model.Djelatnik;
 import hr.edunova.zavrsnihib.model.Korisnik;
 import hr.edunova.zavrsnihib.model.Pcshop;
+import hr.edunova.zavrsnihib.model.Proizvod;
+import hr.edunova.zavrsnihib.model.Racun;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import org.hibernate.Session;
 
 /**
@@ -37,7 +42,7 @@ public class HibernateSessionPocetniInsert {
         s.save(djelatnik);
         
         
-        
+        List<Korisnik>korisnici = new ArrayList<>();
         Korisnik korisnik;
         for(int i=0;i<1300;i++){
             korisnik = new Korisnik();
@@ -47,7 +52,24 @@ public class HibernateSessionPocetniInsert {
             s.save(korisnik);
         }
         
+        Proizvod proizvod = new Proizvod();
+        proizvod.setNaziv("Razer Tipkovnica");
         
+        s.save(proizvod);
+        
+        
+        
+        Racun racun = new Racun();
+        racun.setBrojRacuna("123");
+        racun.setDjelatnik(djelatnik);
+        racun.setCijena(BigDecimal.TEN);
+        racun.setIznos(BigDecimal.TEN);
+        racun.setKolicina("100");
+        racun.setNacinPlacanja("Karticno");
+        racun.setKorisnici(korisnici);
+        racun.setProizvod(proizvod);
+        
+        s.save(racun);
         
         //commit ide na kraju
         s.getTransaction().commit();
