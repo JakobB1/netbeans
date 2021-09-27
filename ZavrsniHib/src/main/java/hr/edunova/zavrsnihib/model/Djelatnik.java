@@ -14,16 +14,15 @@ import javax.persistence.Entity;
  */
 @Entity
 public class Djelatnik extends Osoba{
-    
-    @Column(columnDefinition = "char(11)")
-    private String oib;
-    
-    public String getOib() {
-        return oib;
+   
+    private String brojUgovora;
+
+    public String getBrojUgovora() {
+        return brojUgovora;
     }
 
-    public void setOib(String oib) {
-        this.oib = oib;
+    public void setBrojUgovora(String brojUgovora) {
+        this.brojUgovora = brojUgovora;
     }
     
     

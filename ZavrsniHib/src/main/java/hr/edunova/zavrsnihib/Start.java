@@ -16,7 +16,7 @@ import org.hibernate.Session;
 public class Start {
     
     public static void main(String[] args) {
-        //Session s = HibernateUtil.getSession();
+        //Session s = HibernateUtil.getSession(); 
         HibernateSessionPocetniInsert.odradiPosao();
     }
 }

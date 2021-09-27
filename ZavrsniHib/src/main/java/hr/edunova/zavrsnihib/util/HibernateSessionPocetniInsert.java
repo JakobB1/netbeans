@@ -13,6 +13,7 @@ import hr.edunova.zavrsnihib.model.Proizvod;
 import hr.edunova.zavrsnihib.model.Racun;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import org.hibernate.Session;
 
@@ -38,6 +39,7 @@ public class HibernateSessionPocetniInsert {
         Djelatnik djelatnik = new Djelatnik();
         djelatnik.setIme(faker.name().lastName());
         djelatnik.setPrezime(faker.name().lastName());
+        djelatnik.setBrojUgovora("123");
         
         s.save(djelatnik);
         
@@ -48,12 +50,14 @@ public class HibernateSessionPocetniInsert {
             korisnik = new Korisnik();
             korisnik.setIme(faker.name().lastName());
             korisnik.setPrezime(faker.name().lastName());
+            korisnik.setOib(EdunovaUtil.getOIB());
             
             s.save(korisnik);
         }
         
         Proizvod proizvod = new Proizvod();
         proizvod.setNaziv("Razer Tipkovnica");
+        proizvod.setGarancija(new Date());
         
         s.save(proizvod);
         
@@ -68,6 +72,7 @@ public class HibernateSessionPocetniInsert {
         racun.setNacinPlacanja("Karticno");
         racun.setKorisnici(korisnici);
         racun.setProizvod(proizvod);
+        
         
         s.save(racun);
         
