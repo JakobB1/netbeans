@@ -22,10 +22,23 @@ public abstract class Obrada<T> {
     }
     
     public T create(){
-        session.beginTransaction();
-        session.save(entitet);
-        session.getTransaction().commit();
+        save();
+        return entitet;
+    }
+    public T update(){
+        save();
         return entitet;
     }
     
+    public void delete(){
+        session.beginTransaction();
+        session.delete(entitet);
+        session.getTransaction().commit();
+    }
+    
+    private void save(){
+        session.beginTransaction();
+        session.save(entitet);
+        session.getTransaction().commit();
+    }
 }
