@@ -16,6 +16,7 @@ import javax.persistence.Entity;
 public class Djelatnik extends Osoba{
    
     private String brojUgovora;
+    private String ziroRacun;
 
     public String getBrojUgovora() {
         return brojUgovora;
@@ -24,6 +25,13 @@ public class Djelatnik extends Osoba{
     public void setBrojUgovora(String brojUgovora) {
         this.brojUgovora = brojUgovora;
     }
-    
+
+    public String getZiroRacun() {
+        return ziroRacun;
+    }
+
+    public void setZiroRacun(String ziroRacun) {
+        this.ziroRacun = ziroRacun;
+    }
     
 }
