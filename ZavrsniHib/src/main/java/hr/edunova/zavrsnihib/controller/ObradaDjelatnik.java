@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author jalep
  */
-public class ObradaDjelatnik extends Obrada<Djelatnik>{
+public class ObradaDjelatnik extends ObradaOsoba<Djelatnik>{
 
     @Override
     public List<Djelatnik> read() {
