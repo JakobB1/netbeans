@@ -9,6 +9,7 @@ import hr.edunova.zavrsnihib.util.HibernateSessionPocetniInsert;
 import hr.edunova.zavrsnihib.util.HibernateUtil;
 import hr.edunova.zavrsnihib.util.IzlistanjeObjekataIzBaze;
 import hr.edunova.zavrsnihib.util.RadSKontrolerima;
+import hr.edunova.zavrsnihib.view.SplashScreen;
 import org.hibernate.Session;
 
 /**
@@ -18,10 +19,12 @@ import org.hibernate.Session;
 public class Start {
     
     public static void main(String[] args) {
+        //HibernateUtil.getSession();
         //Session s = HibernateUtil.getSession(); 
         //HibernateSessionPocetniInsert.odradiPosao();
         //IzlistanjeObjekataIzBaze.odradiPosao();
         //IzlistanjeObjekataIzBaze.radSControllerKlasom();
-        RadSKontrolerima.kreirajPcshop();
+        //RadSKontrolerima.kreirajPcshop();
+        new SplashScreen().setVisible(true);
    }
 }

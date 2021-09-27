@@ -8,6 +8,7 @@ package hr.edunova.zavrsnihib.controller;
 import hr.edunova.zavrsnihib.model.Djelatnik;
 import hr.edunova.zavrsnihib.util.EdunovaException;
 import java.util.List;
+import org.apache.commons.validator.routines.IBANValidator;
 
 /**
  *
@@ -24,6 +25,7 @@ public class ObradaDjelatnik extends ObradaOsoba<Djelatnik>{
     protected void kontrolaCreate() throws EdunovaException {
         super.kontrolaCreate();
         kontrolaBrojUgovora();
+        kontrolaIban();
     }
 
     @Override
@@ -41,5 +43,18 @@ public class ObradaDjelatnik extends ObradaOsoba<Djelatnik>{
                throw new EdunovaException("Broj ugovora mora imati znak /");
            }
     }
+
+    private void kontrolaIban() throws EdunovaException{
+        
+        /*
+        // NE RADI, popraviti
+        IBANValidator ibanValidator = new IBANValidator();
+        ibanValidator.setValidator("HR", 21, "HR");
+        if(!ibanValidator.isValid(entitet.getIban())){
+            throw new EdunovaException("IBAN nije valjan");
+        }
+        */
+    }
     
 }
+    
