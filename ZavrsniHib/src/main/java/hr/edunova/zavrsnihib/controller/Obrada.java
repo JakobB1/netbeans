@@ -19,6 +19,9 @@ public abstract class Obrada<T> {
     protected T entitet;
 
     public abstract List<T> read();
+    protected abstract void kontrolaCreate();
+    protected abstract void kontrolaUpdate();
+    protected abstract void kontrolaDelete();
     
     public Obrada() {
         this.session = HibernateUtil.getSession();
