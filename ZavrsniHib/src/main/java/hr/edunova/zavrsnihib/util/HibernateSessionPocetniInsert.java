@@ -5,6 +5,9 @@
  */
 package hr.edunova.zavrsnihib.util;
 
+import com.github.javafaker.Faker;
+import hr.edunova.zavrsnihib.model.Djelatnik;
+import hr.edunova.zavrsnihib.model.Korisnik;
 import hr.edunova.zavrsnihib.model.Pcshop;
 import org.hibernate.Session;
 
@@ -21,9 +24,28 @@ public class HibernateSessionPocetniInsert {
         s.beginTransaction();
         
         
+        
         Pcshop java = new Pcshop();
         java.setNaziv("Edunova PC");
         s.save(java);
+        
+        Faker faker = new Faker();
+        Djelatnik djelatnik = new Djelatnik();
+        djelatnik.setIme(faker.name().lastName());
+        djelatnik.setPrezime(faker.name().lastName());
+        
+        s.save(djelatnik);
+        
+        
+        
+        Korisnik korisnik;
+        for(int i=0;i<1300;i++){
+            korisnik = new Korisnik();
+            korisnik.setIme(faker.name().lastName());
+            korisnik.setPrezime(faker.name().lastName());
+            
+            s.save(korisnik);
+        }
         
         
         
