@@ -7,6 +7,7 @@ package hr.edunova.zavrsnihib.controller;
 
 import hr.edunova.zavrsnihib.model.Proizvod;
 import hr.edunova.zavrsnihib.util.EdunovaException;
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -22,7 +23,7 @@ public class ObradaProizvod extends Obrada<Proizvod>{
 
     @Override
     protected void kontrolaCreate() throws EdunovaException {
-        
+        kontrolaCijena();
     }
 
     @Override
@@ -34,5 +35,12 @@ public class ObradaProizvod extends Obrada<Proizvod>{
     protected void kontrolaDelete() throws EdunovaException {
         
     }
+
+    private void kontrolaCijena() throws EdunovaException{
+        if(entitet.getCijena()==null || entitet.getCijena().compareTo(BigDecimal.ZERO)<=0){
+          throw new EdunovaException("Cijena obavezno veca od nule");
+      }  
+    }
+    
     
 }
