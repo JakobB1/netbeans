@@ -117,6 +117,7 @@ public class Autorizacija extends javax.swing.JFrame {
         
         Operater oper = obradaOperater.autoriziraj(txtEmail.getText(), lozinka);
         
+        
         if(oper==null){
             JOptionPane.showMessageDialog(getRootPane(), "Neispravna kombinacija email i lozinka");
             return;    
