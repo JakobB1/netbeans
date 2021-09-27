@@ -28,15 +28,18 @@ public abstract class Obrada<T> {
     }
     
     public T create(){
+        kontrolaCreate();
         save();
         return entitet;
     }
     public T update(){
+        kontrolaUpdate();
         save();
         return entitet;
     }
     
     public void delete(){
+        kontrolaDelete();
         session.beginTransaction();
         session.delete(entitet);
         session.getTransaction().commit();
