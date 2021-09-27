@@ -17,6 +17,7 @@ public class Djelatnik extends Osoba{
    
     private String brojUgovora;
     private String ziroRacun;
+    private String iban;
 
     public String getBrojUgovora() {
         return brojUgovora;
@@ -32,6 +33,14 @@ public class Djelatnik extends Osoba{
 
     public void setZiroRacun(String ziroRacun) {
         this.ziroRacun = ziroRacun;
+    }
+
+    public String getIban() {
+        return iban;
+    }
+
+    public void setIban(String iban) {
+        this.iban = iban;
     }
     
 }
