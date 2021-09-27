@@ -18,5 +18,20 @@ public class ObradaPcshop extends Obrada<Pcshop>{
     public List<Pcshop> read() {
         return session.createQuery("from Pcshop").list();
     }
+
+    @Override
+    protected void kontrolaCreate() {
+        
+    }
+
+    @Override
+    protected void kontrolaUpdate() {
+        
+    }
+
+    @Override
+    protected void kontrolaDelete() {
+        
+    }
     
 }
