@@ -106,27 +106,26 @@ public class Autorizacija extends javax.swing.JFrame {
         if(txtEmail.getText().trim().length()==0){
             JOptionPane.showMessageDialog(getRootPane(), "Email obavezno");
             return;
-            
         }
         
         String lozinka = String.valueOf(pswLozinka.getPassword());
         if(lozinka.trim().length()==0){
-           JOptionPane.showMessageDialog(getRootPane(), "Lozinka obavezno");
-            return; 
+             JOptionPane.showMessageDialog(getRootPane(), "Lozinka obavezno");
+            return;
         }
         
         Operater oper = obradaOperater.autoriziraj(txtEmail.getText(), lozinka);
         
-        
         if(oper==null){
-            JOptionPane.showMessageDialog(getRootPane(), "Neispravna kombinacija email i lozinka");
-            return;    
+             JOptionPane.showMessageDialog(getRootPane(), "Neispravna kombinacija email i lozinka");
+            return;
         }
         
         //ovdje smo autorizirani
         Aplikacija.operater=oper;
         new Izbornik().setVisible(true);
         dispose();
+        
         
     }//GEN-LAST:event_btnLoginActionPerformed
 
