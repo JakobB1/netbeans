@@ -8,6 +8,7 @@ package hr.edunova.zavrsnihib;
 import hr.edunova.zavrsnihib.util.HibernateSessionPocetniInsert;
 import hr.edunova.zavrsnihib.util.HibernateUtil;
 import hr.edunova.zavrsnihib.util.IzlistanjeObjekataIzBaze;
+import hr.edunova.zavrsnihib.util.RadSKontrolerima;
 import org.hibernate.Session;
 
 /**
@@ -20,6 +21,7 @@ public class Start {
         //Session s = HibernateUtil.getSession(); 
         //HibernateSessionPocetniInsert.odradiPosao();
         //IzlistanjeObjekataIzBaze.odradiPosao();
-        IzlistanjeObjekataIzBaze.radSControllerKlasom();
+        //IzlistanjeObjekataIzBaze.radSControllerKlasom();
+        RadSKontrolerima.kreirajPcshop();
    }
 }
