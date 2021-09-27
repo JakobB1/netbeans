@@ -5,10 +5,27 @@
  */
 package hr.edunova.zavrsnihib.controller;
 
+import hr.edunova.zavrsnihib.util.HibernateUtil;
+import org.hibernate.Session;
+
 /**
  *
  * @author jalep
  */
-public class Obrada {
+public abstract class Obrada<T> {
+    
+    protected Session session;
+    protected T entitet;
+
+    public Obrada() {
+        this.session = HibernateUtil.getSession();
+    }
+    
+    public T create(){
+        session.beginTransaction();
+        session.save(entitet);
+        session.getTransaction().commit();
+        return entitet;
+    }
     
 }
