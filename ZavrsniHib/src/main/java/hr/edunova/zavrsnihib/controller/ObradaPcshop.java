@@ -23,11 +23,12 @@ public class ObradaPcshop extends Obrada<Pcshop>{
     @Override
     protected void kontrolaCreate() throws EdunovaException{
         kontrolaNaziv();
+        kontrolaCertifikat();
     }
 
     @Override
     protected void kontrolaUpdate() throws EdunovaException{
-        
+        kontrolaNaziv();
     }
 
     @Override
@@ -38,6 +39,17 @@ public class ObradaPcshop extends Obrada<Pcshop>{
     private void kontrolaNaziv() throws EdunovaException{
         if(entitet.getNaziv()==null || entitet.getNaziv().trim().length()==0){
             throw new EdunovaException("Naziv obavezno");
+        }
+        
+        if(entitet.getNaziv().length()>50){
+            throw new EdunovaException("Naziv ne moze biti duzi od 50 znakova");
+        }
+        
+    }
+
+    private void kontrolaCertifikat() throws EdunovaException{
+        if(entitet.getCertifikat()==null){
+            throw new EdunovaException("Indikacije certificiranosti pcshopa obavezna");
         }
     }
     
