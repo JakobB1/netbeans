@@ -5,7 +5,7 @@
  */
 package hr.edunova.zavrsnihib.controller;
 
-import hr.edunova.zavrsnihib.model.Djelatnik;
+import hr.edunova.zavrsnihib.model.Racun;
 import hr.edunova.zavrsnihib.util.EdunovaException;
 import java.util.List;
 
@@ -13,17 +13,16 @@ import java.util.List;
  *
  * @author jalep
  */
-public class ObradaDjelatnik extends ObradaOsoba<Djelatnik>{
+public class ObradaRacun extends Obrada<Racun>{
 
     @Override
-    public List<Djelatnik> read() {
-        return session.createQuery("from Djelatnik").list();
+    public List<Racun> read() {
+        return session.createQuery("from Racun").list();
     }
 
     @Override
     protected void kontrolaCreate() throws EdunovaException {
-        super.kontrolaCreate();
-        kontrolaBrojUgovora();
+        
     }
 
     @Override
@@ -34,12 +33,6 @@ public class ObradaDjelatnik extends ObradaOsoba<Djelatnik>{
     @Override
     protected void kontrolaDelete() throws EdunovaException {
         
-    }
-
-    private void kontrolaBrojUgovora() throws EdunovaException{
-        if(entitet.getBrojUgovora()==null || !entitet.getBrojUgovora().contains("/")){
-               throw new EdunovaException("Broj ugovora mora imati znak /");
-           }
     }
     
 }
