@@ -5,6 +5,7 @@
  */
 package hr.edunova.zavrsnihib.controller;
 
+import hr.edunova.zavrsnihib.util.EdunovaException;
 import hr.edunova.zavrsnihib.util.HibernateUtil;
 import java.util.List;
 import org.hibernate.Session;
@@ -19,26 +20,26 @@ public abstract class Obrada<T> {
     protected T entitet;
 
     public abstract List<T> read();
-    protected abstract void kontrolaCreate();
-    protected abstract void kontrolaUpdate();
-    protected abstract void kontrolaDelete();
+    protected abstract void kontrolaCreate() throws EdunovaException;
+    protected abstract void kontrolaUpdate() throws EdunovaException;
+    protected abstract void kontrolaDelete() throws EdunovaException;
     
     public Obrada() {
         this.session = HibernateUtil.getSession();
     }
     
-    public T create(){
+    public T create() throws EdunovaException{
         kontrolaCreate();
         save();
         return entitet;
     }
-    public T update(){
+    public T update() throws EdunovaException{
         kontrolaUpdate();
         save();
         return entitet;
     }
     
-    public void delete(){
+    public void delete() throws EdunovaException{
         kontrolaDelete();
         session.beginTransaction();
         session.delete(entitet);
