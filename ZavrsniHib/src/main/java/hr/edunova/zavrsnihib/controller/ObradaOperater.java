@@ -8,6 +8,7 @@ package hr.edunova.zavrsnihib.controller;
 import hr.edunova.zavrsnihib.model.Operater;
 import hr.edunova.zavrsnihib.util.EdunovaException;
 import java.util.List;
+import javax.persistence.NoResultException;
 import org.mindrot.jbcrypt.BCrypt;
 
 /**
@@ -22,9 +23,14 @@ public class ObradaOperater extends ObradaOsoba<Operater>{
     }
     
     public Operater autoriziraj(String email, String lozinka){
-        
-        Operater oper = (Operater)session.createQuery("from Operater o where o.email=:email")
+        Operater oper=null;
+        try {
+            oper = (Operater)session.createQuery("from Operater o where o.email=:email")
                 .setParameter("email", email).getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
+         
         
         if(oper==null){
             return null;

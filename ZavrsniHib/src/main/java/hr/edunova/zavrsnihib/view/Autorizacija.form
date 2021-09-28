@@ -64,6 +64,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtEmail">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="operaterpc@edunova.hr"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
@@ -71,6 +74,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JPasswordField" name="pswLozinka">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="o"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnLogin">
       <Properties>

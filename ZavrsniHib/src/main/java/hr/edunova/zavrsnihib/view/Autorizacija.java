@@ -47,7 +47,11 @@ public class Autorizacija extends javax.swing.JFrame {
 
         jLabel1.setText("Email");
 
+        txtEmail.setText("operaterpc@edunova.hr");
+
         jLabel2.setText("Lozinka");
+
+        pswLozinka.setText("o");
 
         btnLogin.setText("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -111,6 +115,10 @@ public class Autorizacija extends javax.swing.JFrame {
         }
         
         // ovdje smo autorizirani
+        
+        new Izbornik().setVisible(true);
+        dispose();
+        
     }//GEN-LAST:event_btnLoginActionPerformed
 
     
