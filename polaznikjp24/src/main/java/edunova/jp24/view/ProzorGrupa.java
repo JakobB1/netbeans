@@ -115,6 +115,10 @@ public class ProzorGrupa extends javax.swing.JFrame implements ProzorSucelje{
     public void postavke() {
         setTitle(Aplikacija.getNaslov("Grupe"));
         DefaultComboBoxModel<Smjer> m = new DefaultComboBoxModel<>();
+        Smjer sm = new Smjer();
+        sm.setId(Long.valueOf(0));
+        sm.setNaziv("Nije odabrano");
+        m.addElement(sm);
         new ObradaSmjer().read().forEach(s->{m.addElement(s);});
         cmbSmjer.setModel(m);
         
