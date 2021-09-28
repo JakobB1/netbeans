@@ -19,20 +19,32 @@ public class ConsoleUnosSmjer {
     
     
     public static void main(String[] args) {
-       Scanner ulaz = new Scanner(System.in);
-       ObradaSmjer os = new ObradaSmjer();
-       Smjer s = new Smjer();
-       os.setEntitet(s);
-        while (true) {            
+
+        Smjer s = new Smjer();
+        s.setNaziv("Edunova");
+        
+        Smjer t = new Smjer();
+        t.setNaziv("Edunova");
+        
+        // ukoliko su u klasi pregažene metode equals i hashCode tada će biti true
+        // inače će biti false
+        System.out.println(s.equals(t));
+/*
+        Scanner ulaz = new Scanner(System.in);
+        ObradaSmjer os = new ObradaSmjer();
+        Smjer s = new Smjer();
+        os.setEntitet(s);
+        while(true){
             System.out.println("Unesi naziv smjera: ");
             s.setNaziv(ulaz.nextLine());
-           try {
-               os.create();
-               break;
-           } catch (EdunovaException ex) {
-               System.out.println(ex.getPoruka());
-           }
+            try {
+                os.create();
+                break;
+            } catch (EdunovaException ex) {
+                System.out.println(ex.getPoruka());
+            }
         }
-       
+*/
     }
+    
 }
