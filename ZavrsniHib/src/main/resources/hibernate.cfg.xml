@@ -49,6 +49,7 @@
         <mapping class="hr.edunova.zavrsnihib.model.Pcshop" />
         <mapping class="hr.edunova.zavrsnihib.model.Racun" />
         <mapping class="hr.edunova.zavrsnihib.model.Proizvod" />
+        <mapping class="hr.edunova.zavrsnihib.model.Operater" />
         
         
                    
