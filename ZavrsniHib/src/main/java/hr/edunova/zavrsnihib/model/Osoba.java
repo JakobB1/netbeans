@@ -55,5 +55,4 @@ public abstract class Osoba extends Entitet{
         this.oib = oib;
     }
     
-    
 }

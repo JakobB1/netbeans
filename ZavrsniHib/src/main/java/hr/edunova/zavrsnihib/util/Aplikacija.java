@@ -17,4 +17,11 @@ public class Aplikacija {
     
     public static Operater operater;
     
+    public static String getNaslov(){
+        if(Aplikacija.operater==null){
+            return Aplikacija.NASLOV_APP;
+        }
+        return Aplikacija.NASLOV_APP + " Izbornik: " + Aplikacija.operater.getImePrezime();
+    }
+    
 }
