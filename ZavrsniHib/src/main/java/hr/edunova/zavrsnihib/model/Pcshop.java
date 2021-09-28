@@ -72,6 +72,10 @@ public class Pcshop extends Entitet{
     public void setDjelatnik(Djelatnik djelatnik) {
         this.djelatnik = djelatnik;
     }
-    
+
+    @Override
+    public String toString() {
+        return naziv;
+    }
     
 }
