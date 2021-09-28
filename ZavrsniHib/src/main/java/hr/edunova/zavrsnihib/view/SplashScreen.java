@@ -5,6 +5,10 @@
  */
 package hr.edunova.zavrsnihib.view;
 
+import hr.edunova.zavrsnihib.util.HibernateUtil;
+import javax.swing.JOptionPane;
+import org.hibernate.Session;
+
 /**
  *
  * @author jalep
@@ -16,6 +20,21 @@ public class SplashScreen extends javax.swing.JFrame {
      */
     public SplashScreen() {
         initComponents();
+    }
+    
+    private class Ucitanje extends Thread{
+
+        @Override
+        public void run() {
+            Session s = HibernateUtil.getSession();
+            if(s.getMetamodel().getEntities().size()>0){
+                new Autorizacija().setVisible(true);
+                dispose();
+            }else{
+                JOptionPane.showMessageDialog(getRootPane(), "Problem s bazom podataka");
+            }
+        }
+        
     }
 
     /**
