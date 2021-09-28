@@ -8,6 +8,7 @@ package hr.edunova.zavrsnihib.util;
 import com.github.javafaker.Faker;
 import hr.edunova.zavrsnihib.model.Djelatnik;
 import hr.edunova.zavrsnihib.model.Korisnik;
+import hr.edunova.zavrsnihib.model.Operater;
 import hr.edunova.zavrsnihib.model.Pcshop;
 import hr.edunova.zavrsnihib.model.Proizvod;
 import hr.edunova.zavrsnihib.model.Racun;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import org.hibernate.Session;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
@@ -29,7 +31,13 @@ public class HibernateSessionPocetniInsert {
         //prije rada s hibernate zapoceti transakciju
         s.beginTransaction();
         
+        Operater o = new Operater();
+        o.setIme("Edunova");
+        o.setPrezime("Operater");
+        o.setEmail("operaterpc@edunova.hr");
+        o.setLozinka(BCrypt.hashpw("o", BCrypt.gensalt()));
         
+        s.save(o);
         
         Pcshop java = new Pcshop();
         java.setNaziv("Edunova PC");
