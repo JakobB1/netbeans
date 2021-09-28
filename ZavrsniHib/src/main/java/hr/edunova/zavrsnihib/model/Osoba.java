@@ -17,10 +17,10 @@ public abstract class Osoba extends Entitet{
     
     private String ime;
     private String prezime;
-    private String email;
-
+    
     @Column(columnDefinition = "char(11)")
     private String oib;
+    private String email;
     
     public String getIme() {
         return ime;
