@@ -20,6 +20,10 @@ public class SplashScreen extends javax.swing.JFrame {
      */
     public SplashScreen() {
         initComponents();
+        
+        Ucitanje ucitanje = new Ucitanje();
+        ucitanje.start();
+        
     }
     
     private class Ucitanje extends Thread{
@@ -48,7 +52,6 @@ public class SplashScreen extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/no-image.jpg"))); // NOI18N

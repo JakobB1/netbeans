@@ -20,15 +20,6 @@ public class Autorizacija extends javax.swing.JFrame {
      */
     public Autorizacija() {
         initComponents();
-        
-        Session s = HibernateUtil.getSession();
-        if(s.getMetamodel().getEntities().size()>0){
-            new Autorizacija().setVisible(true);
-            dispose();
-        }else{
-            JOptionPane.showMessageDialog(getRootPane(), "Problem s bazom podataka");
-        }
-        
     }
 
     /**
@@ -41,6 +32,7 @@ public class Autorizacija extends javax.swing.JFrame {
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Autorizacija");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
