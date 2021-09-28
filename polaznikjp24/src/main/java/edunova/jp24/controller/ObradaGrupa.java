@@ -22,7 +22,7 @@ public class ObradaGrupa extends Obrada<Grupa>{
 
     @Override
     protected void kontrolaCreate() throws EdunovaException {
-        
+        kontrolaSmjer();
     }
 
     @Override
@@ -34,8 +34,11 @@ public class ObradaGrupa extends Obrada<Grupa>{
     protected void kontrolaDelete() throws EdunovaException {
         
     }
-    
-    
-    
-    
+
+    private void kontrolaSmjer() throws EdunovaException{
+        if(entitet.getSmjer()==null || entitet.getSmjer().getId().equals(Long.valueOf(0))){
+            throw new EdunovaException("Smjer obavezno");
+        }
+        
+    }
 }
