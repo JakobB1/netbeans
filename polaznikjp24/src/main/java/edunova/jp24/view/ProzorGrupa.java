@@ -6,9 +6,11 @@
 package edunova.jp24.view;
 
 import edunova.jp24.controller.ObradaGrupa;
+import edunova.jp24.controller.ObradaPredavac;
 import edunova.jp24.controller.ObradaSmjer;
 import edunova.jp24.util.Aplikacija;
 import edunova.jp24.model.Grupa;
+import edunova.jp24.model.Predavac;
 import edunova.jp24.model.Smjer;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
@@ -45,6 +47,8 @@ public class ProzorGrupa extends javax.swing.JFrame implements ProzorSucelje{
         txtNaziv = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         cmbSmjer = new javax.swing.JComboBox<>();
+        cmbPredavac = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -59,6 +63,8 @@ public class ProzorGrupa extends javax.swing.JFrame implements ProzorSucelje{
 
         jLabel2.setText("Smjer");
 
+        jLabel3.setText("Predavac");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -71,7 +77,9 @@ public class ProzorGrupa extends javax.swing.JFrame implements ProzorSucelje{
                     .addComponent(jLabel1)
                     .addComponent(txtNaziv, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(cmbSmjer, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbSmjer, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(cmbPredavac, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(99, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -86,7 +94,11 @@ public class ProzorGrupa extends javax.swing.JFrame implements ProzorSucelje{
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmbSmjer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cmbSmjer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cmbPredavac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
@@ -103,11 +115,18 @@ public class ProzorGrupa extends javax.swing.JFrame implements ProzorSucelje{
         var e = obrada.getEntitet();
         
         txtNaziv.setText(e.getNaziv());
-        //postaviti smjer u cmb 
+        //postaviti smjer u cmb
         // u modelu klasa Smjer generirao sam equals i hashCode metode - ne bih koristio
         cmbSmjer.setSelectedItem(e.getSmjer());
-        System.out.println(e.getSmjer().hashCode());
         
+        // označavanje predavača "ručno - nema potrebe za equals i hashcode metode generiranje
+        DefaultComboBoxModel<Predavac> m = (DefaultComboBoxModel<Predavac>) cmbPredavac.getModel();
+        for(int i=0;i<m.getSize();i++){
+            if(m.getElementAt(i).getId().equals(e.getPredavac().getId())){
+                cmbPredavac.setSelectedIndex(i);
+                break;
+            }
+        }
     }//GEN-LAST:event_lstEntitetiValueChanged
 
     @Override
@@ -126,7 +145,14 @@ public class ProzorGrupa extends javax.swing.JFrame implements ProzorSucelje{
         new ObradaSmjer().read().forEach(s->{m.addElement(s);});
         cmbSmjer.setModel(m);
         
-        
+        DefaultComboBoxModel<Predavac> mp = new DefaultComboBoxModel<>();
+        Predavac p = new Predavac();
+        p.setId(Long.valueOf(0));
+        p.setIme("Nije");
+        p.setPrezime("odabran");
+        mp.addElement(p);
+        new ObradaPredavac().read().forEach(pr->{mp.addElement(pr);});
+        cmbPredavac.setModel(mp);
     }
 
     @Override
@@ -139,9 +165,11 @@ public class ProzorGrupa extends javax.swing.JFrame implements ProzorSucelje{
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<Predavac> cmbPredavac;
     private javax.swing.JComboBox<Smjer> cmbSmjer;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList<Grupa> lstEntiteti;
     private javax.swing.JTextField txtNaziv;
