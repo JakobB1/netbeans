@@ -8,6 +8,7 @@ package edunova.jp24.model;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
@@ -70,5 +71,48 @@ public class Smjer extends Entitet{
     public String toString() {
         return naziv;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 23 * hash + Objects.hashCode(this.naziv);
+        hash = 23 * hash + Objects.hashCode(this.trajanje);
+        hash = 23 * hash + Objects.hashCode(this.cijena);
+        hash = 23 * hash + Objects.hashCode(this.certifikat);
+        hash = 23 * hash + Objects.hashCode(this.grupe);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Smjer other = (Smjer) obj;
+        if (!Objects.equals(this.naziv, other.naziv)) {
+            return false;
+        }
+        if (!Objects.equals(this.trajanje, other.trajanje)) {
+            return false;
+        }
+        if (!Objects.equals(this.cijena, other.cijena)) {
+            return false;
+        }
+        if (!Objects.equals(this.certifikat, other.certifikat)) {
+            return false;
+        }
+        if (!Objects.equals(this.grupe, other.grupe)) {
+            return false;
+        }
+        return true;
+    }
+ 
+    
     
 }

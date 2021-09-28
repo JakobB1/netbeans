@@ -103,6 +103,10 @@ public class ProzorGrupa extends javax.swing.JFrame implements ProzorSucelje{
         var e = obrada.getEntitet();
         
         txtNaziv.setText(e.getNaziv());
+        //postaviti smjer u cmb 
+        // u modelu klasa Smjer generirao sam equals i hashCode metode - ne bih koristio
+        cmbSmjer.setSelectedItem(e.getSmjer());
+        System.out.println(e.getSmjer().hashCode());
         
     }//GEN-LAST:event_lstEntitetiValueChanged
 
