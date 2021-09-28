@@ -5,6 +5,8 @@
  */
 package hr.edunova.zavrsnihib.view;
 
+import hr.edunova.zavrsnihib.controller.ObradaOperater;
+import hr.edunova.zavrsnihib.model.Operater;
 import hr.edunova.zavrsnihib.util.HibernateUtil;
 import javax.swing.JOptionPane;
 import org.hibernate.Session;
@@ -14,12 +16,15 @@ import org.hibernate.Session;
  * @author jalep
  */
 public class Autorizacija extends javax.swing.JFrame {
+    
+    private ObradaOperater obradaOperater;
 
     /**
      * Creates new form Autorizacija
      */
     public Autorizacija() {
         initComponents();
+        obradaOperater = new ObradaOperater();
     }
 
     /**
@@ -44,9 +49,12 @@ public class Autorizacija extends javax.swing.JFrame {
 
         jLabel2.setText("Lozinka");
 
-        pswLozinka.setText("jPasswordField1");
-
         btnLogin.setText("Login");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -82,6 +90,28 @@ public class Autorizacija extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        if(txtEmail.getText().trim().length()==0){
+            JOptionPane.showMessageDialog(getRootPane(), "Email obavezno");
+            return;
+        }
+        
+        String lozinka = String.valueOf(pswLozinka.getPassword());
+        if(lozinka.trim().length()==0){
+            JOptionPane.showMessageDialog(getRootPane(), "Lozinka obavezno");
+            return;
+        }
+        
+        Operater oper = obradaOperater.autoriziraj(txtEmail.getText(), lozinka);
+        
+        if(oper==null){
+            JOptionPane.showMessageDialog(getRootPane(), "Neispravna kombinacija email i lozinka");
+            return;
+        }
+        
+        // ovdje smo autorizirani
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     
 
