@@ -12,6 +12,7 @@ import hr.edunova.zavrsnihib.util.EdunovaException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -28,14 +29,14 @@ public class ProzorPcshop extends javax.swing.JFrame {
         initComponents();
         obradaPcshop = new ObradaPcshop();
         postavke();
-        ucitajPcshopove();
+        ucitaj();
     }
     
     private void postavke(){
         setTitle(Aplikacija.getNaslov("Pcshopovi"));
     }
     
-    private void ucitajPcshopove() {
+    private void ucitaj() {
         DefaultListModel<Pcshop> m = new DefaultListModel<>();
         
         obradaPcshop.read().forEach(s->{m.addElement(s);});
@@ -69,6 +70,11 @@ public class ProzorPcshop extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        lstPcshopovi.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                lstPcshopoviValueChanged(evt);
+            }
+        });
         jScrollPane1.setViewportView(lstPcshopovi);
 
         jLabel1.setText("Naziv");
@@ -165,9 +171,23 @@ public class ProzorPcshop extends javax.swing.JFrame {
         try {
             obradaPcshop.create();
         } catch (EdunovaException ex) {
+            JOptionPane.showMessageDialog(getParent(), ex.getPoruka());
             return;
         }
     }//GEN-LAST:event_btnDodajActionPerformed
+
+    private void lstPcshopoviValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstPcshopoviValueChanged
+        if(evt.getValueIsAdjusting() || lstPcshopovi.getSelectedValue()==null){
+            return;
+        }
+        obradaPcshop.setEntitet(lstPcshopovi.getSelectedValue());
+        var pc = obradaPcshop.getEntitet();
+        pc.setNaziv(txtNaziv.getText());
+        pc.setVlasnik(txtVlasnik.getText());
+        pc.setOib(txtOib.getText());
+        pc.setIban(txtIban.getText());
+        pc.setCertifikat(chbCertifikat.isSelected());
+    }//GEN-LAST:event_lstPcshopoviValueChanged
 
     
 
