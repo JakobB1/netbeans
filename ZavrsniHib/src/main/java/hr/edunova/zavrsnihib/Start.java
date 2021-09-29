@@ -24,7 +24,7 @@ public class Start {
         //IzlistanjeObjekataIzBaze.odradiPosao();
         //IzlistanjeObjekataIzBaze.radSControllerKlasom();
         //RadSKontrolerima.kreirajPcshop();
-        HibernateSessionPocetniInsert.odradiPosao();
-        //new SplashScreen().setVisible(true);
+        //HibernateSessionPocetniInsert.odradiPosao();
+        new SplashScreen().setVisible(true);
    }
 }
