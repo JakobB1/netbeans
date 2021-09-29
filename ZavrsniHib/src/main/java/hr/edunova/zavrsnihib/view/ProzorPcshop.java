@@ -9,9 +9,6 @@ import hr.edunova.zavrsnihib.controller.ObradaPcshop;
 import hr.edunova.zavrsnihib.model.Pcshop;
 import hr.edunova.zavrsnihib.util.Aplikacija;
 import hr.edunova.zavrsnihib.util.EdunovaException;
-import java.math.BigDecimal;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -54,8 +51,6 @@ public class ProzorPcshop extends javax.swing.JFrame implements ProzorSucelje{
         jLabel3 = new javax.swing.JLabel();
         txtIban = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtDjelatnik = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
         chbCertifikat = new javax.swing.JCheckBox();
         btnDodaj = new javax.swing.JButton();
         btnPromjeni = new javax.swing.JButton();
@@ -77,8 +72,6 @@ public class ProzorPcshop extends javax.swing.JFrame implements ProzorSucelje{
         jLabel3.setText("OIB");
 
         jLabel4.setText("Iban");
-
-        jLabel5.setText("Djelatnik");
 
         chbCertifikat.setText("Certificirano");
 
@@ -120,8 +113,6 @@ public class ProzorPcshop extends javax.swing.JFrame implements ProzorSucelje{
                     .addComponent(txtOib, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
                     .addComponent(txtIban, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtDjelatnik, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(chbCertifikat)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnDodaj, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -154,11 +145,7 @@ public class ProzorPcshop extends javax.swing.JFrame implements ProzorSucelje{
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtIban, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtDjelatnik, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(69, 69, 69)
                         .addComponent(chbCertifikat)
                         .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -181,11 +168,13 @@ public class ProzorPcshop extends javax.swing.JFrame implements ProzorSucelje{
         }
         obrada.setEntitet(lstEntiteti.getSelectedValue());
         var pc = obrada.getEntitet();
-        pc.setNaziv(txtNaziv.getText());
-        pc.setVlasnik(txtVlasnik.getText());
-        pc.setOib(txtOib.getText());
-        pc.setIban(txtIban.getText());
-        pc.setCertifikat(chbCertifikat.isSelected());
+        txtNaziv.setText(pc.getNaziv());
+        txtVlasnik.setText(pc.getVlasnik());
+        txtOib.setText(pc.getOib());
+        txtIban.setText(pc.getIban());
+        
+        
+        
     }//GEN-LAST:event_lstEntitetiValueChanged
 
     private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
@@ -201,11 +190,9 @@ public class ProzorPcshop extends javax.swing.JFrame implements ProzorSucelje{
     }//GEN-LAST:event_btnDodajActionPerformed
 
     private void btnPromjeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromjeniActionPerformed
-        obrada.setEntitet(new Pcshop());
         postaviVrijedostiUEntitet();
-
         try {
-            obrada.create();
+            obrada.update();
             ucitaj();
         } catch (EdunovaException ex) {
             JOptionPane.showMessageDialog(getParent(), ex.getPoruka());
@@ -227,6 +214,7 @@ public class ProzorPcshop extends javax.swing.JFrame implements ProzorSucelje{
         pc.setVlasnik(txtVlasnik.getText());
         pc.setOib(txtOib.getText());
         pc.setIban(txtIban.getText());
+        
         pc.setCertifikat(chbCertifikat.isSelected());
     }
     
@@ -250,10 +238,8 @@ public class ProzorPcshop extends javax.swing.JFrame implements ProzorSucelje{
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList<Pcshop> lstEntiteti;
-    private javax.swing.JTextField txtDjelatnik;
     private javax.swing.JTextField txtIban;
     private javax.swing.JTextField txtNaziv;
     private javax.swing.JTextField txtOib;
