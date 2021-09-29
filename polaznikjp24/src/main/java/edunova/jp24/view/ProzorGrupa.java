@@ -5,6 +5,7 @@
  */
 package edunova.jp24.view;
 
+import com.github.lgooddatepicker.components.DatePickerSettings;
 import edunova.jp24.controller.ObradaGrupa;
 import edunova.jp24.controller.ObradaPredavac;
 import edunova.jp24.controller.ObradaSmjer;
@@ -12,8 +13,15 @@ import edunova.jp24.util.Aplikacija;
 import edunova.jp24.model.Grupa;
 import edunova.jp24.model.Predavac;
 import edunova.jp24.model.Smjer;
+import edunova.jp24.util.EdunovaException;
+import java.time.ZoneId;
+import java.util.Date;
+import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -49,9 +57,13 @@ public class ProzorGrupa extends javax.swing.JFrame implements ProzorSucelje{
         cmbSmjer = new javax.swing.JComboBox<>();
         cmbPredavac = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        dpDatumPocetka = new com.github.lgooddatepicker.components.DatePicker();
+        btnDodaj = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        lstEntiteti.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         lstEntiteti.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 lstEntitetiValueChanged(evt);
@@ -65,6 +77,15 @@ public class ProzorGrupa extends javax.swing.JFrame implements ProzorSucelje{
 
         jLabel3.setText("Predavac");
 
+        jLabel4.setText("Datum pocetka");
+
+        btnDodaj.setText("Dodaj");
+        btnDodaj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDodajActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -73,20 +94,24 @@ public class ProzorGrupa extends javax.swing.JFrame implements ProzorSucelje{
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(txtNaziv)
-                    .addComponent(cmbSmjer, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cmbPredavac, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel1)
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel3)
+                        .addComponent(txtNaziv)
+                        .addComponent(cmbSmjer, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cmbPredavac, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel4)
+                    .addComponent(dpDatumPocetka, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDodaj))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -99,8 +124,14 @@ public class ProzorGrupa extends javax.swing.JFrame implements ProzorSucelje{
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmbPredavac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                        .addComponent(cmbPredavac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(dpDatumPocetka, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnDodaj)))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         pack();
@@ -129,11 +160,35 @@ public class ProzorGrupa extends javax.swing.JFrame implements ProzorSucelje{
         }
         
         // 3. način jest korištenje LOMBOK https://projectlombok.org/ anotacija - ne radi s NetBeans
+        
+        if(e.getDatumPocetka()!=null){
+            dpDatumPocetka.setDate(e.getDatumPocetka().toInstant().atZone(ZoneId.systemDefault()).
+                    toLocalDate());
+        }
+        
     }//GEN-LAST:event_lstEntitetiValueChanged
+
+    private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
+        obrada.setEntitet(new Grupa());
+        postaviVrijedostiUEntitet();
+        try {
+            obrada.create();
+            ucitaj();
+        } catch (EdunovaException ex) {
+            JOptionPane.showMessageDialog(getRootPane(), ex.getMessage());
+        }
+    }//GEN-LAST:event_btnDodajActionPerformed
 
     @Override
     public void postaviVrijedostiUEntitet() {
-        
+        var e = obrada.getEntitet();
+        e.setNaziv(txtNaziv.getText());
+        e.setSmjer((Smjer)cmbSmjer.getSelectedItem());
+        e.setPredavac((Predavac)cmbPredavac.getSelectedItem());
+        e.setDatumPocetka(Date.from(
+                  dpDatumPocetka.getDate().atStartOfDay()
+                   .atZone(ZoneId.systemDefault()).toInstant())
+        );
     }
 
     @Override
@@ -155,6 +210,12 @@ public class ProzorGrupa extends javax.swing.JFrame implements ProzorSucelje{
         mp.addElement(p);
         new ObradaPredavac().read().forEach(pr->{mp.addElement(pr);});
         cmbPredavac.setModel(mp);
+        
+        DatePickerSettings dps = new DatePickerSettings(new Locale("hr", "HR"));
+        dps.setFormatForDatesCommonEra("dd.MM.yyyy");
+        
+        dpDatumPocetka.setSettings(dps);
+        
     }
 
     @Override
@@ -167,11 +228,14 @@ public class ProzorGrupa extends javax.swing.JFrame implements ProzorSucelje{
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDodaj;
     private javax.swing.JComboBox<Predavac> cmbPredavac;
     private javax.swing.JComboBox<Smjer> cmbSmjer;
+    private com.github.lgooddatepicker.components.DatePicker dpDatumPocetka;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList<Grupa> lstEntiteti;
     private javax.swing.JTextField txtNaziv;
