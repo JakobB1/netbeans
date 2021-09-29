@@ -21,10 +21,10 @@ public class Start {
     public static void main(String[] args) {
         //HibernateUtil.getSession();
         //Session s = HibernateUtil.getSession(); 
-        //HibernateSessionPocetniInsert.odradiPosao();
         //IzlistanjeObjekataIzBaze.odradiPosao();
         //IzlistanjeObjekataIzBaze.radSControllerKlasom();
         //RadSKontrolerima.kreirajPcshop();
-        new SplashScreen().setVisible(true);
+        HibernateSessionPocetniInsert.odradiPosao();
+        //new SplashScreen().setVisible(true);
    }
 }

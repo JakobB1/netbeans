@@ -50,7 +50,7 @@ public class HibernateSessionPocetniInsert {
         djelatnik.setOib("12345678911");
         djelatnik.setEmail("email@mail.hr");
         djelatnik.setIban("HR12345");
-        djelatnik.setBrojUgovora("1");
+        djelatnik.setBrojUgovora("/1");
         
         s.save(djelatnik);
         
