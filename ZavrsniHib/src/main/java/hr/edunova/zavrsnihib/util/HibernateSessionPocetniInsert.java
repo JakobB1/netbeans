@@ -44,6 +44,7 @@ public class HibernateSessionPocetniInsert {
         pcshop.setVlasnik("Ivo");
         pcshop.setOib("12345678911");
         pcshop.setIban("HR12345");
+        pcshop.setCertifikat(true);
         s.save(pcshop);
         
         Faker faker = new Faker();

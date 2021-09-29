@@ -227,7 +227,7 @@ public class ProzorPcshop extends javax.swing.JFrame implements ProzorSucelje{
         pc.setVlasnik(txtVlasnik.getText());
         pc.setOib(txtOib.getText());
         pc.setIban(txtIban.getText());
-        
+        pc.setCertifikat(chbCertifikat.isSelected());
     }
     
     public void postavke(){

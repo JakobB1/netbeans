@@ -198,11 +198,9 @@ public class ProzorDjelatnik extends javax.swing.JFrame implements ProzorSucelje
     }//GEN-LAST:event_btnDodajActionPerformed
 
     private void btnPromjeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromjeniActionPerformed
-        obrada.setEntitet(new Djelatnik());
         postaviVrijedostiUEntitet();
-
         try {
-            obrada.create();
+            obrada.update();
             ucitaj();
         } catch (EdunovaException ex) {
             JOptionPane.showMessageDialog(getParent(), ex.getPoruka());
