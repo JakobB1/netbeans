@@ -9,6 +9,7 @@ import hr.edunova.zavrsnihib.controller.ObradaPcshop;
 import hr.edunova.zavrsnihib.model.Pcshop;
 import hr.edunova.zavrsnihib.util.Aplikacija;
 import hr.edunova.zavrsnihib.util.EdunovaException;
+import java.math.BigDecimal;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
@@ -20,14 +21,14 @@ import javax.swing.JOptionPane;
  */
 public class ProzorPcshop extends javax.swing.JFrame implements ProzorSucelje{
     
-    private ObradaPcshop obradaPcshop;
+    private ObradaPcshop obrada;
 
     /**
      * Creates new form SmjerPcshop
      */
     public ProzorPcshop() {
         initComponents();
-        obradaPcshop = new ObradaPcshop();
+        obrada = new ObradaPcshop();
         postavke();
         ucitaj();
     }
@@ -39,13 +40,13 @@ public class ProzorPcshop extends javax.swing.JFrame implements ProzorSucelje{
     public void ucitaj() {
         DefaultListModel<Pcshop> m = new DefaultListModel<>();
         
-        obradaPcshop.read().forEach(s->{m.addElement(s);});
+        obrada.read().forEach(s->{m.addElement(s);});
         
-        lstPcshopovi.setModel(m);
+        lstEntiteti.setModel(m);
     }
     
     public void postaviVrijedostiUEntitet() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
     
     /**
@@ -58,7 +59,7 @@ public class ProzorPcshop extends javax.swing.JFrame implements ProzorSucelje{
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        lstPcshopovi = new javax.swing.JList<>();
+        lstEntiteti = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
         txtNaziv = new javax.swing.JTextField();
         txtVlasnik = new javax.swing.JTextField();
@@ -74,12 +75,12 @@ public class ProzorPcshop extends javax.swing.JFrame implements ProzorSucelje{
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        lstPcshopovi.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+        lstEntiteti.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                lstPcshopoviValueChanged(evt);
+                lstEntitetiValueChanged(evt);
             }
         });
-        jScrollPane1.setViewportView(lstPcshopovi);
+        jScrollPane1.setViewportView(lstEntiteti);
 
         jLabel1.setText("Naziv");
 
@@ -164,8 +165,8 @@ public class ProzorPcshop extends javax.swing.JFrame implements ProzorSucelje{
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
-        obradaPcshop.setEntitet(new Pcshop());
-        var pc = obradaPcshop.getEntitet();
+        obrada.setEntitet(new Pcshop());
+        var pc = obrada.getEntitet();
         pc.setNaziv(txtNaziv.getText());
         pc.setVlasnik(txtVlasnik.getText());
         pc.setOib(txtOib.getText());
@@ -173,7 +174,7 @@ public class ProzorPcshop extends javax.swing.JFrame implements ProzorSucelje{
         pc.setCertifikat(chbCertifikat.isSelected());
         
         try {
-            obradaPcshop.create();
+            obrada.create();
         } catch (EdunovaException ex) {
             JOptionPane.showMessageDialog(getParent(), ex.getPoruka());
             return;
@@ -182,18 +183,18 @@ public class ProzorPcshop extends javax.swing.JFrame implements ProzorSucelje{
 
     
     
-    private void lstPcshopoviValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstPcshopoviValueChanged
-        if(evt.getValueIsAdjusting() || lstPcshopovi.getSelectedValue()==null){
+    private void lstEntitetiValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstEntitetiValueChanged
+        if(evt.getValueIsAdjusting() || lstEntiteti.getSelectedValue()==null){
             return;
         }
-        obradaPcshop.setEntitet(lstPcshopovi.getSelectedValue());
-        var pc = obradaPcshop.getEntitet();
+        obrada.setEntitet(lstEntiteti.getSelectedValue());
+        var pc = obrada.getEntitet();
         pc.setNaziv(txtNaziv.getText());
         pc.setVlasnik(txtVlasnik.getText());
         pc.setOib(txtOib.getText());
         pc.setIban(txtIban.getText());
         pc.setCertifikat(chbCertifikat.isSelected());
-    }//GEN-LAST:event_lstPcshopoviValueChanged
+    }//GEN-LAST:event_lstEntitetiValueChanged
 
     
 
@@ -206,7 +207,7 @@ public class ProzorPcshop extends javax.swing.JFrame implements ProzorSucelje{
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList<Pcshop> lstPcshopovi;
+    private javax.swing.JList<Pcshop> lstEntiteti;
     private javax.swing.JTextField txtDjelatnik;
     private javax.swing.JTextField txtIban;
     private javax.swing.JTextField txtNaziv;

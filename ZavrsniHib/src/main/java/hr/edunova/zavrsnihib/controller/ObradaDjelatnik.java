@@ -25,7 +25,6 @@ public class ObradaDjelatnik extends ObradaOsoba<Djelatnik>{
     protected void kontrolaCreate() throws EdunovaException {
         super.kontrolaCreate();
         kontrolaBrojUgovora();
-        kontrolaIban();
     }
 
     @Override

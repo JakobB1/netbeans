@@ -45,9 +45,12 @@ public class HibernateSessionPocetniInsert {
         
         Faker faker = new Faker();
         Djelatnik djelatnik = new Djelatnik();
-        djelatnik.setIme(faker.name().lastName());
-        djelatnik.setPrezime(faker.name().lastName());
-        djelatnik.setBrojUgovora("123");
+        djelatnik.setIme(faker.name().firstName());
+        djelatnik.setPrezime(faker.name().firstName());
+        djelatnik.setOib("12345678911");
+        djelatnik.setEmail("email@mail.hr");
+        djelatnik.setIban("HR12345");
+        djelatnik.setBrojUgovora("1");
         
         s.save(djelatnik);
         
