@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
  *
  * @author jalep
  */
-public class ProzorPcshop extends javax.swing.JFrame {
+public class ProzorPcshop extends javax.swing.JFrame implements ProzorSucelje{
     
     private ObradaPcshop obradaPcshop;
 
@@ -32,16 +32,20 @@ public class ProzorPcshop extends javax.swing.JFrame {
         ucitaj();
     }
     
-    private void postavke(){
+    public void postavke(){
         setTitle(Aplikacija.getNaslov("Pcshopovi"));
     }
     
-    private void ucitaj() {
+    public void ucitaj() {
         DefaultListModel<Pcshop> m = new DefaultListModel<>();
         
         obradaPcshop.read().forEach(s->{m.addElement(s);});
         
         lstPcshopovi.setModel(m);
+    }
+    
+    public void postaviVrijedostiUEntitet() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     /**
@@ -176,6 +180,8 @@ public class ProzorPcshop extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnDodajActionPerformed
 
+    
+    
     private void lstPcshopoviValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstPcshopoviValueChanged
         if(evt.getValueIsAdjusting() || lstPcshopovi.getSelectedValue()==null){
             return;
