@@ -78,7 +78,7 @@ public class HibernateSessionPocetniInsert {
         racun.setIznos(BigDecimal.TEN);
         racun.setKolicina("100");
         racun.setNacinPlacanja("Karticno");
-        racun.setKorisnici(korisnici);
+        
         racun.setProizvod(proizvod);
         
         

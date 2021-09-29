@@ -77,5 +77,9 @@ public class Pcshop extends Entitet{
     public String toString() {
         return naziv;
     }
+
+    public void setDjelatnik(String ivan) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
