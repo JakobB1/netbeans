@@ -39,9 +39,12 @@ public class HibernateSessionPocetniInsert {
         
         s.save(o);
         
-        Pcshop java = new Pcshop();
-        java.setNaziv("Edunova PC");
-        s.save(java);
+        Pcshop pcshop = new Pcshop();
+        pcshop.setNaziv("Edunova PC");
+        pcshop.setVlasnik("Ivo");
+        pcshop.setOib("12345678911");
+        pcshop.setIban("HR12345");
+        s.save(pcshop);
         
         Faker faker = new Faker();
         Djelatnik djelatnik = new Djelatnik();

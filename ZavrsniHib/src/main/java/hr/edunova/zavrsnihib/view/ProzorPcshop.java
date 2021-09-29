@@ -33,21 +33,7 @@ public class ProzorPcshop extends javax.swing.JFrame implements ProzorSucelje{
         ucitaj();
     }
     
-    public void postavke(){
-        setTitle(Aplikacija.getNaslov("Pcshopovi"));
-    }
     
-    public void ucitaj() {
-        DefaultListModel<Pcshop> m = new DefaultListModel<>();
-        
-        obrada.read().forEach(s->{m.addElement(s);});
-        
-        lstEntiteti.setModel(m);
-    }
-    
-    public void postaviVrijedostiUEntitet() {
-        
-    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -72,6 +58,8 @@ public class ProzorPcshop extends javax.swing.JFrame implements ProzorSucelje{
         jLabel5 = new javax.swing.JLabel();
         chbCertifikat = new javax.swing.JCheckBox();
         btnDodaj = new javax.swing.JButton();
+        btnPromjeni = new javax.swing.JButton();
+        btnObrisi = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -101,6 +89,20 @@ public class ProzorPcshop extends javax.swing.JFrame implements ProzorSucelje{
             }
         });
 
+        btnPromjeni.setText("Promjeni");
+        btnPromjeni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPromjeniActionPerformed(evt);
+            }
+        });
+
+        btnObrisi.setText("Obrisi");
+        btnObrisi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnObrisiActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -120,10 +122,14 @@ public class ProzorPcshop extends javax.swing.JFrame implements ProzorSucelje{
                     .addComponent(txtIban, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
                     .addComponent(txtDjelatnik, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(btnDodaj, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(chbCertifikat, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(57, Short.MAX_VALUE))
+                    .addComponent(chbCertifikat)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnDodaj, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnPromjeni, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnObrisi, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,32 +160,18 @@ public class ProzorPcshop extends javax.swing.JFrame implements ProzorSucelje{
                         .addComponent(txtDjelatnik, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(chbCertifikat)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnDodaj, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 21, Short.MAX_VALUE)))
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnDodaj)
+                            .addComponent(btnPromjeni)
+                            .addComponent(btnObrisi))
+                        .addGap(0, 29, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
-        obrada.setEntitet(new Pcshop());
-        var pc = obrada.getEntitet();
-        pc.setNaziv(txtNaziv.getText());
-        pc.setVlasnik(txtVlasnik.getText());
-        pc.setOib(txtOib.getText());
-        pc.setIban(txtIban.getText());
-        pc.setCertifikat(chbCertifikat.isSelected());
-        
-        try {
-            obrada.create();
-        } catch (EdunovaException ex) {
-            JOptionPane.showMessageDialog(getParent(), ex.getPoruka());
-            return;
-        }
-    }//GEN-LAST:event_btnDodajActionPerformed
 
     
     
@@ -196,10 +188,63 @@ public class ProzorPcshop extends javax.swing.JFrame implements ProzorSucelje{
         pc.setCertifikat(chbCertifikat.isSelected());
     }//GEN-LAST:event_lstEntitetiValueChanged
 
-    
+    private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
+        obrada.setEntitet(new Pcshop());
+        postaviVrijedostiUEntitet();
 
+        try {
+            obrada.create();
+            ucitaj();
+        } catch (EdunovaException ex) {
+            JOptionPane.showMessageDialog(getParent(), ex.getPoruka());
+        }
+    }//GEN-LAST:event_btnDodajActionPerformed
+
+    private void btnPromjeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromjeniActionPerformed
+        obrada.setEntitet(new Pcshop());
+        postaviVrijedostiUEntitet();
+
+        try {
+            obrada.create();
+            ucitaj();
+        } catch (EdunovaException ex) {
+            JOptionPane.showMessageDialog(getParent(), ex.getPoruka());
+        }
+    }//GEN-LAST:event_btnPromjeniActionPerformed
+
+    private void btnObrisiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisiActionPerformed
+        try {
+            obrada.delete();
+            ucitaj();
+        } catch (EdunovaException ex) {
+            JOptionPane.showMessageDialog(getParent(), ex.getPoruka());
+        }
+    }//GEN-LAST:event_btnObrisiActionPerformed
+
+    public void postaviVrijedostiUEntitet() {
+        var pc = obrada.getEntitet();
+        pc.setNaziv(txtNaziv.getText());
+        pc.setVlasnik(txtVlasnik.getText());
+        pc.setOib(txtOib.getText());
+        pc.setIban(txtIban.getText());
+        
+    }
+    
+    public void postavke(){
+        setTitle(Aplikacija.getNaslov("Pcshopovi"));
+    }
+    
+    public void ucitaj() {
+        DefaultListModel<Pcshop> m = new DefaultListModel<>();
+        
+        obrada.read().forEach(pc->{m.addElement(pc);});
+        
+        lstEntiteti.setModel(m);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDodaj;
+    private javax.swing.JButton btnObrisi;
+    private javax.swing.JButton btnPromjeni;
     private javax.swing.JCheckBox chbCertifikat;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

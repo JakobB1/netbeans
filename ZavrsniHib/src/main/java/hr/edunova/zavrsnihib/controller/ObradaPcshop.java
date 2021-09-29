@@ -40,32 +40,25 @@ public class ObradaPcshop extends Obrada<Pcshop>{
 
     private void kontrolaNaziv() throws EdunovaException{
         if(entitet.getNaziv()==null || entitet.getNaziv().trim().length()==0){
-            throw new EdunovaException("Naziv obavezno");
-        }
+           throw new EdunovaException("Naziv obavezno");
+       }
         
         if(entitet.getNaziv().length()>50){
             throw new EdunovaException("Naziv ne moze biti duzi od 50 znakova");
         }
         
-        /*
-        List<Pcshop> sviPcshopovi = read();
-        for(Pcshop p: sviPcshopovi){
-            if(p.getNaziv().equals(entitet.getNaziv()))
-                throw new EdunovaException("Naziv vec postoji");
-        }        
-    }*/
         
-    Query q = session.createNativeQuery("select count(*) from pcshop where naziv=:nazivParametar");
-    q.setParameter("nazivParametar", entitet.getNaziv());
-
-    BigInteger ukupno = (BigInteger)q.getSingleResult();
         
-    if(ukupno.compareTo(BigInteger.ZERO)>0){
+        
+        Query q = session.createNativeQuery("select count(*) from pcshop where naziv=:nazivParametar");
+        q.setParameter("nazivParametar", entitet.getNaziv());
+      
+        BigInteger ukupno = (BigInteger)q.getSingleResult();
+     
+        if(ukupno.compareTo(BigInteger.ZERO)>0){
              throw new EdunovaException("Naziv vec postoji");
-        } 
-            
-    
-    
+        }
+        
     }
     
     private void kontrolaCertifikat() throws EdunovaException{
