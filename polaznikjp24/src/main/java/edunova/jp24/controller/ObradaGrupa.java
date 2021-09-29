@@ -23,21 +23,33 @@ public class ObradaGrupa extends Obrada<Grupa>{
     @Override
     protected void kontrolaCreate() throws EdunovaException {
         kontrolaSmjer();
+        kontrolaPredavac();
     }
-
+    
     @Override
     protected void kontrolaUpdate() throws EdunovaException {
-        
+        kontrolaSmjer();
+        kontrolaPredavac();
     }
 
     @Override
     protected void kontrolaDelete() throws EdunovaException {
-        
+        if(entitet.getPolaznici().size()>0){
+            throw new EdunovaException("Ne možete obrisati grupu koja ima polaznike");
+        }
     }
 
-    private void kontrolaSmjer() throws EdunovaException{
+    private void kontrolaSmjer() throws EdunovaException {
+       
         if(entitet.getSmjer()==null || entitet.getSmjer().getId().equals(Long.valueOf(0))){
             throw new EdunovaException("Smjer obavezno");
+        }
+        
+    }
+     private void kontrolaPredavac() throws EdunovaException {
+       
+        if(entitet.getPredavac()==null || entitet.getPredavac().getId().equals(Long.valueOf(0))){
+            entitet.setPredavac(null);
         }
         
     }

@@ -5,6 +5,7 @@
  */
 package edunova.jp24.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
@@ -29,7 +30,7 @@ public class Grupa extends Entitet{
     private Date datumPocetka;
     
     @ManyToMany
-    private List<Polaznik> polaznici;
+    private List<Polaznik> polaznici = new ArrayList<>();
 
     public String getNaziv() {
         return naziv;
