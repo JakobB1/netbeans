@@ -5,10 +5,15 @@
  */
 package hr.edunova.zavrsnihib.view;
 
+import hr.edunova.zavrsnihib.controller.ObradaProizvod;
 import hr.edunova.zavrsnihib.controller.ObradaRacun;
 import hr.edunova.zavrsnihib.util.Aplikacija;
 import hr.edunova.zavrsnihib.model.Racun;
+import hr.edunova.zavrsnihib.model.Proizvod;
+import hr.edunova.zavrsnihib.util.EdunovaException;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -41,6 +46,11 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
         lstEntiteti = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
         txtBrojRacuna = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        cmbProizvod = new javax.swing.JComboBox<>();
+        btnPromjeni = new javax.swing.JButton();
+        btnObrisi = new javax.swing.JButton();
+        btnDodaj = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -53,6 +63,29 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
 
         jLabel1.setText("Broj racuna");
 
+        jLabel2.setText("Proizvodi");
+
+        btnPromjeni.setText("Promjeni");
+        btnPromjeni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPromjeniActionPerformed(evt);
+            }
+        });
+
+        btnObrisi.setText("Obrisi");
+        btnObrisi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnObrisiActionPerformed(evt);
+            }
+        });
+
+        btnDodaj.setText("Dodaj");
+        btnDodaj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDodajActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -61,10 +94,19 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1)
-                    .addComponent(txtBrojRacuna, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(179, Short.MAX_VALUE))
+                    .addComponent(jLabel2)
+                    .addComponent(cmbProizvod, 0, 100, Short.MAX_VALUE)
+                    .addComponent(txtBrojRacuna))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 169, Short.MAX_VALUE)
+                .addComponent(btnDodaj, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnPromjeni, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnObrisi, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -74,9 +116,18 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtBrojRacuna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtBrojRacuna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmbProizvod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnDodaj)
+                    .addComponent(btnPromjeni)
+                    .addComponent(btnObrisi))
+                .addContainerGap())
         );
 
         pack();
@@ -90,18 +141,60 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
         
         obrada.setEntitet(lstEntiteti.getSelectedValue());
         var r = obrada.getEntitet();
+        
         txtBrojRacuna.setText(r.getBrojRacuna());
-       
+        
+        
+      
     }//GEN-LAST:event_lstEntitetiValueChanged
+
+    private void btnPromjeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromjeniActionPerformed
+        postaviVrijedostiUEntitet();
+        try {
+            obrada.update();
+            ucitaj();
+        } catch (EdunovaException ex) {
+            JOptionPane.showMessageDialog(getParent(), ex.getPoruka());
+        }
+    }//GEN-LAST:event_btnPromjeniActionPerformed
+
+    private void btnObrisiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisiActionPerformed
+        try {
+            obrada.delete();
+            ucitaj();
+        } catch (EdunovaException ex) {
+            JOptionPane.showMessageDialog(getParent(), ex.getPoruka());
+        }
+    }//GEN-LAST:event_btnObrisiActionPerformed
+
+    private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
+        obrada.setEntitet(new Racun());
+        postaviVrijedostiUEntitet();
+
+        try {
+            obrada.create();
+            ucitaj();
+        } catch (EdunovaException ex) {
+            JOptionPane.showMessageDialog(getParent(), ex.getPoruka());
+        }
+    }//GEN-LAST:event_btnDodajActionPerformed
 
     @Override
     public void postaviVrijedostiUEntitet() {
-        setTitle(Aplikacija.getNaslov("Racuni"));
+        var r = obrada.getEntitet();
+        r.setBrojRacuna(txtBrojRacuna.getText());
     }
 
     @Override
     public void postavke() {
-        
+        setTitle(Aplikacija.getNaslov("Racuni"));
+        DefaultComboBoxModel<Proizvod> m = new DefaultComboBoxModel<>();
+        Proizvod pr = new Proizvod();
+        pr.setId(Long.valueOf(0));
+        pr.setNaziv("Nije odabrano");
+        m.addElement(pr);
+        new ObradaProizvod().read().forEach(p->{m.addElement(p);});
+        cmbProizvod.setModel(m);
     }
 
     @Override
@@ -114,7 +207,12 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDodaj;
+    private javax.swing.JButton btnObrisi;
+    private javax.swing.JButton btnPromjeni;
+    private javax.swing.JComboBox<Proizvod> cmbProizvod;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList<Racun> lstEntiteti;
     private javax.swing.JTextField txtBrojRacuna;

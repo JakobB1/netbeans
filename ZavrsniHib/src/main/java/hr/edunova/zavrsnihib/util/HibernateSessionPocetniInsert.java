@@ -70,12 +70,18 @@ public class HibernateSessionPocetniInsert {
             s.save(korisnik);
         }
         
-        Proizvod proizvod = new Proizvod();
-        proizvod.setNaziv("Razer Tipkovnica");
-        proizvod.setGarancija(new Date());
-        
+        List<Proizvod>proizvodi = new ArrayList<>();
+        Proizvod proizvod;
+        for(int i=0;i<1300;i++){
+            proizvod = new Proizvod();
+            proizvod.setNaziv("Naziv proizvoda");
+            proizvod.setCijena(new BigDecimal(99.99));
+            proizvod.setDostupnost(true);
+            proizvod.setGarancija(new Date());
+            proizvod.setKodArtikla("BB123");
+            proizvod.setOpisProizvoda("Opis");
         s.save(proizvod);
-        
+        }
         
         
         Racun racun = new Racun();
@@ -86,7 +92,6 @@ public class HibernateSessionPocetniInsert {
         racun.setKolicina("100");
         racun.setNacinPlacanja("Karticno");
         
-        racun.setProizvod(proizvod);
         
         
         s.save(racun);

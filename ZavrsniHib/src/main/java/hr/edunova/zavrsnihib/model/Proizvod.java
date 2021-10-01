@@ -6,8 +6,11 @@
 package hr.edunova.zavrsnihib.model;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -23,6 +26,10 @@ public class Proizvod extends Entitet{
     private String kodArtikla;
     private Boolean dostupnost;
 
+    @OneToMany(mappedBy = "proizvod")
+    private List<Racun> grupe = new ArrayList<>();
+    
+    
     public BigDecimal getCijena() {
         return cijena;
     }
@@ -70,6 +77,12 @@ public class Proizvod extends Entitet{
     public void setDostupnost(Boolean dostupnost) {
         this.dostupnost = dostupnost;
     }
+
+    @Override
+    public String toString() {
+        return naziv;
+    }
+    
     
     
 }
