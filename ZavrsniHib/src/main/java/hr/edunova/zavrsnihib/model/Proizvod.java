@@ -83,6 +83,4 @@ public class Proizvod extends Entitet{
         return naziv;
     }
     
-    
-    
 }
