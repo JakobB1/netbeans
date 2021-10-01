@@ -101,5 +101,10 @@ public class Racun extends Entitet{
         this.djelatnik = djelatnik;
     }
 
+    @Override
+    public String toString() {
+        return brojRacuna;
+    }
+
     
 }
