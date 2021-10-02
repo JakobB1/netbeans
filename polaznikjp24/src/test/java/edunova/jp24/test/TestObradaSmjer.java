@@ -7,6 +7,7 @@ package edunova.jp24.test;
 
 import edunova.jp24.controller.ObradaSmjer;
 import edunova.jp24.model.Smjer;
+import edunova.jp24.util.EdunovaException;
 import java.math.BigDecimal;
 import static org.junit.Assert.*;
 import org.junit.Test;
@@ -38,8 +39,11 @@ public class TestObradaSmjer {
     public void kreiraj(){
         try {
             Smjer s = obrada.create();
-            assertTrue("Objekt nije pohranjen u bazu", !s.getId().equals(Long.valueOf(0)));
-        } catch (Exception e) {
+            assertFalse("Objekt nije pohranjen u bazu", s.getId().equals(Long.valueOf(0)));
+        } catch (EdunovaException e) {
+            assertFalse(e.getPoruka(), true);
+        } catch(Exception e){
+            assertFalse(e.getMessage(), true);
         }
 }
     
