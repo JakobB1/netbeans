@@ -42,8 +42,5 @@ public class HelloTest {
     @Test
     public void duzinaSmjera(){
         assertTrue("Dužina mora biti manja od 20 znakova", smjer.getNaziv().length()<20);
-    }
-    
-    
-    
+    } 
 }

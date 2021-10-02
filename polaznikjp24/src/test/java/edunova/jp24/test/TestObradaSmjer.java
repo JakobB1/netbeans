@@ -99,10 +99,6 @@ public class TestObradaSmjer {
             assertFalse(e.getPoruka(), true);
         }catch(Exception e){
             assertFalse(e.getMessage(), true);
-        }
-        
-      
+        } 
     }
-    
-    
 }
