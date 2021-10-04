@@ -27,11 +27,14 @@ public class ObradaPcshop extends Obrada<Pcshop>{
         kontrolaNaziv();
         kontrolaCertifikat();
         kontrolaOib();
+        kontrolaVlasnik();
     }
 
     @Override
     protected void kontrolaUpdate() throws EdunovaException{
         kontrolaNaziv();
+        kontrolaCertifikat();
+        kontrolaOib();
     }
 
     @Override
@@ -39,6 +42,9 @@ public class ObradaPcshop extends Obrada<Pcshop>{
         
     }
 
+    
+    
+    
     private void kontrolaNaziv() throws EdunovaException{
         if(entitet.getNaziv()==null || entitet.getNaziv().trim().length()==0){
            throw new EdunovaException("Naziv obavezno");
@@ -47,9 +53,6 @@ public class ObradaPcshop extends Obrada<Pcshop>{
         if(entitet.getNaziv().length()>50){
             throw new EdunovaException("Naziv ne moze biti duzi od 50 znakova");
         }
-        
-        
-        
         
         Query q = session.createNativeQuery("select count(*) from pcshop where naziv=:nazivParametar");
         q.setParameter("nazivParametar", entitet.getNaziv());
@@ -62,12 +65,31 @@ public class ObradaPcshop extends Obrada<Pcshop>{
         
     }
     
-    private void kontrolaCertifikat() throws EdunovaException{
-        if(entitet.getCertifikat()==null){
-            throw new EdunovaException("Indikacije certificiranosti pcshopa obavezna");
+    
+    
+    
+    private void kontrolaVlasnik() throws EdunovaException{
+        if(entitet.getVlasnik()==null || entitet.getVlasnik().trim().length()==0){
+           throw new EdunovaException("Vlasnik obavezno");
+       }
+        
+        if(entitet.getVlasnik().length()>50){
+            throw new EdunovaException("Naziv vlasnika ne moze biti duzi od 50 znakova");
         }
     }
+    
+    
+    
+    
+    private void kontrolaCertifikat() throws EdunovaException{
+      if(entitet.getCertifikat()==null){
+          throw new EdunovaException("Indikacija certificiranosti pcshopa obavezna");
+      }  
+    }
 
+    
+    
+    
     private void kontrolaOib() throws EdunovaException{
         if(!oibValjan(entitet.getOib())){
             throw new EdunovaException("OIB nije ispravan");
@@ -99,5 +121,7 @@ public class ObradaPcshop extends Obrada<Pcshop>{
 
         return kontrolni == Integer.parseInt(oib.substring(10));
     }
+
+    
     
 }
