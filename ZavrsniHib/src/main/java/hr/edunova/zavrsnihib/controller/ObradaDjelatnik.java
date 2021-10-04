@@ -24,7 +24,10 @@ public class ObradaDjelatnik extends ObradaOsoba<Djelatnik>{
     @Override
     protected void kontrolaCreate() throws EdunovaException {
         super.kontrolaCreate();
+        kontrolaIme();
+        kontrolaPrezime();
         kontrolaBrojUgovora();
+        kontrolaEmail();
     }
 
     @Override
@@ -37,12 +40,19 @@ public class ObradaDjelatnik extends ObradaOsoba<Djelatnik>{
         
     }
 
+    
+    
+    
+    
     private void kontrolaBrojUgovora() throws EdunovaException{
         if(entitet.getBrojUgovora()==null || !entitet.getBrojUgovora().contains("/")){
                throw new EdunovaException("Broj ugovora mora imati znak /");
            }
     }
 
+    
+    
+    
     private void kontrolaIban() throws EdunovaException{
         
         /*
@@ -53,6 +63,42 @@ public class ObradaDjelatnik extends ObradaOsoba<Djelatnik>{
             throw new EdunovaException("IBAN nije valjan");
         }
         */
+    }
+
+    
+    
+    
+    
+    private void kontrolaIme() throws EdunovaException{
+        if(entitet.getIme()==null || entitet.getIme().trim().length()==0){
+           throw new EdunovaException("Ime obavezno");
+       }
+        
+        if(entitet.getIme().length()>50){
+            throw new EdunovaException("Ime ne moze biti duze od 50 znakova");
+        }
+    }
+
+    
+    
+    
+    private void kontrolaPrezime() throws EdunovaException{
+        if(entitet.getPrezime()==null || entitet.getPrezime().trim().length()==0){
+           throw new EdunovaException("Prezime obavezno");
+       }
+        
+        if(entitet.getPrezime().length()>50){
+            throw new EdunovaException("Prezime ne moze biti duze od 50 znakova");
+        }
+    }
+
+    
+    
+    
+    private void kontrolaEmail() throws EdunovaException{
+        if(!(entitet.getEmail().contains("@"))){
+           throw new EdunovaException ("Email neispravan");
+       }
     }
     
 }
