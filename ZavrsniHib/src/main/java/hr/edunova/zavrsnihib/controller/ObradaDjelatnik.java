@@ -7,7 +7,9 @@ package hr.edunova.zavrsnihib.controller;
 
 import hr.edunova.zavrsnihib.model.Djelatnik;
 import hr.edunova.zavrsnihib.util.EdunovaException;
+import java.math.BigInteger;
 import java.util.List;
+import javax.persistence.Query;
 import org.apache.commons.validator.routines.IBANValidator;
 
 /**
@@ -48,6 +50,16 @@ public class ObradaDjelatnik extends ObradaOsoba<Djelatnik>{
         if(entitet.getBrojUgovora()==null || !entitet.getBrojUgovora().contains("/")){
                throw new EdunovaException("Broj ugovora mora imati znak /");
            }
+        
+        Query q = session.createNativeQuery("select count(*) from djelatnik where brojugovora=:brojugovoraParametar");
+        q.setParameter("brojugovoraParametar", entitet.getBrojUgovora());
+      
+        BigInteger ukupno = (BigInteger)q.getSingleResult();
+     
+        if(ukupno.compareTo(BigInteger.ZERO)>0){
+             throw new EdunovaException("Broj ugovora je vec postojeci");
+        }
+        
     }
 
     
@@ -99,6 +111,15 @@ public class ObradaDjelatnik extends ObradaOsoba<Djelatnik>{
         if(!(entitet.getEmail().contains("@"))){
            throw new EdunovaException ("Email neispravan");
        }
+        
+        Query q = session.createNativeQuery("select count(*) from djelatnik where email=:emailParametar");
+        q.setParameter("emailParametar", entitet.getEmail());
+      
+        BigInteger ukupno = (BigInteger)q.getSingleResult();
+     
+        if(ukupno.compareTo(BigInteger.ZERO)>0){
+             throw new EdunovaException("Email i osoba su vec postojeci");
+        }
     }
     
 }
