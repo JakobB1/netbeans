@@ -32,6 +32,8 @@ public class ObradaKorisnik extends ObradaOsoba<Korisnik>{
     @Override
     protected void kontrolaCreate() throws EdunovaException {
         super.kontrolaCreate();
+        kontrolaIme();
+        kontrolaPrezime();
     }
 
     @Override
@@ -42,6 +44,32 @@ public class ObradaKorisnik extends ObradaOsoba<Korisnik>{
     @Override
     protected void kontrolaDelete() throws EdunovaException {
         
+    }
+
+    
+    
+    
+    private void kontrolaIme() throws EdunovaException{
+        if(entitet.getIme()==null || entitet.getIme().trim().length()==0){
+           throw new EdunovaException("Ime obavezno");
+       }
+        
+        if(entitet.getIme().length()>50){
+            throw new EdunovaException("Ime ne moze biti duze od 50 znakova");
+        }
+    }
+
+    
+    
+    
+    private void kontrolaPrezime() throws EdunovaException{
+        if(entitet.getPrezime()==null || entitet.getPrezime().trim().length()==0){
+           throw new EdunovaException("Prezime obavezno");
+       }
+        
+        if(entitet.getPrezime().length()>50){
+            throw new EdunovaException("Prezime ne moze biti duze od 50 znakova");
+        }
     }
     
 }
