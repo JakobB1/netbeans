@@ -61,7 +61,7 @@ public class HibernateSessionPocetniInsert {
         
         List<Korisnik>korisnici = new ArrayList<>();
         Korisnik korisnik;
-        for(int i=0;i<1300;i++){
+        for(int i=0;i<30;i++){
             korisnik = new Korisnik();
             korisnik.setIme(faker.name().lastName());
             korisnik.setPrezime(faker.name().lastName());
@@ -72,7 +72,7 @@ public class HibernateSessionPocetniInsert {
         
         List<Proizvod>proizvodi = new ArrayList<>();
         Proizvod proizvod;
-        for(int i=0;i<1300;i++){
+        for(int i=0;i<30;i++){
             proizvod = new Proizvod();
             proizvod.setNaziv("Naziv proizvoda");
             proizvod.setCijena(new BigDecimal(99.99));
