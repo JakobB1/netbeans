@@ -85,12 +85,12 @@ public class HibernateSessionPocetniInsert {
         
         
         Racun racun = new Racun();
-        racun.setBrojRacuna("123");
+        racun.setBrojRacuna("1");
         racun.setDjelatnik(djelatnik);
         racun.setCijena(BigDecimal.TEN);
         racun.setIznos(BigDecimal.TEN);
-        racun.setKolicina("100");
-        racun.setNacinPlacanja("Karticno");
+        racun.setKolicina("1");
+        racun.setNacinPlacanja("Gotovina");
         
         
         
