@@ -34,7 +34,7 @@ public class ObradaDjelatnik extends ObradaOsoba<Djelatnik>{
 
     @Override
     protected void kontrolaUpdate() throws EdunovaException {
-        
+        kontrolaBrojUgovora();
     }
 
     @Override
@@ -47,9 +47,13 @@ public class ObradaDjelatnik extends ObradaOsoba<Djelatnik>{
     
     
     private void kontrolaBrojUgovora() throws EdunovaException{
+        if(entitet.getBrojUgovora()==null || entitet.getBrojUgovora().trim().length()==0){
+           throw new EdunovaException("Broj ugovora obavezan");
+       }
+        
         if(entitet.getBrojUgovora()==null || !entitet.getBrojUgovora().contains("/")){
                throw new EdunovaException("Broj ugovora mora imati znak /");
-           }
+       }
         
         Query q = session.createNativeQuery("select count(*) from djelatnik where brojugovora=:brojugovoraParametar");
         q.setParameter("brojugovoraParametar", entitet.getBrojUgovora());
