@@ -33,6 +33,7 @@ public class HibernateSessionPocetniInsert {
         
         
         
+        
         Operater o = new Operater();
         o.setIme("Edunova");
         o.setPrezime("Operater");
@@ -40,6 +41,7 @@ public class HibernateSessionPocetniInsert {
         o.setLozinka(BCrypt.hashpw("o", BCrypt.gensalt()));
         
         s.save(o);
+        
         
         
         
@@ -51,6 +53,7 @@ public class HibernateSessionPocetniInsert {
         pcshop.setCertifikat(true);
         
         s.save(pcshop);
+        
         
         
         
@@ -67,6 +70,7 @@ public class HibernateSessionPocetniInsert {
         
         
         
+        
         List<Korisnik>korisnici = new ArrayList<>();
         Korisnik korisnik;
         for(int i=0;i<20;i++){
@@ -80,6 +84,8 @@ public class HibernateSessionPocetniInsert {
         
         
         
+        
+        /*
         List<Proizvod>proizvodi = new ArrayList<>();
         Proizvod proizvod;
         for(int i=0;i<20;i++){
@@ -93,6 +99,8 @@ public class HibernateSessionPocetniInsert {
             
         s.save(proizvod);
         }
+        */
+        
         
         
         
@@ -107,6 +115,20 @@ public class HibernateSessionPocetniInsert {
         s.save(racun);
         
         
+        
+        
+        // Proizvodi unos
+        
+        Proizvod ryzen5 = new Proizvod();
+        ryzen5.setNaziv("Ryzen 5");
+        ryzen5.setCijena(new BigDecimal(1699.99));
+        ryzen5.setDostupnost(true);
+        ryzen5.setOpisProizvoda("Procesor");
+        ryzen5.setKodArtikla("RZ001");
+        ryzen5.setGarancija(new Date());
+        
+        
+        s.save(ryzen5);
         
         //commit ide na kraju
         s.getTransaction().commit();

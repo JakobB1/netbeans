@@ -8,7 +8,9 @@ package hr.edunova.zavrsnihib.controller;
 import hr.edunova.zavrsnihib.model.Proizvod;
 import hr.edunova.zavrsnihib.util.EdunovaException;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.List;
+import javax.persistence.Query;
 
 /**
  *
@@ -23,7 +25,9 @@ public class ObradaProizvod extends Obrada<Proizvod>{
 
     @Override
     protected void kontrolaCreate() throws EdunovaException {
+        kontrolaNaziv();
         kontrolaCijena();
+        kontrolaKodArtikla();
     }
 
     @Override
@@ -36,11 +40,39 @@ public class ObradaProizvod extends Obrada<Proizvod>{
         
     }
 
+    
+    
+
+    private void kontrolaNaziv() throws EdunovaException{
+        
+        if(entitet.getNaziv()==null || entitet.getNaziv().trim().length()==0){
+           throw new EdunovaException("Naziv proizvoda obavezno");
+       }
+    }
+    
+    
+    
+    
     private void kontrolaCijena() throws EdunovaException{
         if(entitet.getCijena()==null || entitet.getCijena().compareTo(BigDecimal.ZERO)<=0){
           throw new EdunovaException("Cijena obavezno veca od nule");
       }  
     }
+
     
     
+    
+    private void kontrolaKodArtikla() throws EdunovaException{
+        if(entitet.getKodArtikla()==null || entitet.getKodArtikla().trim().length()==0){
+           throw new EdunovaException("Kod artikla obavezan");
+    }
+        Query q = session.createNativeQuery("select count(*) from proizvod where kodartikla=:kodartiklaParametar");
+        q.setParameter("kodartiklaParametar", entitet.getKodArtikla());
+      
+        BigInteger ukupno = (BigInteger)q.getSingleResult();
+     
+        if(ukupno.compareTo(BigInteger.ZERO)>0){
+             throw new EdunovaException("Kod vec postoji");
+        }
+}
 }
