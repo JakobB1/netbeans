@@ -9,6 +9,7 @@ import hr.edunova.zavrsnihib.controller.ObradaKorisnik;
 import hr.edunova.zavrsnihib.model.Korisnik;
 import hr.edunova.zavrsnihib.util.Aplikacija;
 import hr.edunova.zavrsnihib.util.EdunovaException;
+import hr.edunova.zavrsnihib.util.EdunovaUtil;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -56,6 +57,7 @@ public class ProzorKorisnik extends javax.swing.JFrame implements ProzorSucelje{
         jLabel6 = new javax.swing.JLabel();
         txtUvjet = new javax.swing.JTextField();
         txtTrazi = new javax.swing.JButton();
+        btnGeneriraj = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -106,6 +108,13 @@ public class ProzorKorisnik extends javax.swing.JFrame implements ProzorSucelje{
             }
         });
 
+        btnGeneriraj.setText("Generiraj");
+        btnGeneriraj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGenerirajActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -113,7 +122,7 @@ public class ProzorKorisnik extends javax.swing.JFrame implements ProzorSucelje{
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -134,7 +143,10 @@ public class ProzorKorisnik extends javax.swing.JFrame implements ProzorSucelje{
                     .addComponent(jLabel2)
                     .addComponent(txtPrezime, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addComponent(txtOib, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtOib, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnGeneriraj))
                     .addComponent(jLabel4)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
@@ -165,7 +177,9 @@ public class ProzorKorisnik extends javax.swing.JFrame implements ProzorSucelje{
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtOib, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtOib, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnGeneriraj))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -180,7 +194,7 @@ public class ProzorKorisnik extends javax.swing.JFrame implements ProzorSucelje{
                             .addComponent(btnPromjeni)
                             .addComponent(btnObrisi)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         pack();
@@ -236,6 +250,10 @@ public class ProzorKorisnik extends javax.swing.JFrame implements ProzorSucelje{
         ucitaj();
     }//GEN-LAST:event_txtTraziActionPerformed
 
+    private void btnGenerirajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerirajActionPerformed
+        txtOib.setText(EdunovaUtil.getOIB());
+    }//GEN-LAST:event_btnGenerirajActionPerformed
+
     @Override
     public void postaviVrijedostiUEntitet() {
         var d = obrada.getEntitet();
@@ -264,6 +282,7 @@ public class ProzorKorisnik extends javax.swing.JFrame implements ProzorSucelje{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDodaj;
+    private javax.swing.JButton btnGeneriraj;
     private javax.swing.JButton btnObrisi;
     private javax.swing.JButton btnPromjeni;
     private javax.swing.JLabel jLabel1;
