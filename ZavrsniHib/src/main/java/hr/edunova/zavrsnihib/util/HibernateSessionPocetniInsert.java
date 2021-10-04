@@ -117,18 +117,9 @@ public class HibernateSessionPocetniInsert {
         
         
         
-        // Proizvodi unos
-        /*
-        Proizvod primjer = new Proizvod();
-        primjer.setNaziv("primjer");
-        primjer.setCijena(new BigDecimal(primjer));
-        primjer.setDostupnost(true);
-        primjer.setOpisProizvoda("primjer");
-        primjer.setKodArtikla("primjer");
-        primjer.setGarancija(new Date());
-        s.save(primjer);
-        */
+        // Proizvodi unos 
         
+        // Procesori
         Proizvod ryzen31200 = new Proizvod();
         ryzen31200.setNaziv("Ryzen 3 1200");
         ryzen31200.setCijena(new BigDecimal(109));
