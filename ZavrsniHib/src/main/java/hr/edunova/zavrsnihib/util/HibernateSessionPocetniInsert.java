@@ -31,6 +31,8 @@ public class HibernateSessionPocetniInsert {
         //prije rada s hibernate zapoceti transakciju
         s.beginTransaction();
         
+        
+        
         Operater o = new Operater();
         o.setIme("Edunova");
         o.setPrezime("Operater");
@@ -39,13 +41,18 @@ public class HibernateSessionPocetniInsert {
         
         s.save(o);
         
+        
+        
         Pcshop pcshop = new Pcshop();
         pcshop.setNaziv("Edunova PC");
         pcshop.setVlasnik("Ivo");
         pcshop.setOib("12345678911");
         pcshop.setIban("HR12345");
         pcshop.setCertifikat(true);
+        
         s.save(pcshop);
+        
+        
         
         Faker faker = new Faker();
         Djelatnik djelatnik = new Djelatnik();
@@ -59,6 +66,7 @@ public class HibernateSessionPocetniInsert {
         s.save(djelatnik);
         
         
+        
         List<Korisnik>korisnici = new ArrayList<>();
         Korisnik korisnik;
         for(int i=0;i<30;i++){
@@ -70,6 +78,8 @@ public class HibernateSessionPocetniInsert {
             s.save(korisnik);
         }
         
+        
+        
         List<Proizvod>proizvodi = new ArrayList<>();
         Proizvod proizvod;
         for(int i=0;i<30;i++){
@@ -80,8 +90,10 @@ public class HibernateSessionPocetniInsert {
             proizvod.setGarancija(new Date());
             proizvod.setKodArtikla("BB123");
             proizvod.setOpisProizvoda("Opis");
+            
         s.save(proizvod);
         }
+        
         
         
         Racun racun = new Racun();
@@ -92,9 +104,9 @@ public class HibernateSessionPocetniInsert {
         racun.setKolicina("1");
         racun.setNacinPlacanja("Gotovina");
         
-        
-        
         s.save(racun);
+        
+        
         
         //commit ide na kraju
         s.getTransaction().commit();
