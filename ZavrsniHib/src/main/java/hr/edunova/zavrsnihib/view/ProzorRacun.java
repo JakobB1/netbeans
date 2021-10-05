@@ -171,6 +171,14 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
         txtBrojRacuna.setText(r.getBrojRacuna());
         
         
+        DefaultComboBoxModel<Djelatnik> md = (DefaultComboBoxModel<Djelatnik>) cmbDjelatnik.getModel();
+        for(int i=0;i<md.getSize();i++){
+            if(md.getElementAt(i).getId().equals(r.getDjelatnik().getId())){
+                cmbDjelatnik.setSelectedIndex(i);
+                break;
+            }
+        }      
+        
     }//GEN-LAST:event_lstEntitetiValueChanged
 
     private void btnPromjeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromjeniActionPerformed
