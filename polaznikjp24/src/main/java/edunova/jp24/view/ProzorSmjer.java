@@ -242,10 +242,7 @@ public class ProzorSmjer extends javax.swing.JFrame implements ProzorSucelje{
     private javax.swing.JTextField txtTrajanje;
     // End of variables declaration//GEN-END:variables
 
-    @Override
-    public void postaviVrijedostiUEntitet() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 
     
 }

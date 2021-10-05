@@ -223,7 +223,7 @@ public class ProzorPolaznik extends javax.swing.JFrame implements ProzorSucelje{
 
     private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
         obrada.setEntitet(new Polaznik());
-        postaviVrijedostiUEntitet();
+        postaviVrijednostiUEntitet();
 
         try {
             obrada.create();
@@ -235,7 +235,7 @@ public class ProzorPolaznik extends javax.swing.JFrame implements ProzorSucelje{
     }//GEN-LAST:event_btnDodajActionPerformed
 
     private void btnPromjeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromjeniActionPerformed
-        postaviVrijedostiUEntitet();
+        postaviVrijednostiUEntitet();
         try {
             obrada.update();
             ucitaj();
@@ -263,7 +263,7 @@ public class ProzorPolaznik extends javax.swing.JFrame implements ProzorSucelje{
     }//GEN-LAST:event_btnGenerirajActionPerformed
 
     @Override
-    public void postaviVrijedostiUEntitet() {
+    public void postaviVrijednostiUEntitet() {
         var f = obrada.getEntitet();
         f.setIme(txtIme.getText());
         f.setPrezime(txtPrezime.getText());

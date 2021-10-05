@@ -178,7 +178,7 @@ public class ProzorPredavac extends javax.swing.JFrame implements ProzorSucelje{
 
     private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
         obrada.setEntitet(new Predavac());
-        postaviVrijedostiUEntitet();
+        postaviVrijednostiUEntitet();
 
         try {
             obrada.create();
@@ -190,7 +190,7 @@ public class ProzorPredavac extends javax.swing.JFrame implements ProzorSucelje{
     }//GEN-LAST:event_btnDodajActionPerformed
 
     private void btnPromjeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromjeniActionPerformed
-        postaviVrijedostiUEntitet();
+        postaviVrijednostiUEntitet();
         try {
             obrada.update();
             ucitaj();
@@ -210,7 +210,7 @@ public class ProzorPredavac extends javax.swing.JFrame implements ProzorSucelje{
     }//GEN-LAST:event_btnObrisiActionPerformed
 
     @Override
-    public void postaviVrijedostiUEntitet() {
+    public void postaviVrijednostiUEntitet() {
         var e = obrada.getEntitet();
         e.setIme(txtIme.getText());
         e.setPrezime(txtPrezime.getText());
