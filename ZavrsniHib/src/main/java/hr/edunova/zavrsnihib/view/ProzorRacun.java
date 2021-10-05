@@ -225,13 +225,18 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
         Djelatnik d = new Djelatnik();
         d.setId(Long.valueOf(0));
         d.setIme("Nije");
-        d.setPrezime("Odabran" );
+        d.setPrezime("odabran" );
         md.addElement(d);
         new ObradaDjelatnik().read().forEach(dj->{md.addElement(dj);});
         cmbDjelatnik.setModel(md);
         
         DefaultComboBoxModel<Korisnik> mk = new DefaultComboBoxModel<>();
         new ObradaKorisnik().read().forEach(k->{mk.addElement(k);});
+        Korisnik k = new Korisnik();
+        k.setId(Long.valueOf(0));
+        k.setIme("Nije");
+        k.setPrezime("odabran" );
+        mk.addElement(k);
         cmbKorisnik.setModel(mk);
     }
 
