@@ -17,6 +17,7 @@ import edunova.jp24.model.Predavac;
 import edunova.jp24.model.Smjer;
 import edunova.jp24.util.EdunovaException;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
@@ -385,6 +386,13 @@ public class ProzorGrupa extends javax.swing.JFrame implements ProzorSucelje{
                   dpDatumPocetka.getDate().atStartOfDay()
                    .atZone(ZoneId.systemDefault()).toInstant())
         );
+        DefaultListModel<Polaznik> m = (DefaultListModel<Polaznik>) lstPolazniciNaGrupi.getModel();
+        List<Polaznik> lista = new ArrayList<>();
+        for (int i = 0; i < m.getSize(); i++) {
+            lista.add(m.get(i));
+        }
+        //System.out.println("Lista: " + lista.size());
+        e.setPolaznici(lista);
     }
 
     @Override
