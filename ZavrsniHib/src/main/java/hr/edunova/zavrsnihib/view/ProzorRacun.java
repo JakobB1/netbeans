@@ -6,6 +6,7 @@
 package hr.edunova.zavrsnihib.view;
 
 import hr.edunova.zavrsnihib.controller.ObradaDjelatnik;
+import hr.edunova.zavrsnihib.controller.ObradaKorisnik;
 import hr.edunova.zavrsnihib.controller.ObradaPcshop;
 import hr.edunova.zavrsnihib.controller.ObradaProizvod;
 import hr.edunova.zavrsnihib.controller.ObradaRacun;
@@ -14,6 +15,7 @@ import hr.edunova.zavrsnihib.util.Aplikacija;
 import hr.edunova.zavrsnihib.model.Racun;
 import hr.edunova.zavrsnihib.model.Proizvod;
 import hr.edunova.zavrsnihib.model.Pcshop;
+import hr.edunova.zavrsnihib.model.Korisnik;
 import hr.edunova.zavrsnihib.util.EdunovaException;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
@@ -57,6 +59,8 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
         cmbPcshop = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         cmbDjelatnik = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        cmbKorisnik = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -94,6 +98,8 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
 
         jLabel3.setText("Djelatnik");
 
+        jLabel4.setText("Korisnik");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -108,7 +114,9 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
                     .addComponent(jLabel2)
                     .addComponent(cmbPcshop, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3)
-                    .addComponent(cmbDjelatnik, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(cmbDjelatnik, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel4)
+                    .addComponent(cmbKorisnik, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 169, Short.MAX_VALUE)
@@ -131,10 +139,14 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmbPcshop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbDjelatnik, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cmbDjelatnik, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cmbKorisnik, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -217,6 +229,10 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
         md.addElement(d);
         new ObradaDjelatnik().read().forEach(dj->{md.addElement(dj);});
         cmbDjelatnik.setModel(md);
+        
+        DefaultComboBoxModel<Korisnik> mk = new DefaultComboBoxModel<>();
+        new ObradaKorisnik().read().forEach(k->{mk.addElement(k);});
+        cmbKorisnik.setModel(mk);
     }
 
     @Override
@@ -233,10 +249,12 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
     private javax.swing.JButton btnObrisi;
     private javax.swing.JButton btnPromjeni;
     private javax.swing.JComboBox<Djelatnik> cmbDjelatnik;
+    private javax.swing.JComboBox<Korisnik> cmbKorisnik;
     private javax.swing.JComboBox<Pcshop> cmbPcshop;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList<Racun> lstEntiteti;
     private javax.swing.JTextField txtBrojRacuna;
