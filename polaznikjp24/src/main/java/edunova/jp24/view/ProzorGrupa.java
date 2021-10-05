@@ -20,6 +20,7 @@ import java.time.ZoneId;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -134,6 +135,11 @@ public class ProzorGrupa extends javax.swing.JFrame implements ProzorSucelje{
         jLabel6.setText("Polaznici u bazi... Uvjet ( ime, prezime, OIB)");
 
         btnObrisiIzGrupe.setText(">>");
+        btnObrisiIzGrupe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnObrisiIzGrupeActionPerformed(evt);
+            }
+        });
 
         btnDodajUGrupu.setText("<<");
         btnDodajUGrupu.addActionListener(new java.awt.event.ActionListener() {
@@ -340,6 +346,25 @@ public class ProzorGrupa extends javax.swing.JFrame implements ProzorSucelje{
         lstPolazniciNaGrupi.repaint();
     }//GEN-LAST:event_btnDodajUGrupuActionPerformed
 
+    private void btnObrisiIzGrupeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisiIzGrupeActionPerformed
+        List<Polaznik> lista = lstPolazniciNaGrupi.getSelectedValuesList();
+
+        for (Polaznik p : lista) {
+            obrisiPolaznikaIzGrupe(p);
+        }
+        lstPolazniciNaGrupi.repaint();
+    }//GEN-LAST:event_btnObrisiIzGrupeActionPerformed
+
+    private void obrisiPolaznikaIzGrupe(Polaznik p) {
+        DefaultListModel<Polaznik> m = (DefaultListModel<Polaznik>) lstPolazniciNaGrupi.getModel();
+        for (int i = 0; i < m.getSize(); i++) {
+            if (m.get(i).getId().equals(p.getId())) {
+                m.removeElementAt(i);
+                return;
+            }
+        }
+    }
+    
     private boolean postojiPolaznikUModelu(DefaultListModel<Polaznik> m, Polaznik p) {
         for (int i = 0; i < m.getSize(); i++) {
             if (m.get(i).getId().equals(p.getId())) {
