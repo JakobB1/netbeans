@@ -295,10 +295,13 @@ public class ProzorGrupa extends javax.swing.JFrame implements ProzorSucelje{
 
     private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
         obrada.setEntitet(new Grupa());
+
         postaviVrijedostiUEntitet();
         try {
+            //System.out.println(obrada.getEntitet().getPolaznici().size());
             obrada.create();
             ucitaj();
+            pocistiPodatke();
         } catch (EdunovaException ex) {
             JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
         }
@@ -319,18 +322,40 @@ public class ProzorGrupa extends javax.swing.JFrame implements ProzorSucelje{
     }//GEN-LAST:event_btnPromjeniActionPerformed
          
     private void btnObrisiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisiActionPerformed
-        if(obrada.getEntitet()==null){
-           JOptionPane.showMessageDialog(getRootPane(), "Prvo odaberite grupu");
-           return;
-       }
-        try {
-            obrada.delete();
-            ucitaj();
-        } catch (EdunovaException ex) {
-            JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
+        if (obrada.getEntitet() == null) {
+            JOptionPane.showMessageDialog(getRootPane(), "Prvo odaberite grupu");
+            return;
+        }
+        boolean brisanje = true;
+        if (obrada.getEntitet().getPolaznici().size() > 0) {
+            if (JOptionPane.showConfirmDialog(getParent(), "Grupa ima polaznike. Sigurno sve obrisati",
+                    "Brisanje grupe", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                obrada.getEntitet().setPolaznici(new ArrayList<Polaznik>());
+            } else {
+                brisanje = false;
+            }
+        }
+        if (brisanje) {
+            try {
+                obrada.delete();
+                ucitaj();
+                pocistiPodatke();
+            } catch (EdunovaException ex) {
+                JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
+            }
         }
     }//GEN-LAST:event_btnObrisiActionPerformed
 
+    private void pocistiPodatke() {
+
+        txtNaziv.setText("");
+        cmbSmjer.setSelectedIndex(0);
+        cmbPredavac.setSelectedIndex(0);
+        dpDatumPocetka.setDateToToday();
+        lstPolazniciNaGrupi.setModel(new DefaultListModel<>());
+
+    }
+    
     private void btnTrazi2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrazi2ActionPerformed
         DefaultListModel<Polaznik> m = new DefaultListModel<>();
         obradaPolaznik.read(txtUvjet.getText()).forEach(p->{m.addElement(p);});
@@ -345,6 +370,7 @@ public class ProzorGrupa extends javax.swing.JFrame implements ProzorSucelje{
             }
         }
         lstPolazniciNaGrupi.repaint();
+
     }//GEN-LAST:event_btnDodajUGrupuActionPerformed
 
     private void btnObrisiIzGrupeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisiIzGrupeActionPerformed
@@ -419,6 +445,8 @@ public class ProzorGrupa extends javax.swing.JFrame implements ProzorSucelje{
         dps.setFormatForDatesCommonEra("dd.MM.yyyy");
         
         dpDatumPocetka.setSettings(dps);
+        
+        lstPolazniciNaGrupi.setModel(new DefaultListModel<Polaznik>());
         
     }
 
