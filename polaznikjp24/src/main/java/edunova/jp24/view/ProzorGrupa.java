@@ -67,7 +67,9 @@ public class ProzorGrupa extends javax.swing.JFrame implements ProzorSucelje{
         btnObrisi = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        lstPolaziniciNaGrupi = new javax.swing.JList<>();
+        lstPolazniciUBazi = new javax.swing.JList<>();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        lstPolaziniciNaGrupi1 = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -110,7 +112,9 @@ public class ProzorGrupa extends javax.swing.JFrame implements ProzorSucelje{
 
         jLabel5.setText("Polaznici na grupi");
 
-        jScrollPane2.setViewportView(lstPolaziniciNaGrupi);
+        jScrollPane2.setViewportView(lstPolazniciUBazi);
+
+        jScrollPane3.setViewportView(lstPolaziniciNaGrupi1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -135,29 +139,40 @@ public class ProzorGrupa extends javax.swing.JFrame implements ProzorSucelje{
                     .addComponent(txtNaziv)
                     .addComponent(cmbSmjer, 0, 280, Short.MAX_VALUE)
                     .addComponent(cmbPredavac, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(307, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addComponent(jLabel5)
+                        .addContainerGap(436, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(508, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(315, 315, 315)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(46, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
                             .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtNaziv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtNaziv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(cmbSmjer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel3)
@@ -171,9 +186,16 @@ public class ProzorGrupa extends javax.swing.JFrame implements ProzorSucelje{
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(btnDodaj)
                                     .addComponent(btnPromjeni)
-                                    .addComponent(btnObrisi)))
-                            .addComponent(jScrollPane2))))
-                .addContainerGap(46, Short.MAX_VALUE))
+                                    .addComponent(btnObrisi))
+                                .addContainerGap(49, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane2)
+                                .addGap(36, 36, 36))))))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(46, 46, 46)
+                    .addComponent(jScrollPane3)
+                    .addGap(36, 36, 36)))
         );
 
         pack();
@@ -221,7 +243,7 @@ public class ProzorGrupa extends javax.swing.JFrame implements ProzorSucelje{
         });
         
         e.getPolaznici().forEach(p->{m.addElement(p);});
-        lstPolaziniciNaGrupi.setModel(m);
+        lstPolazniciUBazi.setModel(m);
     }//GEN-LAST:event_lstEntitetiValueChanged
 
     private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
@@ -324,8 +346,10 @@ public class ProzorGrupa extends javax.swing.JFrame implements ProzorSucelje{
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JList<Grupa> lstEntiteti;
-    private javax.swing.JList<Polaznik> lstPolaziniciNaGrupi;
+    private javax.swing.JList<Polaznik> lstPolaziniciNaGrupi1;
+    private javax.swing.JList<Polaznik> lstPolazniciUBazi;
     private javax.swing.JTextField txtNaziv;
     // End of variables declaration//GEN-END:variables
 }
