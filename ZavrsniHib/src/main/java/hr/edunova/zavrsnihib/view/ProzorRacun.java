@@ -170,6 +170,7 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
         
         txtBrojRacuna.setText(r.getBrojRacuna());
         
+        
     }//GEN-LAST:event_lstEntitetiValueChanged
 
     private void btnPromjeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromjeniActionPerformed
