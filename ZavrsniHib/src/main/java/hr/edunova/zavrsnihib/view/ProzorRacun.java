@@ -6,12 +6,14 @@
 package hr.edunova.zavrsnihib.view;
 
 import hr.edunova.zavrsnihib.controller.ObradaDjelatnik;
+import hr.edunova.zavrsnihib.controller.ObradaPcshop;
 import hr.edunova.zavrsnihib.controller.ObradaProizvod;
 import hr.edunova.zavrsnihib.controller.ObradaRacun;
 import hr.edunova.zavrsnihib.model.Djelatnik;
 import hr.edunova.zavrsnihib.util.Aplikacija;
 import hr.edunova.zavrsnihib.model.Racun;
 import hr.edunova.zavrsnihib.model.Proizvod;
+import hr.edunova.zavrsnihib.model.Pcshop;
 import hr.edunova.zavrsnihib.util.EdunovaException;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
@@ -51,6 +53,10 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
         btnPromjeni = new javax.swing.JButton();
         btnObrisi = new javax.swing.JButton();
         btnDodaj = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        cmbPcshop = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        cmbDjelatnik = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -84,6 +90,10 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
             }
         });
 
+        jLabel2.setText("Pcshop");
+
+        jLabel3.setText("Djelatnik");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -92,9 +102,13 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1)
-                    .addComponent(txtBrojRacuna, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtBrojRacuna, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                    .addComponent(jLabel2)
+                    .addComponent(cmbPcshop, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3)
+                    .addComponent(cmbDjelatnik, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 169, Short.MAX_VALUE)
@@ -112,7 +126,15 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtBrojRacuna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtBrojRacuna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmbPcshop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmbDjelatnik, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -179,6 +201,22 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
     public void postavke() {
         setTitle(Aplikacija.getNaslov("Racuni"));
         
+        DefaultComboBoxModel<Pcshop> mpc = new DefaultComboBoxModel<>();
+        Pcshop pcs = new Pcshop();
+        pcs.setId(Long.valueOf(0));
+        pcs.setNaziv("Nije odabrano");
+        mpc.addElement(pcs);
+        new ObradaPcshop().read().forEach(pc->{mpc.addElement(pc);});
+        cmbPcshop.setModel(mpc);
+        
+        DefaultComboBoxModel<Djelatnik> md = new DefaultComboBoxModel<>();
+        Djelatnik d = new Djelatnik();
+        d.setId(Long.valueOf(0));
+        d.setIme("Nije");
+        d.setPrezime("Odabran" );
+        md.addElement(d);
+        new ObradaDjelatnik().read().forEach(dj->{md.addElement(dj);});
+        cmbDjelatnik.setModel(md);
     }
 
     @Override
@@ -194,7 +232,11 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
     private javax.swing.JButton btnDodaj;
     private javax.swing.JButton btnObrisi;
     private javax.swing.JButton btnPromjeni;
+    private javax.swing.JComboBox<Djelatnik> cmbDjelatnik;
+    private javax.swing.JComboBox<Pcshop> cmbPcshop;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList<Racun> lstEntiteti;
     private javax.swing.JTextField txtBrojRacuna;

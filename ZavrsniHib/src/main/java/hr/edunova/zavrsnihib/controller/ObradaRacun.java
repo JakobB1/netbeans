@@ -23,6 +23,7 @@ public class ObradaRacun extends Obrada<Racun>{
     @Override
     protected void kontrolaCreate() throws EdunovaException {
         kontrolaProizvod();
+        kontrolaDjelatnik();
     }
 
     @Override
@@ -41,6 +42,12 @@ public class ObradaRacun extends Obrada<Racun>{
             throw new EdunovaException("Proizvod obavezno");
         }
         
+    }
+
+    private void kontrolaDjelatnik() throws EdunovaException{
+        if(entitet.getDjelatnik()==null || entitet.getDjelatnik().getId().equals(Long.valueOf(0))){
+            throw new EdunovaException("Djelatnik obavezan");
+        }
     }
     
 }
