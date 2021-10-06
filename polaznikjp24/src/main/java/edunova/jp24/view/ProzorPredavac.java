@@ -11,6 +11,7 @@ import edunova.jp24.util.Aplikacija;
 import edunova.jp24.util.EdunovaException;
 import java.io.File;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -189,7 +190,16 @@ public class ProzorPredavac extends javax.swing.JFrame implements ProzorSucelje{
 
         File slika = new File("slike" + File.separator + "predavaci" +
                 File.separator + e.getId() + ".png");
-        
+        if(slika.exists()){
+            //slika postoji, ucitaj ju
+            ImageIcon ii = new ImageIcon(slika.getAbsolutePath());
+            lblSlika.setIcon(ii);
+        }else{
+            //slika ne postoji, staviti sliku nepoznato
+            ImageIcon ii = new ImageIcon("slike" + File.separator + "predavaci" +
+                    File.separator + "nepoznato.png");
+            lblSlika.setIcon(ii);
+        }
         
     }//GEN-LAST:event_lstEntitetiValueChanged
 
