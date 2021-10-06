@@ -36,18 +36,6 @@ public class Racun extends Entitet{
     @OneToOne
     private Djelatnik djelatnik;
 
-    @OneToOne
-    private Pcshop pcshop;
-
-    public Pcshop getPcshop() {
-        return pcshop;
-    }
-
-    public void setPcshop(Pcshop pcshop) {
-        this.pcshop = pcshop;
-    }
-    
-    
     
     public String getBrojRacuna() {
         return brojRacuna;
