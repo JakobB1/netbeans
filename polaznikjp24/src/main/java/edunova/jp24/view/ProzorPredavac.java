@@ -258,11 +258,27 @@ public class ProzorPredavac extends javax.swing.JFrame implements ProzorSucelje{
     }//GEN-LAST:event_btnObrisiActionPerformed
 
     private void lblSlikaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSlikaMouseClicked
+        if(obrada.getEntitet()==null){
+            return;
+        }
         
+        JFileChooser jfc = new JFileChooser();
+        if(jfc.showOpenDialog(this)!= JFileChooser.APPROVE_OPTION){
+         return;
+        }
         
-        
-        
-        
+        try {
+            BufferedImage bi = Imaging.getBufferedImage(jfc.getSelectedFile());
+            File slika = new File("slike" + File.separator + "predavaci" + 
+                    File.separator + obrada.getEntitet().getId() + ".png");
+            
+            Map<String,Object> param = new HashMap<>();
+            Imaging.writeImage(bi, slika, ImageFormats.PNG, param);
+            ImageIcon ii = new ImageIcon(Imaging.getBufferedImage(slika)
+                    .getScaledInstance(200, 300, Image.SCALE_DEFAULT));
+            lblSlika.setIcon(ii);
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_lblSlikaMouseClicked
 
     @Override
