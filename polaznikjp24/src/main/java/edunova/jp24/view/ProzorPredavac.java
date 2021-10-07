@@ -204,6 +204,8 @@ public class ProzorPredavac extends javax.swing.JFrame implements ProzorSucelje{
         
         if(slika.exists()){
             //slika postoji, ucitaj ju
+            ImageIcon ii = new ImageIcon(slika.getAbsolutePath());
+            lblSlika.setIcon(ii);
         }else{
             //slika ne postoji, staviti sliku nepoznato
         }
