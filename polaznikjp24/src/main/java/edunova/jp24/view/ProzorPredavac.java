@@ -201,24 +201,12 @@ public class ProzorPredavac extends javax.swing.JFrame implements ProzorSucelje{
 
         File slika = new File("slike" + File.separator + "predavaci" +
                 File.separator + e.getId() + ".png");
+        
         if(slika.exists()){
             //slika postoji, ucitaj ju
-            
-            
-            try{
-                ImageIcon ii = new ImageIcon(Imaging.getBufferedImage(slika)
-                .getScaledInstance(200, 300, Image.SCALE_DEFAULT));
-                lblSlika.setIcon(ii);
-            }catch (Exception ex) {
-                
-            }
-                    
+        }else{
             //slika ne postoji, staviti sliku nepoznato
-            ImageIcon ii = new ImageIcon("slike"
-                   + File.separator + "nepoznato.png");
-            lblSlika.setIcon(ii);
         }
-        
     }//GEN-LAST:event_lstEntitetiValueChanged
 
     private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
