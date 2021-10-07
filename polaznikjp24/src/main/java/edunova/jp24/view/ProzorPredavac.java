@@ -12,14 +12,18 @@ import edunova.jp24.util.EdunovaException;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import org.apache.commons.imaging.ImageFormat;
 import org.apache.commons.imaging.ImageFormats;
+import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.Imaging;
 
 /**
@@ -199,17 +203,22 @@ public class ProzorPredavac extends javax.swing.JFrame implements ProzorSucelje{
         txtEmail.setText(e.getEmail());
         txtIban.setText(e.getIban());
 
-        File slika = new File("slike" + File.separator + "predavaci" +
-                File.separator + e.getId() + ".png");
+        File slika = new File("slike" + File.separator + "predavaci" 
+                + File.separator + e.getId() + ".png");
         
         if(slika.exists()){
             //slika postoji, ucitaj ju
-            ImageIcon ii = new ImageIcon(slika.getAbsolutePath());
-            lblSlika.setIcon(ii);
-        }else{
+            try {
+                ImageIcon ii = new ImageIcon(Imaging.getBufferedImage(slika)
+                        .getScaledInstance(200, 300, Image.SCALE_DEFAULT));
+                lblSlika.setIcon(ii);
+            } catch (Exception ex) {
+            }
+             
+        } else {
             //slika ne postoji, staviti sliku nepoznato
-            ImageIcon ii = new ImageIcon("slike" + File.separator + "predavaci" +
-                File.separator + "nepoznato.png");
+            ImageIcon ii = new ImageIcon("slike" 
+                    + File.separator + "nepoznato.png");
             lblSlika.setIcon(ii);
         }
         
