@@ -7,6 +7,7 @@ package hr.edunova.zavrsnihib.model;
 
 import java.util.List;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -28,7 +29,7 @@ public class Racun extends Entitet{
     
     
     @ManyToMany
-    private List<Proizvod> proizvodi;
+    private List<Proizvod> proizvodi = new ArrayList<>();
     
     @ManyToOne
     private Korisnik korisnik;
