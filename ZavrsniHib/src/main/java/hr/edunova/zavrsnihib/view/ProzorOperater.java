@@ -235,7 +235,10 @@ public class ProzorOperater extends javax.swing.JFrame implements ProzorSucelje{
         txtPrezime.setText(o.getPrezime());
         txtOib.setText(o.getOib());
         txtEmail.setText(o.getEmail());
-        pswLozinka.setText(o.getLozinka());
+        
+        txtBrojUgovora.setText(o.getBrojUgovora());
+        txtIban.setText(o.getIban());
+        txtZiroRacun.setText(o.getZiroRacun());
     }//GEN-LAST:event_lstEntitetiValueChanged
     
     @Override
@@ -246,6 +249,9 @@ public class ProzorOperater extends javax.swing.JFrame implements ProzorSucelje{
         o.setOib(txtOib.getText());
         o.setEmail(txtEmail.getText());
        
+        o.setBrojUgovora(txtBrojUgovora.getText());
+        o.setIban(txtIban.getText());
+        o.setZiroRacun(txtZiroRacun.getText());
     }
 
     @Override
