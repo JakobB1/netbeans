@@ -49,11 +49,6 @@ public class Izbornik extends javax.swing.JFrame {
         jMenu1.setText("Programi");
 
         jMenuItem1.setText("Pcshop");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
         jMenu1.add(jMenuItem1);
 
         jMenuItem2.setText("Djelatnici");
@@ -119,10 +114,6 @@ public class Izbornik extends javax.swing.JFrame {
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         dispose();
     }//GEN-LAST:event_jMenuItem6ActionPerformed
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        new ProzorPcshop().setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         new ProzorDjelatnik().setVisible(true);
