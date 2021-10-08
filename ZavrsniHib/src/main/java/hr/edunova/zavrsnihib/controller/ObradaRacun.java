@@ -38,10 +38,6 @@ public class ObradaRacun extends Obrada<Racun>{
 
     private void kontrolaProizvod() throws EdunovaException{
         
-        if(entitet.getProizvod()==null || entitet.getProizvod().getId().equals(Long.valueOf(0))){
-            throw new EdunovaException("Proizvod obavezno");
-        }
-        
     }
 
     private void kontrolaDjelatnik() throws EdunovaException{

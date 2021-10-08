@@ -15,6 +15,7 @@ import javax.persistence.Entity;
 public class Operater extends Osoba{
     
     private String lozinka;
+    
 
     public String getLozinka() {
         return lozinka;

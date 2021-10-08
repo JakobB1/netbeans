@@ -27,11 +27,11 @@ public class Racun extends Entitet{
     private BigDecimal iznos;
     
     
-    @ManyToOne
-    private Proizvod proizvod;
-    
     @ManyToMany
-    private List<Korisnik> korisnici;
+    private List<Proizvod> proizvodi;
+    
+    @ManyToOne
+    private Korisnik korisnik;
     
     @OneToOne
     private Djelatnik djelatnik;
@@ -77,23 +77,22 @@ public class Racun extends Entitet{
         this.iznos = iznos;
     }
 
-
-    public Proizvod getProizvod() {
-        return proizvod;
+    public List<Proizvod> getProizvodi() {
+        return proizvodi;
     }
 
-    public void setProizvod(Proizvod proizvod) {
-        this.proizvod = proizvod;
+    public void setProizvodi(List<Proizvod> proizvodi) {
+        this.proizvodi = proizvodi;
     }
 
-    public List<Korisnik> getKorisnici() {
-        return korisnici;
+    public Korisnik getKorisnik() {
+        return korisnik;
     }
 
-    public void setKorisnici(List<Korisnik> korisnici) {
-        this.korisnici = korisnici;
+    public void setKorisnik(Korisnik korisnik) {
+        this.korisnik = korisnik;
     }
-
+    
     public Djelatnik getDjelatnik() {
         return djelatnik;
     }
