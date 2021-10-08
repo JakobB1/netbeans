@@ -23,7 +23,6 @@ public class ObradaRacun extends Obrada<Racun>{
     @Override
     protected void kontrolaCreate() throws EdunovaException {
         kontrolaProizvod();
-        
     }
 
     @Override
@@ -39,6 +38,4 @@ public class ObradaRacun extends Obrada<Racun>{
     private void kontrolaProizvod() throws EdunovaException{
         
     }
-
-   
 }
