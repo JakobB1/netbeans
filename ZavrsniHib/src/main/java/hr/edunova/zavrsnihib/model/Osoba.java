@@ -16,7 +16,7 @@ import javax.persistence.MappedSuperclass;
 public abstract class Osoba extends Entitet{
     
     private String ime;
-    private String prezime;
+    String prezime;
     
     @Column(columnDefinition = "char(11)")
     private String oib;

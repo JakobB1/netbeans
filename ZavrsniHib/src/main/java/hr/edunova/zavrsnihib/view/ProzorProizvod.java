@@ -177,7 +177,7 @@ public class ProzorProizvod extends javax.swing.JFrame implements ProzorSucelje{
 
     private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
         obrada.setEntitet(new Proizvod());
-        postaviVrijedostiUEntitet();
+        postaviVrijednostiUEntitet();
 
         try {
             obrada.create();
@@ -188,7 +188,7 @@ public class ProzorProizvod extends javax.swing.JFrame implements ProzorSucelje{
     }//GEN-LAST:event_btnDodajActionPerformed
 
     private void btnPromjeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromjeniActionPerformed
-        postaviVrijedostiUEntitet();
+        postaviVrijednostiUEntitet();
         try {
             obrada.update();
             ucitaj();
@@ -226,7 +226,7 @@ public class ProzorProizvod extends javax.swing.JFrame implements ProzorSucelje{
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void postaviVrijedostiUEntitet() {
+    public void postaviVrijednostiUEntitet() {
         var p = obrada.getEntitet();
         p.setNaziv(txtNaziv.getText());
         p.setCijena(BigDecimal.TEN);

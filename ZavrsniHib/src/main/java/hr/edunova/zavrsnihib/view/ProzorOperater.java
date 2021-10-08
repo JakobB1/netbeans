@@ -17,15 +17,16 @@ import javax.swing.JOptionPane;
  */
 public class ProzorOperater extends javax.swing.JFrame implements ProzorSucelje{
 
-    private ObradaOperater obrada;
+    private ObradaOperater obradaOp;
     
     /**
      * Creates new form ProzorOperater
      */
     public ProzorOperater() {
         initComponents();
-        obrada = new ObradaOperater();
+        obradaOp = new ObradaOperater();
         postavke();
+        ucitaj();
     }
 
     /**
@@ -195,11 +196,11 @@ public class ProzorOperater extends javax.swing.JFrame implements ProzorSucelje{
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
-        obrada.setEntitet(new Operater());
-        postaviVrijedostiUEntitet();
+        obradaOp.setEntitet(new Operater());
+        postaviVrijednostiUEntitet();
 
         try {
-            obrada.create();
+            obradaOp.create();
             ucitaj();
         } catch (EdunovaException ex) {
             JOptionPane.showMessageDialog(getParent(), ex.getPoruka());
@@ -207,9 +208,9 @@ public class ProzorOperater extends javax.swing.JFrame implements ProzorSucelje{
     }//GEN-LAST:event_btnDodajActionPerformed
 
     private void btnPromjeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromjeniActionPerformed
-        postaviVrijedostiUEntitet();
+        postaviVrijednostiUEntitet();
         try {
-            obrada.update();
+            obradaOp.update();
             ucitaj();
         } catch (EdunovaException ex) {
             JOptionPane.showMessageDialog(getParent(), ex.getPoruka());
@@ -218,7 +219,7 @@ public class ProzorOperater extends javax.swing.JFrame implements ProzorSucelje{
 
     private void btnObrisiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisiActionPerformed
         try {
-            obrada.delete();
+            obradaOp.delete();
             ucitaj();
         } catch (EdunovaException ex) {
             JOptionPane.showMessageDialog(getParent(), ex.getPoruka());
@@ -229,29 +230,29 @@ public class ProzorOperater extends javax.swing.JFrame implements ProzorSucelje{
         if(evt.getValueIsAdjusting() || lstEntiteti.getSelectedValue()==null){
             return;
         }
-        obrada.setEntitet(lstEntiteti.getSelectedValue());
-        var o = obrada.getEntitet();
-        txtIme.setText(o.getIme());
-        txtPrezime.setText(o.getPrezime());
-        txtOib.setText(o.getOib());
-        txtEmail.setText(o.getEmail());
+        obradaOp.setEntitet(lstEntiteti.getSelectedValue());
+        var op = obradaOp.getEntitet();
+        txtIme.setText(op.getIme());
+        txtPrezime.setText(op.getPrezime());
+        txtOib.setText(op.getOib());
+        txtEmail.setText(op.getEmail());
         
-        txtBrojUgovora.setText(o.getBrojUgovora());
-        txtIban.setText(o.getIban());
-        txtZiroRacun.setText(o.getZiroRacun());
+        txtBrojUgovora.setText(op.getBrojUgovora());
+        txtIban.setText(op.getIban());
+        txtZiroRacun.setText(op.getZiroRacun());
     }//GEN-LAST:event_lstEntitetiValueChanged
     
     @Override
-    public void postaviVrijedostiUEntitet() {
-        var o = obrada.getEntitet();
-        o.setIme(txtIme.getText());
-        o.setPrezime(txtPrezime.getText());
-        o.setOib(txtOib.getText());
-        o.setEmail(txtEmail.getText());
+    public void postaviVrijednostiUEntitet() {
+        var op = obradaOp.getEntitet();
+        op.setIme(txtIme.getText());
+        op.setPrezime(txtPrezime.getText());
+        op.setOib(txtOib.getText());
+        op.setEmail(txtEmail.getText());
        
-        o.setBrojUgovora(txtBrojUgovora.getText());
-        o.setIban(txtIban.getText());
-        o.setZiroRacun(txtZiroRacun.getText());
+        op.setBrojUgovora(txtBrojUgovora.getText());
+        op.setIban(txtIban.getText());
+        op.setZiroRacun(txtZiroRacun.getText());
     }
 
     @Override
@@ -263,7 +264,7 @@ public class ProzorOperater extends javax.swing.JFrame implements ProzorSucelje{
     public void ucitaj() {
         DefaultListModel<Operater> m = new DefaultListModel<>();
         
-        obrada.read().forEach(o->{m.addElement(o);});
+        obradaOp.read().forEach(o->{m.addElement(o);});
         
         lstEntiteti.setModel(m);
     }

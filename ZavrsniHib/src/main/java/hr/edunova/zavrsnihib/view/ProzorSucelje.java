@@ -11,7 +11,7 @@ package hr.edunova.zavrsnihib.view;
  */
 public interface ProzorSucelje {
     
-    public void postaviVrijedostiUEntitet();
+    public void postaviVrijednostiUEntitet();
     public void postavke();
     public void ucitaj();
     

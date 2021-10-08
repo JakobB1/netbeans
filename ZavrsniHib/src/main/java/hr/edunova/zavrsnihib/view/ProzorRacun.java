@@ -148,7 +148,7 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
     }//GEN-LAST:event_lstEntitetiValueChanged
 
     private void btnPromjeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromjeniActionPerformed
-        postaviVrijedostiUEntitet();
+        postaviVrijednostiUEntitet();
         try {
             obrada.update();
             ucitaj();
@@ -168,7 +168,7 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
 
     private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
         obrada.setEntitet(new Racun());
-        postaviVrijedostiUEntitet();
+        postaviVrijednostiUEntitet();
 
         try {
             obrada.create();
@@ -179,7 +179,7 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
     }//GEN-LAST:event_btnDodajActionPerformed
 
     @Override
-    public void postaviVrijedostiUEntitet() {
+    public void postaviVrijednostiUEntitet() {
         var r = obrada.getEntitet();
         r.setBrojRacuna(txtBrojRacuna.getText());
     }
