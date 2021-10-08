@@ -64,6 +64,7 @@ public class ProzorProizvod extends javax.swing.JFrame implements ProzorSucelje{
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        lstEntiteti.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         lstEntiteti.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 lstEntitetiValueChanged(evt);
@@ -202,6 +203,7 @@ public class ProzorProizvod extends javax.swing.JFrame implements ProzorSucelje{
         postaviVrijednostiUEntitet();
         try {
             obrada.create();
+            ucitaj();
         } catch (EdunovaException ex) {
             JOptionPane.showMessageDialog(getRootPane(), ex.getMessage());
         }
