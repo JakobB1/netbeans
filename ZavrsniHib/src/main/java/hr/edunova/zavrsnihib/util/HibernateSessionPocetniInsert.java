@@ -9,6 +9,7 @@ import com.github.javafaker.Faker;
 import hr.edunova.zavrsnihib.model.Djelatnik;
 import hr.edunova.zavrsnihib.model.Korisnik;
 import hr.edunova.zavrsnihib.model.Operater;
+import hr.edunova.zavrsnihib.model.Pcshop;
 import hr.edunova.zavrsnihib.model.Proizvod;
 import hr.edunova.zavrsnihib.model.Racun;
 import java.math.BigDecimal;
@@ -40,6 +41,18 @@ public class HibernateSessionPocetniInsert {
         o.setLozinka(BCrypt.hashpw("o", BCrypt.gensalt()));
         
         s.save(o);
+        
+        
+        
+        
+        Pcshop pcshop = new Pcshop();
+        pcshop.setNaziv("Edunova PC");
+        pcshop.setVlasnik("Ivo");
+        pcshop.setOib("12345678911");
+        pcshop.setIban("HR12345");
+        pcshop.setCertifikat(true);
+        
+        s.save(pcshop);
         
         
         
