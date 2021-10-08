@@ -5,11 +5,14 @@
  */
 package hr.edunova.zavrsnihib.view;
 
+import com.github.lgooddatepicker.components.DatePickerSettings;
 import hr.edunova.zavrsnihib.controller.ObradaProizvod;
 import hr.edunova.zavrsnihib.model.Proizvod;
 import hr.edunova.zavrsnihib.util.Aplikacija;
 import hr.edunova.zavrsnihib.util.EdunovaException;
 import java.math.BigDecimal;
+import java.time.ZoneId;
+import java.util.Locale;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -183,6 +186,12 @@ public class ProzorProizvod extends javax.swing.JFrame implements ProzorSucelje{
         txtOpisProizvoda.setText(p.getOpisProizvoda());
         chbDostupnost.setSelected(p.getDostupnost());
         
+        
+      if(p.getGarancija()!=null){
+          dpGarancija.setDate(p.getGarancija().toInstant().atZone(ZoneId.systemDefault()).
+                  toLocalDate());
+      }  
+        
     }//GEN-LAST:event_lstEntitetiValueChanged
 
     private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
@@ -252,6 +261,10 @@ public class ProzorProizvod extends javax.swing.JFrame implements ProzorSucelje{
     public void postavke() {
         setTitle(Aplikacija.getNaslov("Proizvodi"));
         
+        DatePickerSettings dps = new DatePickerSettings(new Locale("hr", "HR"));
+        dps.setFormatForDatesCommonEra("dd.MM.yyyy");
+
+        dpGarancija.setSettings(dps);
         
     }
 
