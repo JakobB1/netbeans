@@ -256,12 +256,12 @@ public class ProzorKorisnik extends javax.swing.JFrame implements ProzorSucelje{
 
     @Override
     public void postaviVrijedostiUEntitet() {
-        var d = obrada.getEntitet();
-        d.setIme(txtIme.getText());
-        d.setPrezime(txtPrezime.getText());
-        d.setOib(txtOib.getText());
-        d.setEmail(txtEmail.getText());
-        d.setBrojClasnkeKartice(txtBrojClanskeKartice.getText());
+        var k = obrada.getEntitet();
+        k.setIme(txtIme.getText());
+        k.setPrezime(txtPrezime.getText());
+        k.setOib(txtOib.getText());
+        k.setEmail(txtEmail.getText());
+        k.setBrojClasnkeKartice(txtBrojClanskeKartice.getText());
     }
 
     @Override
