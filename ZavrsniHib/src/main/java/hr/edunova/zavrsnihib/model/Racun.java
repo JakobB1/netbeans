@@ -33,9 +33,8 @@ public class Racun extends Entitet{
     @ManyToOne
     private Korisnik korisnik;
     
-    @OneToOne
-    private Djelatnik djelatnik;
-
+    @ManyToOne
+    private Operater operater;
     
     public String getBrojRacuna() {
         return brojRacuna;
@@ -92,15 +91,16 @@ public class Racun extends Entitet{
     public void setKorisnik(Korisnik korisnik) {
         this.korisnik = korisnik;
     }
+
+    public Operater getOperater() {
+        return operater;
+    }
+
+    public void setOperater(Operater operater) {
+        this.operater = operater;
+    }
     
-    public Djelatnik getDjelatnik() {
-        return djelatnik;
-    }
-
-    public void setDjelatnik(Djelatnik djelatnik) {
-        this.djelatnik = djelatnik;
-    }
-
+    
     @Override
     public String toString() {
         return brojRacuna;

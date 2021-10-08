@@ -5,11 +5,9 @@
  */
 package hr.edunova.zavrsnihib.view;
 
-import hr.edunova.zavrsnihib.controller.ObradaDjelatnik;
 import hr.edunova.zavrsnihib.controller.ObradaKorisnik;
 import hr.edunova.zavrsnihib.controller.ObradaProizvod;
 import hr.edunova.zavrsnihib.controller.ObradaRacun;
-import hr.edunova.zavrsnihib.model.Djelatnik;
 import hr.edunova.zavrsnihib.util.Aplikacija;
 import hr.edunova.zavrsnihib.model.Racun;
 import hr.edunova.zavrsnihib.model.Proizvod;
@@ -53,8 +51,6 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
         btnPromjeni = new javax.swing.JButton();
         btnObrisi = new javax.swing.JButton();
         btnDodaj = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        cmbDjelatnik = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         cmbKorisnik = new javax.swing.JComboBox<>();
 
@@ -90,8 +86,6 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
             }
         });
 
-        jLabel3.setText("Djelatnik");
-
         jLabel4.setText("Korisnik");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -105,8 +99,6 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1)
                     .addComponent(txtBrojRacuna, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                    .addComponent(jLabel3)
-                    .addComponent(cmbDjelatnik, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel4)
                     .addComponent(cmbKorisnik, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -127,11 +119,7 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtBrojRacuna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(71, 71, 71)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbDjelatnik, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(131, 131, 131)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cmbKorisnik, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -157,17 +145,6 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
         var r = obrada.getEntitet();
         
         txtBrojRacuna.setText(r.getBrojRacuna());
-        
-        
-        DefaultComboBoxModel<Djelatnik> md = (DefaultComboBoxModel<Djelatnik>) cmbDjelatnik.getModel();
-        for(int i=0;i<md.getSize();i++){
-            if(md.getElementAt(i).getId().equals(r.getDjelatnik().getId())){
-                cmbDjelatnik.setSelectedIndex(i);
-                break;
-            }
-        }      
-        
-        
     }//GEN-LAST:event_lstEntitetiValueChanged
 
     private void btnPromjeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromjeniActionPerformed
@@ -212,15 +189,6 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
         setTitle(Aplikacija.getNaslov("Racuni"));
      
         
-        DefaultComboBoxModel<Djelatnik> md = new DefaultComboBoxModel<>();
-        Djelatnik d = new Djelatnik();
-        d.setId(Long.valueOf(0));
-        d.setIme("Nije");
-        d.setPrezime("odabran" );
-        md.addElement(d);
-        new ObradaDjelatnik().read().forEach(dj->{md.addElement(dj);});
-        cmbDjelatnik.setModel(md);
-        
         DefaultComboBoxModel<Korisnik> mk = new DefaultComboBoxModel<>();
         new ObradaKorisnik().read().forEach(k->{mk.addElement(k);});
         Korisnik k = new Korisnik();
@@ -244,10 +212,8 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
     private javax.swing.JButton btnDodaj;
     private javax.swing.JButton btnObrisi;
     private javax.swing.JButton btnPromjeni;
-    private javax.swing.JComboBox<Djelatnik> cmbDjelatnik;
     private javax.swing.JComboBox<Korisnik> cmbKorisnik;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList<Racun> lstEntiteti;

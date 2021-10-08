@@ -15,6 +15,34 @@ import javax.persistence.Entity;
 public class Operater extends Osoba{
     
     private String lozinka;
+    private String brojUgovora;
+    private String ziroRacun;
+    private String iban;
+
+    public String getBrojUgovora() {
+        return brojUgovora;
+    }
+
+    public void setBrojUgovora(String brojUgovora) {
+        this.brojUgovora = brojUgovora;
+    }
+
+    public String getZiroRacun() {
+        return ziroRacun;
+    }
+
+    public void setZiroRacun(String ziroRacun) {
+        this.ziroRacun = ziroRacun;
+    }
+
+    public String getIban() {
+        return iban;
+    }
+
+    public void setIban(String iban) {
+        this.iban = iban;
+    }
+    
     
 
     public String getLozinka() {

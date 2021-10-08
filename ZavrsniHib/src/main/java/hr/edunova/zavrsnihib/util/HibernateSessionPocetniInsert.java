@@ -6,7 +6,6 @@
 package hr.edunova.zavrsnihib.util;
 
 import com.github.javafaker.Faker;
-import hr.edunova.zavrsnihib.model.Djelatnik;
 import hr.edunova.zavrsnihib.model.Korisnik;
 import hr.edunova.zavrsnihib.model.Operater;
 import hr.edunova.zavrsnihib.model.Proizvod;
@@ -45,19 +44,6 @@ public class HibernateSessionPocetniInsert {
         
         
         Faker faker = new Faker();
-        Djelatnik djelatnik = new Djelatnik();
-        djelatnik.setIme(faker.name().firstName());
-        djelatnik.setPrezime(faker.name().firstName());
-        djelatnik.setOib("12345678911");
-        djelatnik.setEmail("email@mail.hr");
-        djelatnik.setIban("HR12345");
-        djelatnik.setBrojUgovora("/1");
-        
-        s.save(djelatnik);
-        
-        
-        
-        
         List<Korisnik>korisnici = new ArrayList<>();
         Korisnik korisnik;
         for(int i=0;i<20;i++){
@@ -93,7 +79,6 @@ public class HibernateSessionPocetniInsert {
         
         Racun racun = new Racun();
         racun.setBrojRacuna("1");
-        racun.setDjelatnik(djelatnik);
         racun.setCijena(BigDecimal.TEN);
         racun.setIznos(BigDecimal.TEN);
         racun.setKolicina("1");
