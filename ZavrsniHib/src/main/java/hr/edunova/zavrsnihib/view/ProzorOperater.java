@@ -79,8 +79,6 @@ public class ProzorOperater extends javax.swing.JFrame implements ProzorSucelje{
 
         jLabel5.setText("Lozinka");
 
-        pswLozinka.setText("jPasswordField1");
-
         btnDodaj.setText("Dodaj");
         btnDodaj.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

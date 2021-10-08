@@ -33,12 +33,13 @@ public class HibernateSessionPocetniInsert {
         
         
         Operater o = new Operater();
-        o.setIme("Edunova");
+        o.setIme("Edunova PC");
         o.setPrezime("Operater");
+        o.setOib("12345678911");
         o.setEmail("operaterpc@edunova.hr");
         o.setLozinka(BCrypt.hashpw("o", BCrypt.gensalt()));
-        o.setIban("HR5454545");
         o.setBrojUgovora("1");
+        o.setIban("HR5454545");
         o.setZiroRacun("HR1283712893721");
         
         s.save(o);
