@@ -25,8 +25,6 @@ public class Proizvod extends Entitet{
     private String opisProizvoda;
     private String kodArtikla;
     private Boolean dostupnost;
-
-    
     
     
     public BigDecimal getCijena() {
