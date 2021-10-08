@@ -43,8 +43,6 @@ public class Operater extends Osoba{
         this.iban = iban;
     }
     
-    
-
     public String getLozinka() {
         return lozinka;
     }
@@ -53,15 +51,9 @@ public class Operater extends Osoba{
         this.lozinka = lozinka;
     }
     
+    
+    
     public String getImePrezime(){
         return getIme()+ " " + getPrezime();
-    }
-
-    @Override
-    public String toString() {
-        return getIme() + " " + getPrezime();
-    }
-    
-    
-    
+    }    
 }
