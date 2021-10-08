@@ -12,7 +12,10 @@ import hr.edunova.zavrsnihib.util.Aplikacija;
 import hr.edunova.zavrsnihib.util.EdunovaException;
 import java.math.BigDecimal;
 import java.time.ZoneId;
+import java.util.Date;
 import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -197,12 +200,10 @@ public class ProzorProizvod extends javax.swing.JFrame implements ProzorSucelje{
     private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
         obrada.setEntitet(new Proizvod());
         postaviVrijednostiUEntitet();
-
         try {
             obrada.create();
-            ucitaj();
         } catch (EdunovaException ex) {
-            JOptionPane.showMessageDialog(getParent(), ex.getPoruka());
+            JOptionPane.showMessageDialog(getRootPane(), ex.getMessage());
         }
     }//GEN-LAST:event_btnDodajActionPerformed
 
@@ -226,26 +227,6 @@ public class ProzorProizvod extends javax.swing.JFrame implements ProzorSucelje{
     }//GEN-LAST:event_btnObrisiActionPerformed
 
     
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDodaj;
-    private javax.swing.JButton btnObrisi;
-    private javax.swing.JButton btnPromjeni;
-    private javax.swing.JCheckBox chbDostupnost;
-    private com.github.lgooddatepicker.components.DatePicker dpGarancija;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList<Proizvod> lstEntiteti;
-    private javax.swing.JTextField txtCijena;
-    private javax.swing.JTextField txtKodArtikla;
-    private javax.swing.JTextField txtNaziv;
-    private javax.swing.JTextField txtOpisProizvoda;
-    // End of variables declaration//GEN-END:variables
-
     @Override
     public void postaviVrijednostiUEntitet() {
         var p = obrada.getEntitet();
@@ -254,7 +235,12 @@ public class ProzorProizvod extends javax.swing.JFrame implements ProzorSucelje{
         p.setKodArtikla(txtKodArtikla.getText());
         p.setOpisProizvoda(txtOpisProizvoda.getText());
         p.setDostupnost(chbDostupnost.isSelected());
-        
+        if (dpGarancija.getDate() != null) {
+            p.setGarancija(Date.from(
+                    dpGarancija.getDate().atStartOfDay()
+                            .atZone(ZoneId.systemDefault()).toInstant())
+            );
+        }
     }
 
     @Override
@@ -276,4 +262,24 @@ public class ProzorProizvod extends javax.swing.JFrame implements ProzorSucelje{
         
         lstEntiteti.setModel(m);
     }
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDodaj;
+    private javax.swing.JButton btnObrisi;
+    private javax.swing.JButton btnPromjeni;
+    private javax.swing.JCheckBox chbDostupnost;
+    private com.github.lgooddatepicker.components.DatePicker dpGarancija;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList<Proizvod> lstEntiteti;
+    private javax.swing.JTextField txtCijena;
+    private javax.swing.JTextField txtKodArtikla;
+    private javax.swing.JTextField txtNaziv;
+    private javax.swing.JTextField txtOpisProizvoda;
+    // End of variables declaration//GEN-END:variables
 }
