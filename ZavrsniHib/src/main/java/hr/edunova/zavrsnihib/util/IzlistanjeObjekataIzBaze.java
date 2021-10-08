@@ -5,7 +5,6 @@
  */
 package hr.edunova.zavrsnihib.util;
 
-import hr.edunova.zavrsnihib.controller.ObradaPcshop;
 import hr.edunova.zavrsnihib.model.Korisnik;
 import java.util.List;
 import org.hibernate.Session;
@@ -51,9 +50,6 @@ public class IzlistanjeObjekataIzBaze {
     
     
     public static void radSControllerKlasom(){
-        new ObradaPcshop().read().forEach(k->{
-            System.out.println(k.getNaziv());
-        });
     }
     
 }
