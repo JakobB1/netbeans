@@ -7,8 +7,10 @@ package hr.edunova.zavrsnihib.controller;
 
 import hr.edunova.zavrsnihib.model.Operater;
 import hr.edunova.zavrsnihib.util.EdunovaException;
+import java.math.BigInteger;
 import java.util.List;
 import javax.persistence.NoResultException;
+import javax.persistence.Query;
 import org.mindrot.jbcrypt.BCrypt;
 
 /**
@@ -42,6 +44,8 @@ public class ObradaOperater extends ObradaOsoba<Operater>{
 
     @Override
     protected void kontrolaCreate() throws EdunovaException {
+        kontrolaIme();
+        kontrolaPrezime();
         kontrolaOIB();
     }
 
@@ -85,6 +89,44 @@ public class ObradaOperater extends ObradaOsoba<Operater>{
             kontrolni = 0;
 
         return kontrolni == Integer.parseInt(oib.substring(10));
+    }
+
+    private void kontrolaIme() throws EdunovaException{
+        if(entitet.getIme()==null || entitet.getIme().trim().length()==0){
+           throw new EdunovaException("Ime obavezno");
+       }
+        
+        if(entitet.getIme().length()>50){
+            throw new EdunovaException("Ime ne moze biti duze od 50 znakova");
+        }
+        
+        Query q = session.createNativeQuery("select count(*) from operater where ime=:imeParametar");
+        q.setParameter("imeParametar", entitet.getIme());
+      
+        BigInteger ukupno = (BigInteger)q.getSingleResult();
+     
+        if(ukupno.compareTo(BigInteger.ZERO)>0){
+             throw new EdunovaException("Ime već postoji");
+        }
+    }
+
+    private void kontrolaPrezime() throws EdunovaException{
+        if(entitet.getPrezime()==null || entitet.getPrezime().trim().length()==0){
+           throw new EdunovaException("Prezime obavezno");
+       }
+        
+        if(entitet.getPrezime().length()>50){
+            throw new EdunovaException("Prezime ne moze biti duze od 50 znakova");
+        }
+        
+        Query q = session.createNativeQuery("select count(*) from operater where prezime=:prezimeParametar");
+        q.setParameter("prezimeParametar", entitet.getPrezime());
+      
+        BigInteger ukupno = (BigInteger)q.getSingleResult();
+     
+        if(ukupno.compareTo(BigInteger.ZERO)>0){
+             throw new EdunovaException("Prezime već postoji");
+        }
     }
     
     
