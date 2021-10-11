@@ -271,11 +271,11 @@ public class ProzorKorisnik extends javax.swing.JFrame implements ProzorSucelje{
 
     @Override
     public void ucitaj() {
-        DefaultListModel<Korisnik> m = new DefaultListModel<>();
+        DefaultListModel<Korisnik> mk = new DefaultListModel<>();
         
-        obrada.read(txtUvjet.getText()).forEach(k->{m.addElement(k);});
+        obrada.read(txtUvjet.getText()).forEach(k->{mk.addElement(k);});
         
-        lstEntiteti.setModel(m);
+        lstEntiteti.setModel(mk);
     }
 
     

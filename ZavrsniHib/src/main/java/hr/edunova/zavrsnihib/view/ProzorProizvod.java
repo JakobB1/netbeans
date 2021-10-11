@@ -284,11 +284,11 @@ public class ProzorProizvod extends javax.swing.JFrame implements ProzorSucelje{
 
     @Override
     public void ucitaj() {
-        DefaultListModel<Proizvod> m = new DefaultListModel<>();
+        DefaultListModel<Proizvod> mp = new DefaultListModel<>();
         
-        obrada.read(txtUvjet.getText()).forEach(p->{m.addElement(p);});
+        obrada.read(txtUvjet.getText()).forEach(p->{mp.addElement(p);});
         
-        lstEntiteti.setModel(m);
+        lstEntiteti.setModel(mp);
     }
 
 

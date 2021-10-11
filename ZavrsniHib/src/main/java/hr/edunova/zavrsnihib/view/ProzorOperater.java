@@ -262,11 +262,11 @@ public class ProzorOperater extends javax.swing.JFrame implements ProzorSucelje{
 
     @Override
     public void ucitaj() {
-        DefaultListModel<Operater> m = new DefaultListModel<>();
+        DefaultListModel<Operater> mo = new DefaultListModel<>();
         
-        obradaOp.read().forEach(o->{m.addElement(o);});
+        obradaOp.read().forEach(o->{mo.addElement(o);});
         
-        lstEntiteti.setModel(m);
+        lstEntiteti.setModel(mo);
     }
 
 

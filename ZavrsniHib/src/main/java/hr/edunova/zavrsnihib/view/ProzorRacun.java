@@ -177,9 +177,9 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
         // postavljanje operatera u cmb
         cmbOperater.setSelectedItem(r.getOperater());
         
-        DefaultListModel<Proizvod> m = new DefaultListModel<>();
-        r.getProizvodi().forEach(p->{m.addElement(p);});
-        lstProizvodiNaRacunu.setModel(m);
+        DefaultListModel<Proizvod> mp = new DefaultListModel<>();
+        r.getProizvodi().forEach(p->{mp.addElement(p);});
+        lstProizvodiNaRacunu.setModel(mp);
         
     }//GEN-LAST:event_lstEntitetiValueChanged
 
@@ -246,9 +246,9 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
 
     @Override
     public void ucitaj() {
-        DefaultListModel<Racun> m = new DefaultListModel<>();
-        obrada.read().forEach(r->{m.addElement(r);});
-        lstEntiteti.setModel(m);
+        DefaultListModel<Racun> mr = new DefaultListModel<>();
+        obrada.read().forEach(r->{mr.addElement(r);});
+        lstEntiteti.setModel(mr);
     }
 
     
