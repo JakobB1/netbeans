@@ -15,6 +15,7 @@ import hr.edunova.zavrsnihib.model.Operater;
 import hr.edunova.zavrsnihib.model.Proizvod;
 import hr.edunova.zavrsnihib.model.Korisnik;
 import hr.edunova.zavrsnihib.util.EdunovaException;
+import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -122,11 +123,6 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
         });
 
         btnObrisiIzRacuna.setText(">>");
-        btnObrisiIzRacuna.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnObrisiIzRacunaActionPerformed(evt);
-            }
-        });
 
         btnDodajURacun.setText("<<");
         btnDodajURacun.addActionListener(new java.awt.event.ActionListener() {
@@ -285,23 +281,12 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
         lstProizvodiUBazi.setModel(mp);
     }//GEN-LAST:event_btnTraziActionPerformed
 
-    private void btnObrisiIzRacunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisiIzRacunaActionPerformed
-        List<Polaznik> lista = lstPolazniciNaGrupi.getSelectedValuesList();
-
-        for (Polaznik p : lista) {
-            obrisiPolaznikaIzGrupe(p);
-        }
-        lstPolazniciNaGrupi.repaint();
-    }//GEN-LAST:event_btnObrisiIzRacunaActionPerformed
-
     private void btnDodajURacunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajURacunActionPerformed
-        DefaultListModel<Polaznik> m = (DefaultListModel<Polaznik>) lstPolazniciNaGrupi.getModel();
-        for (Polaznik p : lstPolazniciUBazi.getSelectedValuesList()) {
-            if (!postojiPolaznikUModelu(m, p)) {
-                m.addElement(p);
-            }
+        DefaultComboBoxModel<Proizvod> m = (DefaultComboBoxModel<Proizvod>) lstProizvodiNaRacunu.getModel();
+        for(Proizvod p : lstProizvodiUBazi.getSelectedValuesList()){
+           m.addElement(p);
         }
-        lstPolazniciNaGrupi.repaint();
+        lstProizvodiNaRacunu.repaint();
     }//GEN-LAST:event_btnDodajURacunActionPerformed
 
     @Override
