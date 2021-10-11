@@ -6,6 +6,8 @@
 package edunova.jp24.view;
 
 import com.github.lgooddatepicker.components.DatePickerSettings;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import edunova.jp24.controller.ObradaGrupa;
 import edunova.jp24.controller.ObradaPolaznik;
 import edunova.jp24.controller.ObradaPredavac;
@@ -16,6 +18,11 @@ import edunova.jp24.model.Polaznik;
 import edunova.jp24.model.Predavac;
 import edunova.jp24.model.Smjer;
 import edunova.jp24.util.EdunovaException;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.nio.charset.StandardCharsets;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -27,6 +34,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 /**
@@ -81,6 +89,7 @@ public class ProzorGrupa extends javax.swing.JFrame implements ProzorSucelje{
         jLabel6 = new javax.swing.JLabel();
         btnObrisiIzGrupe = new javax.swing.JButton();
         btnDodajUGrupu = new javax.swing.JButton();
+        btnExportJSON = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -150,29 +159,39 @@ public class ProzorGrupa extends javax.swing.JFrame implements ProzorSucelje{
             }
         });
 
+        btnExportJSON.setText("To JSON");
+        btnExportJSON.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExportJSONActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(dpDatumPocetka, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnDodaj)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPromjeni)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnObrisi))
-                    .addComponent(txtNaziv)
-                    .addComponent(cmbSmjer, 0, 280, Short.MAX_VALUE)
-                    .addComponent(cmbPredavac, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(dpDatumPocetka, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnDodaj)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnPromjeni)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnObrisi))
+                            .addComponent(txtNaziv)
+                            .addComponent(cmbSmjer, 0, 280, Short.MAX_VALUE)
+                            .addComponent(cmbPredavac, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(btnExportJSON))
                 .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
@@ -200,7 +219,9 @@ public class ProzorGrupa extends javax.swing.JFrame implements ProzorSucelje{
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(46, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnExportJSON)
+                        .addContainerGap(30, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -226,7 +247,7 @@ public class ProzorGrupa extends javax.swing.JFrame implements ProzorSucelje{
                                     .addComponent(btnDodaj)
                                     .addComponent(btnPromjeni)
                                     .addComponent(btnObrisi))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -393,6 +414,27 @@ public class ProzorGrupa extends javax.swing.JFrame implements ProzorSucelje{
         lstPolazniciUBazi.setModel(m);
     }//GEN-LAST:event_btnTraziActionPerformed
 
+    private void btnExportJSONActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportJSONActionPerformed
+        Gson gson = new GsonBuilder()
+                .setPrettyPrinting()
+                .create();
+        
+        JFileChooser jfc = new JFileChooser();
+        jfc.setCurrentDirectory(new File(System.getProperty("user.home")));
+        jfc.setSelectedFile(new File(System.getProperty("user.home") + File.separator + "podaci.json"));
+        if(jfc.showSaveDialog(this)==JFileChooser.APPROVE_OPTION){
+            try {
+                BufferedWriter writer = new BufferedWriter(
+                new FileWriter(jfc.getSelectedFile(),StandardCharsets.UTF_8)
+                );
+                writer.write(gson.toJson(obrada.read()));
+                writer.close();
+            } catch (Exception e) {
+            }
+        }
+        
+    }//GEN-LAST:event_btnExportJSONActionPerformed
+
     private void obrisiPolaznikaIzGrupe(Polaznik p) {
         DefaultListModel<Polaznik> m = (DefaultListModel<Polaznik>) lstPolazniciNaGrupi.getModel();
         for (int i = 0; i < m.getSize(); i++) {
@@ -480,6 +522,7 @@ public class ProzorGrupa extends javax.swing.JFrame implements ProzorSucelje{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDodaj;
     private javax.swing.JButton btnDodajUGrupu;
+    private javax.swing.JButton btnExportJSON;
     private javax.swing.JButton btnObrisi;
     private javax.swing.JButton btnObrisiIzGrupe;
     private javax.swing.JButton btnPromjeni;
