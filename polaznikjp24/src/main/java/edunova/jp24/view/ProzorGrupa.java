@@ -6,6 +6,7 @@
 package edunova.jp24.view;
 
 import com.github.lgooddatepicker.components.DatePickerSettings;
+import com.google.gson.ExclusionStrategy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import edunova.jp24.controller.ObradaGrupa;
@@ -415,6 +416,9 @@ public class ProzorGrupa extends javax.swing.JFrame implements ProzorSucelje{
     }//GEN-LAST:event_btnTraziActionPerformed
 
     private void btnExportJSONActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportJSONActionPerformed
+       
+        
+        
         Gson gson = new GsonBuilder()
                 .setPrettyPrinting()
                 .create();
