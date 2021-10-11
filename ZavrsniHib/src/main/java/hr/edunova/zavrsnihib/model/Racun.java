@@ -21,6 +21,7 @@ import javax.persistence.OneToOne;
 @Entity
 public class Racun extends Entitet{
     
+    
     private String brojRacuna;
     private String kolicina;
     private String nacinPlacanja;

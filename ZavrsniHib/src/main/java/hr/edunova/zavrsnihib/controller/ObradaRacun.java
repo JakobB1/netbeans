@@ -26,7 +26,7 @@ public class ObradaRacun extends Obrada<Racun>{
     protected void kontrolaCreate() throws EdunovaException {
         kontrolaBrojRacuna();
         kontrolaKorisnik();
-        kontrolaOperater();
+        kontrolaOperater(); 
     }
 
     @Override
@@ -60,15 +60,17 @@ public class ObradaRacun extends Obrada<Racun>{
         }
     }
 
-    private void kontrolaOperater() throws EdunovaException{
-        if(entitet.getOperater()==null || entitet.getOperater().getId().equals(Long.valueOf(0))){
-            throw new EdunovaException("Operater obavezno");
-        }
-    }
+    
     
     private void kontrolaKorisnik() throws EdunovaException{
         if(entitet.getKorisnik()==null || entitet.getKorisnik().getId().equals(Long.valueOf(0))){
             entitet.setKorisnik(null);
+        }
+    }
+
+    private void kontrolaOperater() throws EdunovaException{
+        if(entitet.getOperater()==null || entitet.getOperater().getId().equals(Long.valueOf(0))){
+            throw new EdunovaException("Operater obavezan");
         }
     }
     
