@@ -177,7 +177,9 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
         // postavljanje operatera u cmb
         cmbOperater.setSelectedItem(r.getOperater());
         
-        
+        DefaultListModel<Proizvod> m = new DefaultListModel<>();
+        r.getProizvodi().forEach(p->{m.addElement(p);});
+        lstProizvodiNaRacunu.setModel(m);
         
     }//GEN-LAST:event_lstEntitetiValueChanged
 
