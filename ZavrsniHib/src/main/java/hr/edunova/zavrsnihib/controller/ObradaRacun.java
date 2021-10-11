@@ -7,7 +7,9 @@ package hr.edunova.zavrsnihib.controller;
 
 import hr.edunova.zavrsnihib.model.Racun;
 import hr.edunova.zavrsnihib.util.EdunovaException;
+import java.math.BigInteger;
 import java.util.List;
+import javax.persistence.Query;
 
 /**
  *
@@ -22,6 +24,7 @@ public class ObradaRacun extends Obrada<Racun>{
 
     @Override
     protected void kontrolaCreate() throws EdunovaException {
+        kontrolaBrojRacuna();
         kontrolaProizvod();
     }
 
@@ -37,5 +40,24 @@ public class ObradaRacun extends Obrada<Racun>{
 
     private void kontrolaProizvod() throws EdunovaException{
         
+    }
+
+    private void kontrolaBrojRacuna() throws EdunovaException{
+         if(entitet.getBrojRacuna()==null || entitet.getBrojRacuna().trim().length()==0){
+           throw new EdunovaException("Broj racuna obavezno");
+       }
+        
+        if(entitet.getBrojRacuna().length()>50){
+            throw new EdunovaException("Broj racuna ne moze biti duzi od 50 znakova");
+        }
+        
+        Query q = session.createNativeQuery("select count(*) from racun where brojRacuna=:brojRacunaParametar");
+        q.setParameter("brojRacunaParametar", entitet.getBrojRacuna());
+      
+        BigInteger ukupno = (BigInteger)q.getSingleResult();
+     
+        if(ukupno.compareTo(BigInteger.ZERO)>0){
+             throw new EdunovaException("Broj racuna već postoji");
+        }
     }
 }
