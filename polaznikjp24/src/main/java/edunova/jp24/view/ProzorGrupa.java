@@ -7,6 +7,7 @@ package edunova.jp24.view;
 
 import com.github.lgooddatepicker.components.DatePickerSettings;
 import com.google.gson.ExclusionStrategy;
+import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import edunova.jp24.controller.ObradaGrupa;
@@ -417,10 +418,28 @@ public class ProzorGrupa extends javax.swing.JFrame implements ProzorSucelje{
 
     private void btnExportJSONActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportJSONActionPerformed
        
-        
+        ExclusionStrategy strategija = new ExclusionStrategy(){
+            @Override
+            public boolean shouldSkipField(FieldAttributes fa) {
+               
+                if(fa.getDeclaringClass()==Smjer.class && fa.getName().equals("grupe")){
+                    return true;
+                }
+                
+                return false;
+            }
+
+            @Override
+            public boolean shouldSkipClass(Class<?> type) {
+                return false;
+            }
+            
+        };
         
         Gson gson = new GsonBuilder()
                 .setPrettyPrinting()
+                .setExclusionStrategies(strategija)
+                .setDateFormat("EEE, dd MMM yyyy HH:mm:ss Z")
                 .create();
         
         JFileChooser jfc = new JFileChooser();
