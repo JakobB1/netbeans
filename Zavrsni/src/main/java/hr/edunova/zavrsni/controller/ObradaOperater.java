@@ -6,6 +6,7 @@
 package hr.edunova.zavrsni.controller;
 
 import hr.edunova.zavrsni.model.Operater;
+import hr.edunova.zavrsni.model.Racun;
 import hr.edunova.zavrsni.util.EdunovaException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -39,7 +40,15 @@ public class ObradaOperater extends Obrada<Operater>{
 
     @Override
     protected void kontrolaDelete() throws EdunovaException {
-        
+        if(entitet.getRacuni().size()>0){
+            String o = "";
+            for(Racun r: entitet.getRacuni()){
+                o+=r.getBrojRacuna() + ", ";
+            }
+            o=o.substring(0,o.length()-2);
+            throw new EdunovaException("Ne mozete obrisati operatera jer su na njemu racuni: "
+            +o);
+    }
     }
 
     

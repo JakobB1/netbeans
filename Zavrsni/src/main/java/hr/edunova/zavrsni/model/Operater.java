@@ -5,7 +5,10 @@
  */
 package hr.edunova.zavrsni.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -20,6 +23,11 @@ public class Operater extends Entitet{
     private String oib;
     private String email;
 
+    
+    @OneToMany(mappedBy = "operater")
+    private List<Racun> racuni = new ArrayList<>();
+    
+    
     public String getNaziv() {
         return naziv;
     }
@@ -59,7 +67,19 @@ public class Operater extends Entitet{
     public void setEmail(String email) {
         this.email = email;
     }
+    
+    
+    
+    public List<Racun> getRacuni() {
+        return racuni;
+    }
 
+    public void setRacuni(List<Racun> racuni) {
+        this.racuni = racuni;
+    }
+    
+    
+    
     @Override
     public String toString() {
         return naziv;
