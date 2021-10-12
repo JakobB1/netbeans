@@ -22,7 +22,7 @@ public class Izbornik extends javax.swing.JFrame {
     }
 
     private void postavke(){
-        setTitle(Aplikacija.NASLOV_APP + " Izbornik: " + Aplikacija.login.getPrezime());
+        setTitle(Aplikacija.getNaslov());
     }
     
     /**
@@ -40,7 +40,7 @@ public class Izbornik extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 531, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
