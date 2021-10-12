@@ -18,7 +18,7 @@ import org.mindrot.jbcrypt.BCrypt;
  *
  * @author jalep
  */
-public class ObradaLogin extends ObradaOsoba<Login>{
+public class ObradaLogin extends Obrada<Login>{
 
     @Override
     public List<Login> read() {
