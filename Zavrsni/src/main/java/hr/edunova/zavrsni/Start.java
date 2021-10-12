@@ -5,6 +5,8 @@
  */
 package hr.edunova.zavrsni;
 
+import hr.edunova.zavrsni.util.HibernateUtil;
+
 /**
  *
  * @author jalep
@@ -12,7 +14,7 @@ package hr.edunova.zavrsni;
 public class Start {
     
     public static void main(String[] args) {
-        System.out.println("Hello");
+        HibernateUtil.getSession();
     }
     
 }
