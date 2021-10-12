@@ -5,7 +5,7 @@
  */
 package hr.edunova.zavrsnihib.util;
 
-import hr.edunova.zavrsnihib.model.Operater;
+import hr.edunova.zavrsnihib.model.Login;
 
 /**
  *
@@ -15,13 +15,13 @@ public class Aplikacija {
     
     public static final String NASLOV_APP = "Edunova APP";
     
-    public static Operater operater;
+    public static Login login;
     
     public static String getNaslov(String naziv){
-        if(Aplikacija.operater==null){
+        if(Aplikacija.login==null){
             return Aplikacija.NASLOV_APP;
         }
-        return Aplikacija.NASLOV_APP + " " + naziv + ": " + Aplikacija.operater.getImePrezime();
+        return Aplikacija.NASLOV_APP + " " + naziv + ": " + Aplikacija.login.getImePrezime();
     }
     
 }

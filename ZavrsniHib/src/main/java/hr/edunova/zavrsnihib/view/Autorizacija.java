@@ -5,8 +5,8 @@
  */
 package hr.edunova.zavrsnihib.view;
 
-import hr.edunova.zavrsnihib.controller.ObradaOperater;
-import hr.edunova.zavrsnihib.model.Operater;
+import hr.edunova.zavrsnihib.controller.ObradaLogin;
+import hr.edunova.zavrsnihib.model.Login;
 import hr.edunova.zavrsnihib.util.Aplikacija;
 import hr.edunova.zavrsnihib.util.HibernateUtil;
 import javax.swing.JOptionPane;
@@ -18,14 +18,14 @@ import org.hibernate.Session;
  */
 public class Autorizacija extends javax.swing.JFrame {
     
-    private ObradaOperater obradaOperater;
+    private ObradaLogin obradaLogin;
 
     /**
      * Creates new form Autorizacija
      */
     public Autorizacija() {
         initComponents();
-        obradaOperater = new ObradaOperater();
+        obradaLogin = new ObradaLogin();
         postavke();
     }
     
@@ -52,7 +52,7 @@ public class Autorizacija extends javax.swing.JFrame {
 
         jLabel1.setText("Email");
 
-        txtEmail.setText("operaterpc@edunova.hr");
+        txtEmail.setText("operater@edunova.hr");
 
         jLabel2.setText("Lozinka");
 
@@ -109,19 +109,19 @@ public class Autorizacija extends javax.swing.JFrame {
         
         String lozinka = String.valueOf(pswLozinka.getPassword());
         if(lozinka.trim().length()==0){
-            JOptionPane.showMessageDialog(getRootPane(), "Lozinka obavezno");
+             JOptionPane.showMessageDialog(getRootPane(), "Lozinka obavezno");
             return;
         }
         
-        Operater oper = obradaOperater.autoriziraj(txtEmail.getText(), lozinka);
+        Login log = obradaLogin.autoriziraj(txtEmail.getText(), lozinka);
         
-        if(oper==null){
-            JOptionPane.showMessageDialog(getRootPane(), "Neispravna kombinacija email i lozinka");
+        if(log==null){
+             JOptionPane.showMessageDialog(getRootPane(), "Neispravna kombinacija email i lozinka");
             return;
         }
         
-        // ovdje smo autorizirani
-        Aplikacija.operater = oper;
+        //ovdje smo autorizirani
+        Aplikacija.login=log;
         new Izbornik().setVisible(true);
         dispose();
         

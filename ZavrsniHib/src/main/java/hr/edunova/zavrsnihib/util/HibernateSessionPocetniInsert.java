@@ -7,6 +7,7 @@ package hr.edunova.zavrsnihib.util;
 
 import com.github.javafaker.Faker;
 import hr.edunova.zavrsnihib.model.Korisnik;
+import hr.edunova.zavrsnihib.model.Login;
 import hr.edunova.zavrsnihib.model.Operater;
 import hr.edunova.zavrsnihib.model.Proizvod;
 import hr.edunova.zavrsnihib.model.Racun;
@@ -29,15 +30,21 @@ public class HibernateSessionPocetniInsert {
         //prije rada s hibernate zapoceti transakciju
         s.beginTransaction();
         
+        Login l = new Login();
+        l.setIme("Edunova");
+        l.setPrezime("Operater");
+        l.setEmail("operater@edunova.hr");
+        l.setLozinka(BCrypt.hashpw("o", BCrypt.gensalt()));
         
+        s.save(l);
         
         
         Operater o = new Operater();
         o.setIme("Edunova PC");
         o.setPrezime("Operater");
         o.setOib("12345678911");
-        o.setEmail("operaterpc@edunova.hr");
-        o.setLozinka(BCrypt.hashpw("o", BCrypt.gensalt()));
+        o.setEmail("operaterpc1@edunova.hr");
+        
         o.setBrojUgovora("1");
         o.setIban("HR5454545");
         o.setZiroRacun("HR1283712893721");

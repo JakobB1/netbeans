@@ -48,6 +48,7 @@
         <mapping class="hr.edunova.zavrsnihib.model.Racun" />
         <mapping class="hr.edunova.zavrsnihib.model.Proizvod" />
         <mapping class="hr.edunova.zavrsnihib.model.Operater" />
+        <mapping class="hr.edunova.zavrsnihib.model.Login" />
         
         
                    

@@ -65,7 +65,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtEmail">
       <Properties>
-        <Property name="text" type="java.lang.String" value="operaterpc@edunova.hr"/>
+        <Property name="text" type="java.lang.String" value="operater@edunova.hr"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">

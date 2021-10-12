@@ -24,24 +24,7 @@ public class ObradaOperater extends ObradaOsoba<Operater>{
         return session.createQuery("from Operater").list();
     }
     
-    public Operater autoriziraj(String email, String lozinka){
-        Operater oper=null;
-        try {
-            oper = (Operater)session.createQuery("from Operater o where o.email=:email")
-                .setParameter("email", email).getSingleResult();
-        } catch (NoResultException e) {
-            return null;
-        }
-         
-        
-        if(oper==null){
-            return null;
-        }
-        
-        return BCrypt.checkpw(lozinka, oper.getLozinka()) ? oper : null;
-    }
     
-
     @Override
     protected void kontrolaCreate() throws EdunovaException {
         kontrolaIme();
