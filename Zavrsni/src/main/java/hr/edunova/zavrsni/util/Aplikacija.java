@@ -18,10 +18,10 @@ public class Aplikacija {
     public static Login login;
     
     
-    public static String getNaslov(String naziv){
+    public static String getNaslov() {
         if(Aplikacija.login==null){
             return Aplikacija.NASLOV_APP;
         }
-        return Aplikacija.NASLOV_APP + " " + naziv +": " + Aplikacija.login.getImePrezime();
+        return Aplikacija.NASLOV_APP + " Izbornik: " + Aplikacija.login.getImePrezime();
+        }
     }
-}
