@@ -44,13 +44,14 @@
         
         
         <!-- Ovdje navodimo mapirane klase 
-        <mapping class="hr.edunova.zavrsnihib.model.Korisnik" />
-        <mapping class="hr.edunova.zavrsnihib.model.Racun" />
-        <mapping class="hr.edunova.zavrsnihib.model.Proizvod" />
-        <mapping class="hr.edunova.zavrsnihib.model.Operater" />
+        
         <mapping class="hr.edunova.zavrsnihib.model.Login" />
         -->
         
-                   
+        <mapping class="hr.edunova.zavrsni.model.Racun" />
+        <mapping class="hr.edunova.zavrsni.model.Proizvod" />
+        <mapping class="hr.edunova.zavrsni.model.Korisnik" />
+        <mapping class="hr.edunova.zavrsni.model.Operater" />
+               
     </session-factory>
 </hibernate-configuration>
