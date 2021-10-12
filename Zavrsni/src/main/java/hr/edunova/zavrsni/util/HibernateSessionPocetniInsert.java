@@ -38,9 +38,17 @@ public class HibernateSessionPocetniInsert {
         s.save(l);
         
         
-        Operater java = new Operater();
-        java.setNaziv("Edunova PC Operater");
-        s.save(java);
+        
+        
+        Operater o = new Operater();
+        o.setNaziv("Edunova PC Operater");
+        o.setEmail("edunova@mail.hr");
+        o.setOib("12345678911");
+        o.setBrojUgovora("1");
+        o.setCertifikat(true);
+        
+        s.save(o);
+        
         
         
         
@@ -57,12 +65,15 @@ public class HibernateSessionPocetniInsert {
         }
         
         
+        
+        
         Racun racun = new Racun();
         racun.setBrojRacuna("1");
         racun.setCijena(BigDecimal.TEN);
         racun.setIznos(BigDecimal.TEN);
         racun.setKolicina("1");
         racun.setNacinPlacanja("Gotovina");
+        racun.setOperater(o);
         
         s.save(racun);
         
