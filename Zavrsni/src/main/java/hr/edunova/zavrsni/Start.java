@@ -17,8 +17,8 @@ public class Start {
     
     public static void main(String[] args) {
         //HibernateUtil.getSession();
-        HibernateSessionPocetniInsert.odradiPosao();
-        //new SplashScreen().setVisible(true);
+        //HibernateSessionPocetniInsert.odradiPosao();
+        new SplashScreen().setVisible(true);
     }
     
 }
