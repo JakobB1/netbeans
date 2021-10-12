@@ -5,6 +5,8 @@
  */
 package hr.edunova.zavrsni.view;
 
+import hr.edunova.zavrsni.util.Aplikacija;
+
 /**
  *
  * @author jalep
@@ -16,8 +18,13 @@ public class Izbornik extends javax.swing.JFrame {
      */
     public Izbornik() {
         initComponents();
+        postavke();
     }
 
+    private void postavke(){
+        setTitle(Aplikacija.NASLOV_APP + " Izbornik: " + Aplikacija.login.getPrezime());
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

@@ -24,6 +24,8 @@ public class Login extends Osoba{
         this.lozinka = lozinka;
     }
     
-    
+    public String getImePrezime(){
+        return getIme() + " " + getPrezime();
+    }
     
 }
