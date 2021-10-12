@@ -44,7 +44,7 @@ public class HibernateSessionPocetniInsert {
         o.setNaziv("Edunova PC Operater");
         o.setEmail("edunova@mail.hr");
         o.setOib("12345678911");
-        o.setBrojUgovora("1");
+        o.setBrojUgovora("/1");
         o.setCertifikat(true);
         
         s.save(o);
