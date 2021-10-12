@@ -8,6 +8,7 @@ package hr.edunova.zavrsni.controller;
 import hr.edunova.zavrsni.model.Login;
 import hr.edunova.zavrsni.util.EdunovaException;
 import java.util.List;
+import javax.persistence.NoResultException;
 import org.mindrot.jbcrypt.BCrypt;
 
 /**
@@ -23,9 +24,14 @@ public class ObradaLogin extends ObradaOsoba<Login>{
 
     public Login autoriziraj(String email, String lozinka){
         
-        
-        Login log = (Login)session.createQuery("from Login l where l.email=:email")
+        Login log=null;
+        try {
+            log = (Login)session.createQuery("from Login l where l.email=:email")
                 .setParameter("email", email).getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
+       
         
         if(log==null){
             return null;
