@@ -43,15 +43,13 @@
 
         
         
-        <!-- Ovdje navodimo mapirane klase 
-        
-        <mapping class="hr.edunova.zavrsnihib.model.Login" />
-        -->
-        
+        <!-- Ovdje navodimo mapirane klase -->
         <mapping class="hr.edunova.zavrsni.model.Racun" />
         <mapping class="hr.edunova.zavrsni.model.Proizvod" />
         <mapping class="hr.edunova.zavrsni.model.Korisnik" />
         <mapping class="hr.edunova.zavrsni.model.Operater" />
-               
+        <mapping class="hr.edunova.zavrsni.model.Login" />       
+        
+        
     </session-factory>
 </hibernate-configuration>
