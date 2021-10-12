@@ -5,6 +5,7 @@
  */
 package hr.edunova.zavrsni;
 
+import hr.edunova.zavrsni.util.HibernateSessionPocetniInsert;
 import hr.edunova.zavrsni.util.HibernateUtil;
 
 /**
@@ -14,7 +15,8 @@ import hr.edunova.zavrsni.util.HibernateUtil;
 public class Start {
     
     public static void main(String[] args) {
-        HibernateUtil.getSession();
+        //HibernateUtil.getSession();
+        HibernateSessionPocetniInsert.odradiPosao();
     }
     
 }
