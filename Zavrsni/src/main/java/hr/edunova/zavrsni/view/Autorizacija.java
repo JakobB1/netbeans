@@ -5,6 +5,8 @@
  */
 package hr.edunova.zavrsni.view;
 
+import hr.edunova.zavrsni.controller.ObradaLogin;
+import hr.edunova.zavrsni.model.Login;
 import hr.edunova.zavrsni.util.HibernateUtil;
 import javax.swing.JOptionPane;
 import org.hibernate.Session;
@@ -15,37 +17,15 @@ import org.hibernate.Session;
  */
 public class Autorizacija extends javax.swing.JFrame {
 
+    private ObradaLogin obradaLogin;
+    
     /**
      * Creates new form Autorizacija
      */
     public Autorizacija() {
         initComponents();
-        
-        
-        Ucitanje ucitanje = new Ucitanje();
-        ucitanje.start();
-        
-        
+        obradaLogin = new ObradaLogin();
     }
-
-    
-    private class Ucitanje extends Thread{
-
-        @Override
-        public void run() {
-            Session s = HibernateUtil.getSession();
-        if(s.getMetamodel().getEntities().size()>0){
-            new Autorizacija().setVisible(true);
-            dispose();
-            setVisible(false);
-        }else{
-            JOptionPane.showMessageDialog(getRootPane(), "Problem s bazom podataka");
-        }
-    }
-
-    }  
-        
-    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -67,11 +47,18 @@ public class Autorizacija extends javax.swing.JFrame {
 
         jLabel1.setText("Email");
 
+        txtEmail.setText("operater@edunova.hr");
+
         jLabel2.setText("Lozinka");
 
-        pswLozinka.setText("jPasswordField1");
+        pswLozinka.setText("o");
 
         btnLogin.setText("Login");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -107,6 +94,31 @@ public class Autorizacija extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        if(txtEmail.getText().trim().length()==0){
+            JOptionPane.showMessageDialog(getRootPane(), "Email obavezno");
+            return;
+        }
+        
+        String lozinka = String.valueOf(pswLozinka.getPassword());
+        if(lozinka.trim().length()==0){
+            JOptionPane.showMessageDialog(getRootPane(), "Lozinka obavezno");
+            return;
+        }
+        
+        Login log = obradaLogin.autoriziraj(txtEmail.getText(), lozinka);
+        
+        if(log==null){
+            JOptionPane.showMessageDialog(getRootPane(), "Neispravna kombinacija email i lozinka");
+            return;
+        }
+        
+        // ovdje smo autorizirani
+        new Izbornik().setVisible(true);
+        dispose();
+        
+    }//GEN-LAST:event_btnLoginActionPerformed
 
    
         
