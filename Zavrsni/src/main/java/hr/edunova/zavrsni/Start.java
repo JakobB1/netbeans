@@ -7,6 +7,7 @@ package hr.edunova.zavrsni;
 
 import hr.edunova.zavrsni.util.HibernateSessionPocetniInsert;
 import hr.edunova.zavrsni.util.HibernateUtil;
+import hr.edunova.zavrsni.view.SplashScreen;
 
 /**
  *
@@ -16,7 +17,8 @@ public class Start {
     
     public static void main(String[] args) {
         //HibernateUtil.getSession();
-        HibernateSessionPocetniInsert.odradiPosao();
+        //HibernateSessionPocetniInsert.odradiPosao();
+        new SplashScreen().setVisible(true);
     }
     
 }
