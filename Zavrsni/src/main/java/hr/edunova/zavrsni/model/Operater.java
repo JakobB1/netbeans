@@ -15,7 +15,7 @@ import javax.persistence.Entity;
 public class Operater extends Entitet{
        
     private String naziv;
-    private String brojugovora;
+    private String brojUgovora;
     private Boolean certifikat;
     private String oib;
     private String email;
@@ -28,12 +28,12 @@ public class Operater extends Entitet{
         this.naziv = naziv;
     }
 
-    public String getBrojugovora() {
-        return brojugovora;
+    public String getBrojUgovora() {
+        return brojUgovora;
     }
 
-    public void setBrojugovora(String brojugovora) {
-        this.brojugovora = brojugovora;
+    public void setBrojUgovora(String brojUgovora) {
+        this.brojUgovora = brojUgovora;
     }
 
     public Boolean getCertifikat() {

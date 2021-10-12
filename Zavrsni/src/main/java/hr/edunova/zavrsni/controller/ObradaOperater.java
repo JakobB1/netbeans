@@ -66,7 +66,7 @@ public class ObradaOperater extends Obrada<Operater>{
     }
 
     private void kontrolaBrojUgovora() throws EdunovaException{
-        if(entitet.getBrojugovora()==null || entitet.getBrojugovora().contains("/")){
+        if(entitet.getBrojUgovora()==null || entitet.getBrojUgovora().contains("/")){
             throw new EdunovaException("Broj ugovora mora imati znak /");
         }
     }
