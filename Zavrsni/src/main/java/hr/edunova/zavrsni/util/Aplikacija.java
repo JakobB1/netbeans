@@ -13,15 +13,15 @@ import hr.edunova.zavrsni.model.Login;
  */
 public class Aplikacija {
     
-    public static final String NASLOV_APP="Edunova PC APP";
+    public static final String NASLOV_APP="Pc Shop";
     
     public static Login login;
     
     
-    public static String getNaslov() {
+    public static String getNaslov(String naziv) {
         if(Aplikacija.login==null){
             return Aplikacija.NASLOV_APP;
         }
-        return Aplikacija.NASLOV_APP + " Izbornik: " + Aplikacija.login.getImePrezime();
+        return Aplikacija.NASLOV_APP + " " + naziv + ": "  + Aplikacija.login.getImePrezime();
         }
     }
