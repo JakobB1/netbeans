@@ -57,16 +57,14 @@ public class HibernateSessionPocetniInsert {
         
         
         Faker faker = new Faker();
-        List<Korisnik>korisnici = new ArrayList<>();
-        Korisnik korisnik;
-        for(int i=0;i<5;i++){
-            korisnik = new Korisnik();
-            korisnik.setIme(faker.name().lastName());
-            korisnik.setPrezime(faker.name().lastName());
-            korisnik.setOib(EdunovaUtil.getOIB());
-            
-            s.save(korisnik);
-        }
+        Korisnik korisnik = new Korisnik();
+        korisnik.setIme(faker.name().firstName());
+        korisnik.setPrezime(faker.name().lastName());
+        korisnik.setEmail("email@mail.hr");
+        korisnik.setOib("11111111111");
+        korisnik.setBrojClasnkeKartice("1");
+        
+         s.save(korisnik);
         
         
         
@@ -79,6 +77,7 @@ public class HibernateSessionPocetniInsert {
         racun.setKolicina("1");
         racun.setNacinPlacanja("Gotovina");
         racun.setOperater(o);
+        racun.setKorisnik(korisnik);
         
         
         s.save(racun);
