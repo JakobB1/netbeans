@@ -291,47 +291,18 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
     }//GEN-LAST:event_btnPromjeniActionPerformed
 
     private void btnTraziActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraziActionPerformed
-        DefaultListModel<Proizvod> mp = new DefaultListModel<>();
-        obradaProizvod.read(txtUvjet.getText()).forEach(p -> {
-            mp.addElement(p);
-        });
-        lstProizvodiUBazi.setModel(mp);
+        DefaultListModel<Proizvod> m = new DefaultListModel<>();
+        obradaProizvod.read(txtUvjet.getText()).forEach(p->{m.addElement(p);});
+        lstProizvodiUBazi.setModel(m);
     }//GEN-LAST:event_btnTraziActionPerformed
 
     private void btnDodajNaRacunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajNaRacunActionPerformed
-        DefaultComboBoxModel<Proizvod> m = (DefaultComboBoxModel<Proizvod>) lstProizvodiNaRacunu.getModel();
-        for(Proizvod p : lstProizvodiUBazi.getSelectedValuesList()){
-           m.addElement(p);
-        }
-        lstProizvodiNaRacunu.repaint();
+        
     }//GEN-LAST:event_btnDodajNaRacunActionPerformed
 
     
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDodaj;
-    private javax.swing.JButton btnDodajNaRacun;
-    private javax.swing.JButton btnObrisi;
-    private javax.swing.JButton btnObrisiSaRacuna;
-    private javax.swing.JButton btnPromjeni;
-    private javax.swing.JButton btnTrazi;
-    private javax.swing.JComboBox<Korisnik> cmbKorisnik;
-    private javax.swing.JComboBox<Operater> cmbOperater;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JList<Racun> lstEntiteti;
-    private javax.swing.JList<Proizvod> lstProizvodiNaRacunu;
-    private javax.swing.JList<Proizvod> lstProizvodiUBazi;
-    private javax.swing.JTextField txtBrojRacuna;
-    private javax.swing.JTextField txtUvjet;
-    // End of variables declaration//GEN-END:variables
-
+    
+    
     @Override
     public void postaviVrijednostiUEntitet() {
         var r = obrada.getEntitet();
@@ -374,4 +345,29 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
         obrada.read().forEach(r->{mr.addElement(r);});
         lstEntiteti.setModel(mr);
     }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDodaj;
+    private javax.swing.JButton btnDodajNaRacun;
+    private javax.swing.JButton btnObrisi;
+    private javax.swing.JButton btnObrisiSaRacuna;
+    private javax.swing.JButton btnPromjeni;
+    private javax.swing.JButton btnTrazi;
+    private javax.swing.JComboBox<Korisnik> cmbKorisnik;
+    private javax.swing.JComboBox<Operater> cmbOperater;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JList<Racun> lstEntiteti;
+    private javax.swing.JList<Proizvod> lstProizvodiNaRacunu;
+    private javax.swing.JList<Proizvod> lstProizvodiUBazi;
+    private javax.swing.JTextField txtBrojRacuna;
+    private javax.swing.JTextField txtUvjet;
+    // End of variables declaration//GEN-END:variables
+
 }
