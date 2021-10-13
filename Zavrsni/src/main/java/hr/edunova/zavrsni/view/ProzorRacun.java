@@ -104,6 +104,8 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
         var r = obrada.getEntitet();
         
         txtBrojRacuna.setText(r.getBrojRacuna());
+        
+        // postaviti operatera u cmb
     }//GEN-LAST:event_lstEntitetiValueChanged
 
     
