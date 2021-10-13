@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  *
  * @author jalep
  */
-public class ProzorOperater extends javax.swing.JFrame {
+public class ProzorOperater extends javax.swing.JFrame implements ProzorSucelje{
 
     private ObradaOperater obrada;
     
@@ -220,11 +220,11 @@ public class ProzorOperater extends javax.swing.JFrame {
         o.setCertifikat(chbCertifikat.isSelected());
     }
 
-    private void postavke(){
+    public void postavke(){
         setTitle(Aplikacija.getNaslov("Izbornik"));
     }
     
-    private void ucitaj(){
+    public void ucitaj(){
         DefaultListModel<Operater> m = new DefaultListModel<>();
         
         obrada.read().forEach(o->{m.addElement(o);});
