@@ -20,6 +20,15 @@ public class ObradaKorisnik extends ObradaOsoba<Korisnik>{
         return session.createQuery("from Korisnik").list();
     }
 
+    public List<Korisnik> read(String uvjet){
+        return session.createQuery("from Korisnik k"
+                + " where concat(k.ime,' ', k.prezime,' ', k.ime,' ', k.oib) "
+                + " like :uvjet order by k.prezime, k.ime")
+                .setParameter("uvjet", "%" + uvjet + "%")
+                .setMaxResults(50)
+                .list();
+    }
+    
     @Override
     protected void kontrolaCreate() throws EdunovaException {
         super.kontrolaCreate();
