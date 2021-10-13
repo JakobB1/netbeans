@@ -80,6 +80,7 @@ public class HibernateSessionPocetniInsert {
         racun.setNacinPlacanja("Gotovina");
         racun.setOperater(o);
         
+        
         s.save(racun);
         
         

@@ -104,7 +104,5 @@ public class Racun extends Entitet{
         return brojRacuna;
     }   
 
-    public List<Korisnik> setKorisnik(List<Korisnik> korisnici) {
-        return korisnici;
-    }
+    
 }
