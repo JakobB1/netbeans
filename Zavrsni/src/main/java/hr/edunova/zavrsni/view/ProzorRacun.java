@@ -5,10 +5,12 @@
  */
 package hr.edunova.zavrsni.view;
 
+import hr.edunova.zavrsni.controller.ObradaKorisnik;
 import hr.edunova.zavrsni.controller.ObradaOperater;
 import hr.edunova.zavrsni.controller.ObradaRacun;
 import hr.edunova.zavrsni.model.Racun;
 import hr.edunova.zavrsni.model.Operater;
+import hr.edunova.zavrsni.model.Korisnik;
 import hr.edunova.zavrsni.util.Aplikacija;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
@@ -45,6 +47,8 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
         txtBrojRacuna = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         cmbOperater = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        cmbKorisnik = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -59,6 +63,8 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
 
         jLabel2.setText("Operater");
 
+        jLabel3.setText("Korisnik");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -67,11 +73,14 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1)
-                    .addComponent(txtBrojRacuna)
-                    .addComponent(jLabel2)
-                    .addComponent(cmbOperater, 0, 101, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel1)
+                        .addComponent(txtBrojRacuna)
+                        .addComponent(jLabel2)
+                        .addComponent(cmbOperater, 0, 101, Short.MAX_VALUE))
+                    .addComponent(jLabel3)
+                    .addComponent(cmbKorisnik, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(253, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -86,7 +95,11 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
                         .addGap(30, 30, 30)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbOperater, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cmbOperater, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmbKorisnik, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
@@ -104,18 +117,21 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
         var r = obrada.getEntitet();
         
         txtBrojRacuna.setText(r.getBrojRacuna());
-        
         // postaviti operatera u cmb
+        // u modelu klasa operater generirao sam equals i hashCode metode - ne bih koristio
         cmbOperater.setSelectedItem(r.getOperater());
-        System.out.println(r.getOperater().hashCode());
+         System.out.println(r.getOperater().hashCode());
+         
     }//GEN-LAST:event_lstEntitetiValueChanged
 
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<Korisnik> cmbKorisnik;
     private javax.swing.JComboBox<Operater> cmbOperater;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList<Racun> lstEntiteti;
     private javax.swing.JTextField txtBrojRacuna;
@@ -140,6 +156,17 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
             System.out.println(o.hashCode());
             mo.addElement(o);});
         cmbOperater.setModel(mo);
+        
+        DefaultComboBoxModel<Korisnik> mk = new DefaultComboBoxModel<>();
+        Korisnik k = new Korisnik();
+        k.setId(Long.valueOf(0));
+        k.setIme("Nije");
+        k.setPrezime("odabrano");
+        mk.addElement(k);
+        new ObradaKorisnik().read().forEach(ko->{mk.addElement(ko);});
+        cmbKorisnik.setModel(mk);
+        
+        
     }
 
     @Override
