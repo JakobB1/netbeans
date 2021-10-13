@@ -103,4 +103,8 @@ public class Racun extends Entitet{
     public String toString() {
         return brojRacuna;
     }   
+
+    public void setKorisnik(List<Korisnik> korisnici) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
