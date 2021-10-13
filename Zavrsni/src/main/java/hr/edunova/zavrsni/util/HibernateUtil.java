@@ -7,6 +7,7 @@ package hr.edunova.zavrsni.util;
 
 import java.net.URL;
 import java.util.Scanner;
+import org.hibernate.CacheMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
