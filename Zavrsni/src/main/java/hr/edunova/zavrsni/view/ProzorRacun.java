@@ -106,6 +106,8 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
         txtBrojRacuna.setText(r.getBrojRacuna());
         
         // postaviti operatera u cmb
+        cmbOperater.setSelectedItem(r.getOperater());
+        System.out.println(r.getOperater().hashCode());
     }//GEN-LAST:event_lstEntitetiValueChanged
 
     
@@ -134,7 +136,9 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
         op.setId(Long.valueOf(0));
         op.setNaziv("Nije odabrano");
         mo.addElement(op);
-        new ObradaOperater().read().forEach(o->{mo.addElement(o);});
+        new ObradaOperater().read().forEach(o->{
+            System.out.println(o.hashCode());
+            mo.addElement(o);});
         cmbOperater.setModel(mo);
     }
 
