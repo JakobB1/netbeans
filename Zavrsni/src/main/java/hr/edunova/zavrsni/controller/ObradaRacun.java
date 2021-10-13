@@ -22,7 +22,7 @@ public class ObradaRacun extends Obrada<Racun>{
 
     @Override
     protected void kontrolaCreate() throws EdunovaException {
-        
+        kontrolaOperater();
     }
 
     @Override
@@ -33,6 +33,12 @@ public class ObradaRacun extends Obrada<Racun>{
     @Override
     protected void kontrolaDelete() throws EdunovaException {
         
+    }
+
+    private void kontrolaOperater() throws EdunovaException{
+        if(entitet.getOperater()==null || entitet.getOperater().getId().equals(Long.valueOf(0))){
+            throw new EdunovaException("Operater obavezan");
+        }
     }
     
 }
