@@ -7,6 +7,7 @@ package hr.edunova.zavrsni.view;
 
 import hr.edunova.zavrsni.controller.ObradaKorisnik;
 import hr.edunova.zavrsni.controller.ObradaOperater;
+import hr.edunova.zavrsni.controller.ObradaProizvod;
 import hr.edunova.zavrsni.controller.ObradaRacun;
 import hr.edunova.zavrsni.model.Racun;
 import hr.edunova.zavrsni.model.Operater;
@@ -14,6 +15,7 @@ import hr.edunova.zavrsni.model.Korisnik;
 import hr.edunova.zavrsni.model.Proizvod;
 import hr.edunova.zavrsni.util.Aplikacija;
 import hr.edunova.zavrsni.util.EdunovaException;
+import java.util.Comparator;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -24,6 +26,7 @@ import javax.swing.JOptionPane;
 public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
 
     private ObradaRacun obrada;
+    private ObradaProizvod obradaProizvod;
     
     /**
      * Creates new form ProzorRacun
@@ -31,6 +34,7 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
     public ProzorRacun() {
         initComponents();
         obrada = new ObradaRacun();
+        obradaProizvod = new ObradaProizvod();
         postavke();
         ucitaj();
     }
@@ -58,6 +62,13 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
         jLabel4 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         lstProizvodiNaRacunu = new javax.swing.JList<>();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        lstProizvodiUBazi = new javax.swing.JList<>();
+        jLabel5 = new javax.swing.JLabel();
+        txtUvjet = new javax.swing.JTextField();
+        btnTrazi = new javax.swing.JButton();
+        btnDodajNaRacun = new javax.swing.JButton();
+        btnObrisiSaRacuna = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -99,6 +110,26 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
 
         jScrollPane2.setViewportView(lstProizvodiNaRacunu);
 
+        jScrollPane3.setViewportView(lstProizvodiUBazi);
+
+        jLabel5.setText("Proizvodi u bazi");
+
+        btnTrazi.setText("Trazi");
+        btnTrazi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTraziActionPerformed(evt);
+            }
+        });
+
+        btnDodajNaRacun.setText("<<");
+        btnDodajNaRacun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDodajNaRacunActionPerformed(evt);
+            }
+        });
+
+        btnObrisiSaRacuna.setText(">>");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -116,33 +147,49 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
                                 .addComponent(jLabel2)
                                 .addComponent(cmbOperater, 0, 101, Short.MAX_VALUE))
                             .addComponent(jLabel3)
-                            .addComponent(cmbKorisnik, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(cmbKorisnik, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(37, 37, 37)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnDodajNaRacun)
+                                    .addComponent(btnObrisiSaRacuna))))
+                        .addGap(52, 52, 52)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtUvjet, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnTrazi))
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnDodaj)
                         .addGap(2, 2, 2)
                         .addComponent(btnPromjeni)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnObrisi)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(75, 75, 75))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addComponent(jScrollPane1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addComponent(jScrollPane2))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtBrojRacuna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(30, 30, 30)
                                 .addComponent(jLabel2)
@@ -151,10 +198,23 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cmbKorisnik, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 132, Short.MAX_VALUE))
-                            .addComponent(jScrollPane2))))
-                .addGap(18, 18, 18)
+                                .addComponent(cmbKorisnik, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(143, 143, 143)
+                                .addComponent(btnDodajNaRacun)))
+                        .addGap(41, 41, 41)
+                        .addComponent(btnObrisiSaRacuna)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtUvjet)
+                            .addComponent(btnTrazi))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDodaj)
                     .addComponent(btnObrisi)
@@ -190,6 +250,9 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
         }
          
         DefaultListModel<Proizvod> p = new DefaultListModel<>();
+        
+        
+        
         r.getProizvodi().forEach(pr->{p.addElement(pr);});
         lstProizvodiNaRacunu.setModel(p);
         
@@ -227,23 +290,46 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
         }
     }//GEN-LAST:event_btnPromjeniActionPerformed
 
+    private void btnTraziActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraziActionPerformed
+        DefaultListModel<Proizvod> mp = new DefaultListModel<>();
+        obradaProizvod.read(txtUvjet.getText()).forEach(p -> {
+            mp.addElement(p);
+        });
+        lstProizvodiUBazi.setModel(mp);
+    }//GEN-LAST:event_btnTraziActionPerformed
+
+    private void btnDodajNaRacunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajNaRacunActionPerformed
+        DefaultComboBoxModel<Proizvod> m = (DefaultComboBoxModel<Proizvod>) lstProizvodiNaRacunu.getModel();
+        for(Proizvod p : lstProizvodiUBazi.getSelectedValuesList()){
+           m.addElement(p);
+        }
+        lstProizvodiNaRacunu.repaint();
+    }//GEN-LAST:event_btnDodajNaRacunActionPerformed
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDodaj;
+    private javax.swing.JButton btnDodajNaRacun;
     private javax.swing.JButton btnObrisi;
+    private javax.swing.JButton btnObrisiSaRacuna;
     private javax.swing.JButton btnPromjeni;
+    private javax.swing.JButton btnTrazi;
     private javax.swing.JComboBox<Korisnik> cmbKorisnik;
     private javax.swing.JComboBox<Operater> cmbOperater;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JList<Racun> lstEntiteti;
     private javax.swing.JList<Proizvod> lstProizvodiNaRacunu;
+    private javax.swing.JList<Proizvod> lstProizvodiUBazi;
     private javax.swing.JTextField txtBrojRacuna;
+    private javax.swing.JTextField txtUvjet;
     // End of variables declaration//GEN-END:variables
 
     @Override
