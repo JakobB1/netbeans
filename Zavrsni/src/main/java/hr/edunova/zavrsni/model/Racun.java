@@ -98,7 +98,9 @@ public class Racun extends Entitet{
     public void setOperater(Operater operater) {
         this.operater = operater;
     }
-    
-    
-    
+
+    @Override
+    public String toString() {
+        return brojRacuna;
+    }   
 }
