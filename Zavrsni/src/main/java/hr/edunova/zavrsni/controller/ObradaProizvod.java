@@ -19,6 +19,15 @@ public class ObradaProizvod extends Obrada<Proizvod>{
     public List<Proizvod> read() {
         return session.createQuery("from Proizvod").list();
     }
+    
+    public List<Proizvod> read(String uvjet){
+        return session.createQuery("from Proizvod p"
+                + " where concat(p.naziv) "
+                + " like :uvjet order by p.naziv")
+                .setParameter("uvjet", "%" + uvjet + "%")
+                .setMaxResults(50)
+                .list();
+    }
 
     @Override
     protected void kontrolaCreate() throws EdunovaException {
