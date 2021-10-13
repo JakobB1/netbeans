@@ -12,8 +12,10 @@ import hr.edunova.zavrsni.model.Racun;
 import hr.edunova.zavrsni.model.Operater;
 import hr.edunova.zavrsni.model.Korisnik;
 import hr.edunova.zavrsni.util.Aplikacija;
+import hr.edunova.zavrsni.util.EdunovaException;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 /**
  *
  * @author jalep
@@ -49,6 +51,7 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
         cmbOperater = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         cmbKorisnik = new javax.swing.JComboBox<>();
+        btnDodaj = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -65,6 +68,13 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
 
         jLabel3.setText("Korisnik");
 
+        btnDodaj.setText("Dodaj");
+        btnDodaj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDodajActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -80,14 +90,15 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
                         .addComponent(jLabel2)
                         .addComponent(cmbOperater, 0, 101, Short.MAX_VALUE))
                     .addComponent(jLabel3)
-                    .addComponent(cmbKorisnik, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbKorisnik, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDodaj))
                 .addContainerGap(253, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(46, 46, 46)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -99,7 +110,9 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbKorisnik, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cmbKorisnik, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnDodaj))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
@@ -122,11 +135,33 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
         cmbOperater.setSelectedItem(r.getOperater());
          System.out.println(r.getOperater().hashCode());
          
+        // oznacavanje korisnika "rucno"
+        DefaultComboBoxModel<Korisnik> k = (DefaultComboBoxModel<Korisnik>) cmbKorisnik.getModel();
+        for(int i=0;i<k.getSize();i++){
+            if(k.getElementAt(i).getId().equals(r.getKorisnik().getId())){
+                cmbKorisnik.setSelectedIndex(i);
+                break;
+            }
+        }
+         
     }//GEN-LAST:event_lstEntitetiValueChanged
+
+    private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
+        obrada.setEntitet(new Racun());
+        postaviVrijednostiUEntitet();
+
+        try {
+            obrada.create();
+            ucitaj();
+        } catch (EdunovaException ex) {
+            JOptionPane.showMessageDialog(getParent(), ex.getPoruka());
+        }
+    }//GEN-LAST:event_btnDodajActionPerformed
 
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDodaj;
     private javax.swing.JComboBox<Korisnik> cmbKorisnik;
     private javax.swing.JComboBox<Operater> cmbOperater;
     private javax.swing.JLabel jLabel1;
@@ -139,6 +174,10 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
 
     @Override
     public void postaviVrijednostiUEntitet() {
+        var r = obrada.getEntitet();
+        r.setBrojRacuna(txtBrojRacuna.getText());
+        r.setOperater((Operater)cmbOperater.getSelectedItem());
+        r.setKorisnik((Korisnik)cmbKorisnik.getSelectedItem());
         
     }
 
