@@ -297,7 +297,11 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
     }//GEN-LAST:event_btnTraziActionPerformed
 
     private void btnDodajNaRacunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajNaRacunActionPerformed
-        
+        DefaultListModel<Proizvod> m = (DefaultListModel<Proizvod>) lstProizvodiNaRacunu.getModel();
+        for(Proizvod p : lstProizvodiUBazi.getSelectedValuesList()){
+            m.addElement(p);
+        }
+        lstProizvodiNaRacunu.repaint();
     }//GEN-LAST:event_btnDodajNaRacunActionPerformed
 
     
