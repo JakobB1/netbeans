@@ -15,8 +15,10 @@ import hr.edunova.zavrsni.model.Korisnik;
 import hr.edunova.zavrsni.model.Proizvod;
 import hr.edunova.zavrsni.util.Aplikacija;
 import hr.edunova.zavrsni.util.EdunovaException;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
@@ -269,25 +271,27 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
 
     private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
         obrada.setEntitet(new Racun());
-        postaviVrijednostiUEntitet();
 
+        postaviVrijednostiUEntitet();
         try {
+            //System.out.println(obrada.getEntitet().getPolaznici().size());
             obrada.create();
             ucitaj();
+            pocistiPodatke();
         } catch (EdunovaException ex) {
-            JOptionPane.showMessageDialog(getParent(), ex.getPoruka());
+            JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
         }
     }//GEN-LAST:event_btnDodajActionPerformed
 
     private void btnObrisiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisiActionPerformed
         if (obrada.getEntitet() == null) {
-            JOptionPane.showMessageDialog(getRootPane(), "Prvo odaberite grupu");
+            JOptionPane.showMessageDialog(getRootPane(), "Prvo odaberite racun");
             return;
         }
         boolean brisanje = true;
         if (obrada.getEntitet().getProizvodi().size() > 0) {
-            if (JOptionPane.showConfirmDialog(getParent(), "Grupa ima polaznike. Sigurno sve obrisati",
-                    "Brisanje grupe", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            if (JOptionPane.showConfirmDialog(getParent(), "Racun ima korisnike. Sigurno sve obrisati",
+                    "Brisanje racuna", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                 obrada.getEntitet().setProizvodi(new ArrayList<Proizvod>());
             } else {
                 brisanje = false;
@@ -315,7 +319,7 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
     
     private void btnPromjeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromjeniActionPerformed
         if (obrada.getEntitet() == null) {
-            JOptionPane.showMessageDialog(getRootPane(), "Prvo odaberite racun");
+            JOptionPane.showMessageDialog(getRootPane(), "Prvo odaberite grupu");
             return;
         }
         postaviVrijednostiUEntitet();
@@ -381,9 +385,16 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
     public void postaviVrijednostiUEntitet() {
         var r = obrada.getEntitet();
         r.setBrojRacuna(txtBrojRacuna.getText());
-        r.setOperater((Operater)cmbOperater.getSelectedItem());
-        r.setKorisnik((Korisnik)cmbKorisnik.getSelectedItem());
+        r.setOperater((Operater) cmbOperater.getSelectedItem());
+        r.setKorisnik((Korisnik) cmbKorisnik.getSelectedItem());
         
+        DefaultListModel<Proizvod> m = (DefaultListModel<Proizvod>) lstProizvodiNaRacunu.getModel();
+        List<Proizvod> lista = new ArrayList<>();
+        for (int i = 0; i < m.getSize(); i++) {
+            lista.add(m.get(i));
+        }
+        //System.out.println("Lista: " + lista.size());
+        r.setProizvodi(lista);
     }
 
     @Override
