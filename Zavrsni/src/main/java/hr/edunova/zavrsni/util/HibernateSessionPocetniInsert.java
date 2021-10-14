@@ -90,7 +90,7 @@ public class HibernateSessionPocetniInsert {
         ryzen31200.setKodArtikla("RZ31200/1");
         ryzen31200.setGarancija(new Date());
         s.save(ryzen31200);
-        
+        proizvodi.add(ryzen31200);
         
         Proizvod ryzen51600 = new Proizvod();
         ryzen51600.setNaziv("Ryzen 5 1600");
@@ -100,7 +100,7 @@ public class HibernateSessionPocetniInsert {
         ryzen51600.setKodArtikla("RZ51600/1");
         ryzen51600.setGarancija(new Date());
         s.save(ryzen51600);
-        
+        proizvodi.add(ryzen51600);
         
         Proizvod ryzen71800x = new Proizvod();
         ryzen71800x.setNaziv("Ryzen 7 1800x");
@@ -110,7 +110,7 @@ public class HibernateSessionPocetniInsert {
         ryzen71800x.setKodArtikla("RZ71800X/1");
         ryzen71800x.setGarancija(new Date());
         s.save(ryzen71800x);
-        
+        proizvodi.add(ryzen71800x);
         
         Proizvod ryzenthreadripper1950x = new Proizvod();
         ryzenthreadripper1950x.setNaziv("Ryzen Threadripper 1950x");
