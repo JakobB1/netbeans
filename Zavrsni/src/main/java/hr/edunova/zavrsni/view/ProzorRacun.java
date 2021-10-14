@@ -16,6 +16,7 @@ import hr.edunova.zavrsni.model.Proizvod;
 import hr.edunova.zavrsni.util.Aplikacija;
 import hr.edunova.zavrsni.util.EdunovaException;
 import java.util.Comparator;
+import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -129,6 +130,11 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
         });
 
         btnObrisiSaRacuna.setText(">>");
+        btnObrisiSaRacuna.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnObrisiSaRacunaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -299,12 +305,42 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
     private void btnDodajNaRacunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajNaRacunActionPerformed
         DefaultListModel<Proizvod> m = (DefaultListModel<Proizvod>) lstProizvodiNaRacunu.getModel();
         for(Proizvod p : lstProizvodiUBazi.getSelectedValuesList()){
+            if(!postojiProizvodUModelu(m, p)){
             m.addElement(p);
+        }
         }
         lstProizvodiNaRacunu.repaint();
     }//GEN-LAST:event_btnDodajNaRacunActionPerformed
 
+    private void btnObrisiSaRacunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisiSaRacunaActionPerformed
+        List<Proizvod> lista = lstProizvodiNaRacunu.getSelectedValuesList();
+           
+        for(Proizvod p: lista){
+            obrisiProizvodSaRacuna(p);
+        } 
+        lstProizvodiNaRacunu.repaint();
+    }//GEN-LAST:event_btnObrisiSaRacunaActionPerformed
+
+    private void obrisiProizvodSaRacuna(Proizvod p){
+        DefaultListModel<Proizvod> m = (DefaultListModel<Proizvod>) lstProizvodiNaRacunu.getModel();
+          for(int i=0;i<m.getSize();i++){
+            if(m.get(i).getId().equals(p.getId())){
+                m.removeElement(i);
+                return;
+            }
+        }
+    }
     
+    
+    
+    private boolean postojiProizvodUModelu(DefaultListModel<Proizvod>m, Proizvod p){
+        for(int i=0;i<m.getSize();i++){
+            if(m.get(i).getId().equals(p.getId())){
+                return true;
+            }
+        }
+        return false;
+    }
     
     
     @Override
