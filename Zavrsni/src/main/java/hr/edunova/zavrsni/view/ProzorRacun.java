@@ -15,6 +15,7 @@ import hr.edunova.zavrsni.model.Korisnik;
 import hr.edunova.zavrsni.model.Proizvod;
 import hr.edunova.zavrsni.util.Aplikacija;
 import hr.edunova.zavrsni.util.EdunovaException;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
@@ -28,6 +29,7 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
 
     private ObradaRacun obrada;
     private ObradaProizvod obradaProizvod;
+    private int odabraniIndex;
     
     /**
      * Creates new form ProzorRacun
@@ -278,21 +280,53 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
     }//GEN-LAST:event_btnDodajActionPerformed
 
     private void btnObrisiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisiActionPerformed
-        try {
-            obrada.delete();
-            ucitaj();
-        } catch (EdunovaException ex) {
-            JOptionPane.showMessageDialog(getParent(), ex.getPoruka());
+        if (obrada.getEntitet() == null) {
+            JOptionPane.showMessageDialog(getRootPane(), "Prvo odaberite grupu");
+            return;
+        }
+        boolean brisanje = true;
+        if (obrada.getEntitet().getProizvodi().size() > 0) {
+            if (JOptionPane.showConfirmDialog(getParent(), "Grupa ima polaznike. Sigurno sve obrisati",
+                    "Brisanje grupe", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                obrada.getEntitet().setProizvodi(new ArrayList<Proizvod>());
+            } else {
+                brisanje = false;
+            }
+        }
+        if (brisanje) {
+            try {
+                obrada.delete();
+                ucitaj();
+                pocistiPodatke();
+            } catch (EdunovaException ex) {
+                JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
+            }
         }
     }//GEN-LAST:event_btnObrisiActionPerformed
 
+    private void pocistiPodatke() {
+
+        txtBrojRacuna.setText("");
+        cmbOperater.setSelectedIndex(0);
+        cmbKorisnik.setSelectedIndex(0);
+        lstProizvodiNaRacunu.setModel(new DefaultListModel<>());
+
+    }
+    
     private void btnPromjeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromjeniActionPerformed
+        if (obrada.getEntitet() == null) {
+            JOptionPane.showMessageDialog(getRootPane(), "Prvo odaberite racun");
+            return;
+        }
         postaviVrijednostiUEntitet();
         try {
             obrada.update();
+            odabraniIndex = lstEntiteti.getSelectedIndex();
             ucitaj();
+            lstEntiteti.setSelectedIndex(odabraniIndex);
+
         } catch (EdunovaException ex) {
-            JOptionPane.showMessageDialog(getParent(), ex.getPoruka());
+            JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
         }
     }//GEN-LAST:event_btnPromjeniActionPerformed
 
@@ -304,28 +338,28 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
 
     private void btnDodajNaRacunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajNaRacunActionPerformed
         DefaultListModel<Proizvod> m = (DefaultListModel<Proizvod>) lstProizvodiNaRacunu.getModel();
-        for(Proizvod p : lstProizvodiUBazi.getSelectedValuesList()){
-            if(!postojiProizvodUModelu(m, p)){
-            m.addElement(p);
-        }
+        for (Proizvod p : lstProizvodiUBazi.getSelectedValuesList()) {
+            if (!postojiProizvodUModelu(m, p)) {
+                m.addElement(p);
+            }
         }
         lstProizvodiNaRacunu.repaint();
     }//GEN-LAST:event_btnDodajNaRacunActionPerformed
 
     private void btnObrisiSaRacunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisiSaRacunaActionPerformed
         List<Proizvod> lista = lstProizvodiNaRacunu.getSelectedValuesList();
-           
-        for(Proizvod p: lista){
+
+        for (Proizvod p : lista) {
             obrisiProizvodSaRacuna(p);
-        } 
+        }
         lstProizvodiNaRacunu.repaint();
     }//GEN-LAST:event_btnObrisiSaRacunaActionPerformed
 
     private void obrisiProizvodSaRacuna(Proizvod p){
         DefaultListModel<Proizvod> m = (DefaultListModel<Proizvod>) lstProizvodiNaRacunu.getModel();
-          for(int i=0;i<m.getSize();i++){
-            if(m.get(i).getId().equals(p.getId())){
-                m.removeElement(i);
+        for (int i = 0; i < m.getSize(); i++) {
+            if (m.get(i).getId().equals(p.getId())) {
+                m.removeElementAt(i);
                 return;
             }
         }
@@ -334,8 +368,8 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
     
     
     private boolean postojiProizvodUModelu(DefaultListModel<Proizvod>m, Proizvod p){
-        for(int i=0;i<m.getSize();i++){
-            if(m.get(i).getId().equals(p.getId())){
+        for (int i = 0; i < m.getSize(); i++) {
+            if (m.get(i).getId().equals(p.getId())) {
                 return true;
             }
         }
@@ -376,7 +410,7 @@ public class ProzorRacun extends javax.swing.JFrame implements ProzorSucelje{
         new ObradaKorisnik().read().forEach(ko->{mk.addElement(ko);});
         cmbKorisnik.setModel(mk);
         
-        
+         lstProizvodiNaRacunu.setModel(new DefaultListModel<Proizvod>());
     }
 
     @Override
