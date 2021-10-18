@@ -23,6 +23,7 @@ public class ObradaRacun extends Obrada<Racun>{
     @Override
     protected void kontrolaCreate() throws EdunovaException {
         kontrolaOperater();
+        kontrolaKorisnik();
     }
 
     @Override
@@ -40,5 +41,10 @@ public class ObradaRacun extends Obrada<Racun>{
             throw new EdunovaException("Operater obavezan");
         }
     }
-    
+
+    private void kontrolaKorisnik() throws EdunovaException{
+        if(entitet.getKorisnik()==null || entitet.getKorisnik().getId().equals(Long.valueOf(0))){
+            throw new EdunovaException("Korisnik obavezan");
+    }
+   }
 }
