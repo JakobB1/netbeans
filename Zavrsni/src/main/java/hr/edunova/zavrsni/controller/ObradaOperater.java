@@ -80,7 +80,7 @@ public class ObradaOperater extends Obrada<Operater>{
     
     private void kontrolaEmail() throws EdunovaException{
         if(!(entitet.getEmail().contains("@"))){
-           throw new EdunovaException ("Email neispravan");
+           throw new EdunovaException ("Email nije ispravan");
        }
         
         Query q = session.createNativeQuery("select count(*) from operater where email=:emailParametar");
