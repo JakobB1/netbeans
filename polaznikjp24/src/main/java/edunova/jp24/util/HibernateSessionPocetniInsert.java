@@ -6,6 +6,7 @@
 package edunova.jp24.util;
 
 import com.github.javafaker.Faker;
+import edunova.jp24.model.Clan;
 import edunova.jp24.model.Grupa;
 import edunova.jp24.model.Operater;
 import edunova.jp24.model.Polaznik;
@@ -42,8 +43,7 @@ public class HibernateSessionPocetniInsert {
         java.setCertifikat(true);
         java.setCijena(new BigDecimal(5999.99));
         s.save(java);
-        
-        
+
         Faker faker = new Faker();
         Predavac predavac = new Predavac();
         predavac.setIme(faker.name().firstName());
@@ -52,33 +52,32 @@ public class HibernateSessionPocetniInsert {
         predavac.setOib("11111111111");
         predavac.setIban("HR545454");
         
-        s.save(predavac);
+         s.save(predavac);
+         
+          Grupa grupa = new Grupa();
+        grupa.setNaziv("JP24");
+        grupa.setSmjer(java);
+        grupa.setPredavac(predavac);
+        grupa.setDatumPocetka(new Date());
         
-        
-        List<Polaznik> polaznici = new ArrayList<>();
-        
+        s.save(grupa);
+         
+         List<Clan> clanovi = new ArrayList<>();
+
         Polaznik polaznik;
-        for(int i=0;i<1300;i++) {
+        Clan clan;
+        for (int i = 0; i < 27; i++) {
+            clan=new Clan();
             polaznik = new Polaznik();
             polaznik.setIme(faker.name().firstName());
             polaznik.setPrezime(faker.name().lastName());
             polaznik.setOib(EdunovaUtil.getOIB());
             s.save(polaznik);
-            //if(i%100==0) {
-            if(i<27){
-                polaznici.add(polaznik);
-            }
-            //}
+            clan.setPolaznik(polaznik);
+            clan.setGrupa(grupa);
+            clan.setKalorije(200);
+            s.save(clan);
         }
-        
-        Grupa grupa = new Grupa();
-        grupa.setNaziv("JP24");
-        grupa.setSmjer(java);
-        grupa.setPredavac(predavac);
-        grupa.setDatumPocetka(new Date());
-        grupa.setPolaznici(polaznici);
-        
-        s.save(grupa);
                 
         // commit ide na kraju
         s.getTransaction().commit();
