@@ -23,9 +23,10 @@ public abstract class Obrada<T> {
     protected abstract void kontrolaCreate() throws EdunovaException;
     protected abstract void kontrolaUpdate() throws EdunovaException;
     protected abstract void kontrolaDelete() throws EdunovaException;
-    
+
     public Obrada() {
         this.session = HibernateUtil.getSession();
+        //this.session.setCacheMode(CacheMode.REFRESH);
     }
     
     public T create() throws EdunovaException{
@@ -46,7 +47,7 @@ public abstract class Obrada<T> {
         session.getTransaction().commit();
     }
     
-    private void save() {
+    protected void save(){
         session.beginTransaction();
         session.save(entitet);
         session.getTransaction().commit();

@@ -311,6 +311,7 @@ public class ProzorGrupa extends javax.swing.JFrame implements ProzorSucelje{
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void lstEntitetiValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstEntitetiValueChanged

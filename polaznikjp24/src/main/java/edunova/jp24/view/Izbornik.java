@@ -5,7 +5,14 @@
  */
 package edunova.jp24.view;
 
+import edunova.jp24.controller.ObradaGrupa;
+import edunova.jp24.model.Grupa;
 import edunova.jp24.util.Aplikacija;
+import java.awt.BorderLayout;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.general.DefaultPieDataset;
 
 /**
  *
@@ -16,13 +23,36 @@ public class Izbornik extends javax.swing.JFrame {
     /**
      * Creates new form Izbornik
      */
-    public Izbornik() {
+   public Izbornik() {
         initComponents();
         postavke();
+        pripremiGraf();
     }
     
     private void postavke(){
         setTitle(Aplikacija.getNaslov("Izbornik"));
+    }
+    
+    private void pripremiGraf(){
+        DefaultPieDataset dataset = new DefaultPieDataset();
+        for(Grupa g: new ObradaGrupa().read()){
+            dataset.setValue(g.getNaziv(), g.getPolaznici().size());
+        }
+        
+        JFreeChart jfc = ChartFactory.createPieChart("Broj polaznika po grupama", dataset, 
+                true,true,false);
+        
+        ChartPanel cp = new ChartPanel(jfc);
+        cp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+               pripremiGraf();
+            }
+        });
+        
+        pnlGraf.setLayout(new BorderLayout());
+        pnlGraf.add(cp,BorderLayout.CENTER);
+        pnlGraf.validate();
+        
     }
 
     /**
@@ -34,6 +64,7 @@ public class Izbornik extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pnlGraf = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -44,6 +75,23 @@ public class Izbornik extends javax.swing.JFrame {
         jMenuItem5 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        pnlGraf.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlGrafMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlGrafLayout = new javax.swing.GroupLayout(pnlGraf);
+        pnlGraf.setLayout(pnlGrafLayout);
+        pnlGrafLayout.setHorizontalGroup(
+            pnlGrafLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        pnlGrafLayout.setVerticalGroup(
+            pnlGrafLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 279, Short.MAX_VALUE)
+        );
 
         jMenu1.setText("Programi");
 
@@ -96,11 +144,11 @@ public class Izbornik extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(pnlGraf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
+            .addComponent(pnlGraf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -127,6 +175,10 @@ public class Izbornik extends javax.swing.JFrame {
         new ProzorGrupa().setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
+    private void pnlGrafMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlGrafMouseClicked
+        pripremiGraf();
+    }//GEN-LAST:event_pnlGrafMouseClicked
+
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -138,5 +190,6 @@ public class Izbornik extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPanel pnlGraf;
     // End of variables declaration//GEN-END:variables
 }
