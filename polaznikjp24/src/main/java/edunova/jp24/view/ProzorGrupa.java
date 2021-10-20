@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -523,7 +523,7 @@ public class ProzorGrupa extends javax.swing.JFrame implements ProzorSucelje{
     }//GEN-LAST:event_btnExportJSONActionPerformed
 
     private void lstPolazniciNaGrupiValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstPolazniciNaGrupiValueChanged
-        if(evt.getValueIsAdjusting()){
+       if(evt.getValueIsAdjusting()){
            return;
        }
        
@@ -537,7 +537,7 @@ public class ProzorGrupa extends javax.swing.JFrame implements ProzorSucelje{
     }//GEN-LAST:event_lstPolazniciNaGrupiValueChanged
 
     private void btnSpremiKalorijeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSpremiKalorijeActionPerformed
-        Clan c = lstPolazniciNaGrupi.getSelectedValue();
+       Clan c = lstPolazniciNaGrupi.getSelectedValue();
        
        if(c==null){
            return;
