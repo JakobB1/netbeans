@@ -425,6 +425,9 @@ public class ProzorGrupa extends javax.swing.JFrame implements ProzorSucelje{
                 if(fa.getDeclaringClass()==Smjer.class && fa.getName().equals("grupe")){
                     return true;
                 }
+                 if(fa.getDeclaringClass()==Clan.class && fa.getName().equals("grupa")){
+                    return true;
+                }
                 
                 return false;
             }
