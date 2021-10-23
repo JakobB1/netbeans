@@ -58,14 +58,16 @@ public class HibernateSessionPocetniInsert {
         
         Faker faker = new Faker();
         Korisnik korisnik = new Korisnik();
+        for (int i = 0; i < 27; i++) {
+            korisnik = new Korisnik();
         korisnik.setIme(faker.name().firstName());
         korisnik.setPrezime(faker.name().lastName());
         korisnik.setEmail("email@mail.hr");
-        korisnik.setOib("11111111111");
+        korisnik.setOib(EdunovaUtil.getOIB());
         korisnik.setBrojClasnkeKartice("1");
         
         s.save(korisnik);
-        
+        }
         
         
         
