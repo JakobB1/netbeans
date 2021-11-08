@@ -7,7 +7,9 @@ package hr.edunova.zavrsni.controller;
 
 import hr.edunova.zavrsni.model.Korisnik;
 import hr.edunova.zavrsni.util.EdunovaException;
+import java.math.BigInteger;
 import java.util.List;
+import javax.persistence.Query;
 
 /**
  *
@@ -54,6 +56,16 @@ public class ObradaKorisnik extends ObradaOsoba<Korisnik>{
         if(entitet.getIme().length()>50){
             throw new EdunovaException("Ime ne moze biti duze od 50 znakova");    
         }
+        
+        Query q = session.createNativeQuery("select count(*) from korisnik where ime=:imeParametar");
+        q.setParameter("imeParametar", entitet.getIme());
+      
+        BigInteger ukupno = (BigInteger)q.getSingleResult();
+     
+        if(ukupno.compareTo(BigInteger.ZERO)>0){
+             throw new EdunovaException("Ime već postoji");
+        }
+        
     }
 
     private void kontrolaPrezime() throws EdunovaException{
@@ -64,6 +76,16 @@ public class ObradaKorisnik extends ObradaOsoba<Korisnik>{
         if(entitet.getPrezime().length()>50){
             throw new EdunovaException("Prezime ne moze biti duze od 50 znakova");    
         }
+        
+        Query q = session.createNativeQuery("select count(*) from korisnik where prezime=:prezimeParametar");
+        q.setParameter("prezimeParametar", entitet.getPrezime());
+      
+        BigInteger ukupno = (BigInteger)q.getSingleResult();
+     
+        if(ukupno.compareTo(BigInteger.ZERO)>0){
+             throw new EdunovaException("Prezime već postoji");
+        }
+        
     }
     
 }
