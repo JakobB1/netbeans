@@ -137,6 +137,15 @@ public class ObradaOperater extends Obrada<Operater>{
         if(entitet.getBrojUgovora()==null || !entitet.getBrojUgovora().contains("/")){
                throw new EdunovaException("Broj ugovora mora imati znak /");
            }
+        
+        Query q = session.createNativeQuery("select count(*) from operater where brojUgovora=:brojUgovoraParametar");
+        q.setParameter("brojUgovoraParametar", entitet.getBrojUgovora());
+      
+        BigInteger ukupno = (BigInteger)q.getSingleResult();
+     
+        if(ukupno.compareTo(BigInteger.ZERO)>0){
+             throw new EdunovaException("Broj ugovora vec postoji");
+        }
     }
     
     
