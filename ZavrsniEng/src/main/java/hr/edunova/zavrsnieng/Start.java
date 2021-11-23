@@ -5,12 +5,14 @@
  */
 package hr.edunova.zavrsnieng;
 
+import hr.edunova.zavrsnieng.util.HibernateUtil;
+
 /**
  *
  * @author jalep
  */
 public class Start {
     public static void main(String[] args) {
-        System.out.println("Hello");
+        HibernateUtil.getSession();
     }
 }
