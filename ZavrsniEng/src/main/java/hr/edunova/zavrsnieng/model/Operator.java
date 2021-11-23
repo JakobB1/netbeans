@@ -22,8 +22,8 @@ public class Operator extends Entitet{
     private String oib;
     private String email;
     
-    @OneToMany(mappedBy = "operater")
-    private List<Receipt> receipts = new ArrayList<>();
+    //@OneToMany(mappedBy = "operater")
+    //private List<Receipt> receipts = new ArrayList<>();
 
     public String getName() {
         return name;
@@ -65,11 +65,11 @@ public class Operator extends Entitet{
         this.email = email;
     }
 
-    public List<Receipt> getReceipts() {
+  /* public List<Receipt> getReceipts() {
         return receipts;
     }
 
     public void setReceipts(List<Receipt> receipts) {
         this.receipts = receipts;
-    }  
+    }  */
 }
