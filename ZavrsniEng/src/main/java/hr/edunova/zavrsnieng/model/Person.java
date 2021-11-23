@@ -13,7 +13,7 @@ import javax.persistence.MappedSuperclass;
  * @author jalep
  */
 @MappedSuperclass
-public abstract class Person extends Entity{
+public abstract class Person extends Entitet{
     
     private String name;
     private String surname;
