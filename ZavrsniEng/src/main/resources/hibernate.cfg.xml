@@ -10,7 +10,7 @@
     <session-factory>
         <!-- JDBC Database connection settings -->
         <property name="connection.driver_class">org.mariadb.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mariadb://localhost:3306/zavrsniEng</property>
+        <property name="connection.url">jdbc:mariadb://localhost:3306/zavrsnieng</property>
         <property name="connection.username">edunova</property>
         <property name="connection.password">edunova</property>
         <!-- JDBC connection pool settings ... using built-in test pool -->
@@ -44,11 +44,11 @@
         
         
         <!-- Ovdje navodimo mapirane klase -->
-        <mapping class="hr.edunova.zavrsni.model.Receipt" />
-        <mapping class="hr.edunova.zavrsni.model.Product" />
-        <mapping class="hr.edunova.zavrsni.model.User" />
-        <mapping class="hr.edunova.zavrsni.model.Operator" />
-        <mapping class="hr.edunova.zavrsni.model.Login" /> 
+        <mapping class="hr.edunova.zavrsnieng.model.Receipt" />
+        <mapping class="hr.edunova.zavrsnieng.model.Product" />
+        <mapping class="hr.edunova.zavrsnieng.model.User" />
+        <mapping class="hr.edunova.zavrsnieng.model.Operator" />
+        <mapping class="hr.edunova.zavrsnieng.model.Login" /> 
               
         
         
